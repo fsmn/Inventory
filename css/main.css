@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.login {
+	max-width: 350px;
+	margin: 0 auto;
+}
+
+body{
+	padding: 1em;
+}
+
+.row {
+	margin: 0;
+}
+
+
+.vendor-block {
+	width: 50%;
+}
+
+footer {
+	width: 100%;
+	clear: both;
+}
+
+.details-block {
+	  box-shadow: 2px 2px 4px #CCC;
+  padding: 1em;
+  overflow: auto;
+  max-height: 500px;
+  display: none;
+}

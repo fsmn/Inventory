@@ -1,0 +1,7 @@
+/applications/config/database.php
+/applications/config/email.php
+/.settings
+.DS_Store
+/user_guide
+.project
+.buildpath
