@@ -6,6 +6,6 @@
 <footer>
 
 <span id="ci-version">
-<?="CI Version: " . CI_VERSION;?>
+<?="CI Version: v" . CI_VERSION;?>,
 </span>
-<span class='app-name'><?=APP_NAME;?>, Version <?=APP_VERSION;?></span></footer>
+<span class='app-name'><?=APP_NAME;?>: v<?=APP_VERSION;?></span></footer>

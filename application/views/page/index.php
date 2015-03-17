@@ -26,9 +26,11 @@ if(!isset($target)){
 <div class="page">
 <header class="header">
 </header>
+<? if($this->ion_auth->logged_in()):?>
 <nav>
 <? $this->load->view("page/navigation");?>
 </nav>
+<? endif;?>
 <? $this->load->view("page/messages"); ?>
 <div class="content">
 <? $this->load->view($target);?>
