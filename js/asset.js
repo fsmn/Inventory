@@ -2,20 +2,19 @@ $(window).scroll(function(){
 	var top=$('.float');
 	my_width = $(window).width();
 	if(my_width>400){
-		console.log(my_width);
 
-	if($(window).scrollTop()>250){
-		if(!top.hasClass('fixed')){
-			top.addClass('fixed');
-			top.removeClass('static');
-			//top.css('background-color','#000');
+		if($(window).scrollTop()>250){
+			if(!top.hasClass('fixed')){
+				top.addClass('fixed');
+				top.removeClass('static');
+				//top.css('background-color','#000');
+			}
+		}else{
+			if(top.hasClass('fixed')){
+				top.addClass('static');
+				top.removeClass('fixed');
+			}
 		}
-	}else{
-		if(top.hasClass('fixed')){
-			top.addClass('static');
-			top.removeClass('fixed');
-		}
-	}
 }
 });
 

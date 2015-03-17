@@ -24,7 +24,12 @@ class Asset extends MY_Controller
         $this->load->view("page/index", $data);
     }
 
-    function view($asset_id){
-echo $asset_id;
+    function view ($asset_id)
+    {
+        $asset = $this->asset->get($asset_id);
+//         $asset->codes = $this->codes->get_for_asset($asset_id);
+//         $asset->files = $this->file->get_for_asset($asset_id);
+        $data["asset"] = $asset;
+        $this->load->view("asset/view", $data);
     }
 }
