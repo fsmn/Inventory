@@ -5,7 +5,7 @@
 	margin: 0 auto;
 }
 
-body{
+body {
 	padding: 1em;
 }
 
@@ -13,9 +13,20 @@ body{
 	margin: 0;
 }
 
+.vendor-list {
+	float: left;
+}
 
 .vendor-block {
 	width: 50%;
+}
+
+.list-group-item:hover {
+	cursor: pointer;
+}
+
+.row .field-envelope {
+	display: inline-block;
 }
 
 footer {
@@ -24,16 +35,23 @@ footer {
 }
 
 .details-block {
-	  box-shadow: 2px 2px 4px #CCC;
-  padding: 1em;
-  overflow: auto;
-  max-height: 500px;
-  display: none;
-}
-.fixed {
-	position: fixed;
+	box-shadow: 2px 2px 4px #CCC;
+	padding: 1em; overflow : auto; max-height : 500px;
+	width: 50%;
+	position: absolute;
+	margin: 0 1em;
+	overflow: auto;
+	max-height: 500px;
 }
 
-.static{
+.sfixed {
+	position: fixed;
+	top: 10px;
+	left: 48%;
+	width: 35% !important;
+}
+
+.dstatic {
 	position: static;
+	float: left;
 }

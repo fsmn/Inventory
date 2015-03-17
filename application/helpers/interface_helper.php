@@ -13,7 +13,7 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
  *         "item" is not used here but is used by the create_button_bar script.
  *         this should be improved in a later version so it just focuses on
  *         either the class or id
- *         "type" defaults to "a" but can be "div" "span" or other tag if the
+ *         "tag" defaults to "a" but can be "div" "span" or other tag if the
  *         type=>"pass-through" then it just returns the "text" as-is without
  *         any further processing
  *         "href" defaults to "#" is only used if "type" is "a" (default)
@@ -51,14 +51,15 @@ if (! defined('BASEPATH')) exit('No direct script access allowed');
 function create_button ($data)
 {
     if (array_key_exists("text", $data)) {
-        $type = "a";
+        $tag = "a";
         $href = "";
         $title = "";
         $target = "";
+        $style = "";
         $text = $data["text"];
-        if (array_key_exists("type", $data)) {
-            if (isset($data["type"])) {
-                $type = $data["type"];
+        if (array_key_exists("tag", $data)) {
+            if (isset($data["tag"])) {
+                $tag = $data["tag"];
             }
         } else {
             if (array_key_exists("href", $data)) {
@@ -75,19 +76,21 @@ function create_button ($data)
         if (array_key_exists("title", $data)) {
             $title = "title ='" . $data["title"] . "'";
         }
-        if ($type != "pass-through") {
+        if ($tag != "pass-through") {
 
             if (array_key_exists("class", $data)) {
                 if (! is_array($data["class"])) {
                     $data["class"] = explode(" ", $data["class"]);
-                    $data["class"][] = "btn";
                 }
-            } else {
-                $data["class"] = array(
-                        "btn btn-default"
-                );
+            }else{
+                $data["class"] = array();
             }
-            $text = $text . add_fa_icon($data["class"]);
+
+
+            if (array_key_exists("style", $data)) {
+                $data["class"] = array_merge(get_button_style($data["style"]), $data["class"]);
+                $text = $text . add_fa_icon($data["style"]);
+            }
 
             if (array_key_exists("selection", $data) && preg_match("/" . str_replace("/", "\/", $data["selection"]) . "/", $_SERVER['REQUEST_URI'])) {
                 $data["class"][] = "active";
@@ -99,11 +102,11 @@ function create_button ($data)
                 $id = "id='" . $data["id"] . "'";
             }
 
-            $button = "<$type type='button' $href $id $class $target $title>$text</$type>";
+            $button = "<$tag tag='button' $href $id $class $target $title>$text</$tag>";
 
             if (array_key_exists("enclosure", $data)) {
-                if (array_key_exists("type", $data["enclosure"])) {
-                    $enc_type = $data["enclosure"]["type"];
+                if (array_key_exists("tag", $data["enclosure"])) {
+                    $enc_tag = $data["enclosure"]["tag"];
                     $enc_class = "";
                     $enc_id = "";
                     if (array_key_exists("class", $data["enclosure"])) {
@@ -112,7 +115,7 @@ function create_button ($data)
                     if (array_key_exists("id", $data["enclosure"])) {
                         $enc_id = "id='" . $data["enclosure"]["id"] . "'";
                     }
-                    $button = "<$enc_type $enc_class $enc_id>$button</$enc_type>";
+                    $button = "<$enc_tag $enc_class $enc_id>$button</$enc_tag>";
                 }
             }
         } else {
@@ -162,8 +165,8 @@ function create_button_bar ($buttons, $type = "list", $options = NULL)
         $template = "<ul class='button-list'><li>$contents</li></ul>";
         $output = sprintf("<div class='btn-group %s'  %s>%s</div>", $class, $id, $template);
     } elseif ($type == "toolbar") {
-                $contents = implode("", $button_list);
-       // $template = "<ul class='button-list'><li>$contents</li></ul>";
+        $contents = implode("", $button_list);
+        // $template = "<ul class='button-list'><li>$contents</li></ul>";
         $output = sprintf("<div class='btn-group %s'  %s>%s</div>", $class, $id, $contents);
     }
     return $output;
@@ -244,6 +247,47 @@ function edit_field ($field_name, $value, $label, $table, $id, $options = array(
 }
 
 /**
+ * create a persistent field that updates the database on blur through ajax
+ *
+ * @param string $field_name
+ * @param string $value
+ * @param string $table
+ * @param string $id
+ * @param array $options
+ * @return string
+ */
+function live_field ($field_name, $value, $table, $id, $options = array())
+{
+    if (IS_ADMIN) {
+        $size = "auto";
+        if (in_array("size", $options)) {
+            $size = $options["size"];
+        }
+        $envelope = "div";
+        if (in_array("envelope", $options)) {
+            $envelope = $options["envelope"];
+        }
+        $label = "";
+        if (in_array("label", $options)) {
+            $label = sprintf("<label>%s</label>", $options["label"]);
+        }
+        $output = sprintf(
+                "<%s class='field-envelope' id='%s__%s__%s'>%s
+		<span class='live-field text' name='%s'>
+		<input type='text' name='%s' value='%s' class='persistent' id='%s_%s' style='width:%spx'></span>
+		</%s>", $envelope, $table, $field_name,
+                $id, $label, $field_name, $field_name, $value, $field_name, $id, $size, $envelope);
+    } else {
+        $label = "";
+        if (in_array("label", $options)) {
+            $label = $options["label"];
+        }
+        $output = edit_field($field_name, $value, $label, $table, $id, $options);
+    }
+    return $output;
+}
+
+/**
  * create a checkbox with labels
  *
  * @param string $name
@@ -295,6 +339,25 @@ function create_list ($items)
     return json_encode($output);
 }
 
+function get_button_style ($style)
+{
+    $class = array("btn");
+    switch ($style) {
+        case "new":
+            $class[] = "btn-warning";
+            break;
+        case "edit":
+            $class[] = "btn-success";
+            break;
+        case "delete":
+            $class[] = "btn-danger";
+            break;
+        default:
+            $class[] = "btn-default";
+    }
+    return $class;
+}
+
 /**
  * accepts an plain array of values.
  * Searches for certain key terms and returns an icon if such exists.
@@ -330,16 +393,3 @@ function add_fa_icon ($class = array())
     }
     return $output;
 }
-
-/**
- * $field_name string
- * $source_object stdObj
- * $parent string
- * $wrapper string
- * $extras multidimensional array required wrapper and envelope
-
-function wrapped_field($field_name,$value,$table,$id, $wrapper = "span",$extra = array("envelope"=>"span")){
-   // return $source_object->$field_name;
-    $output = sprintf("<%s class='field %s-%s'>%s</%s>",$wrapper, $table,$field_name,edit_field($field_name,$value,"",$table,$id,$extra),$wrapper);
-    return $output;
-} */

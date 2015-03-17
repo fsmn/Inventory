@@ -46,7 +46,7 @@ class File_model extends MY_Model
     function delete_file($id)
     {
     	$file = $this->get($id);
-    	$file_path = dirname($_SERVER['SCRIPT_FILENAME']) . "/uploads/" . $file->filename
+    	$file_path = dirname($_SERVER['SCRIPT_FILENAME']) . "/uploads/" . $file->filename;
     	unlink($file_path);
     	$this->_delete("file", $id);
     }

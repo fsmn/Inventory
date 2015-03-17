@@ -1,8 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 // view.php Chris Dart Mar 17, 2015 2:45:59 PM chrisdart@cerebratorium.com
-print_r($asset);
-die();
+
 ?>
 <h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
 <a href="#" class='no_link' id='<?=$asset->id?>'>
@@ -49,9 +48,9 @@ die();
 	?>
 </p>
 <p>
-	<b>Developer:</b>&nbsp;<a href="<?=site_url("developer/view/$asset->developer_id"); ?>"><?=$asset->developer?></a>
+	<b>Developer:</b>&nbsp;<a href="<?=site_url("developer/view/$asset->vendor_id"); ?>"><?=$asset->vendor?></a>
 </p>
-<? if(getValue($asset,"po")):?>
+<? if(get_value($asset,"po")):?>
 <p>
 <b>Purchase Order: </b>&nbsp;<a href="http://orders.fsmn.org/order/view/<?=$asset->po;?>" target="_blank"><?=$asset->po;?></a>
 </p>
@@ -61,10 +60,9 @@ die();
 <fieldset class='code-list list'>
 <legend>Codes</legend>
 <div id='codes_<?=$asset->id?>'><?php
-$data['id'] = $asset->id;
-$data['codes'] = $codes;
-
-//$this->load->view('code/list', $data);
+$data['asset_id'] = $asset->id;
+$data['codes'] = $asset->codes;
+$this->load->view('code/list', $data);
 
 ?>
 </div>
@@ -72,9 +70,9 @@ $data['codes'] = $codes;
 
 <fieldset class="code-list list"><legend>Files</legend>
 <div id='files_<?=$asset->id?>'>
-<?php $data['id'] =  $asset->id;
-$data['files'] = $files;
-//$this->load->view('file/list', $data);
+<?php $data['asset_id'] =  $asset->id;
+$data['files'] = $asset->files;
+$this->load->view('file/list', $data);
 ?>
 </div>
 </fieldset>

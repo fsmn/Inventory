@@ -1,28 +1,15 @@
-$(window).scroll(function(){
-	var top=$('.float');
-	my_width = $(window).width();
-	if(my_width>400){
 
-		if($(window).scrollTop()>250){
-			if(!top.hasClass('fixed')){
-				top.addClass('fixed');
-				top.removeClass('static');
-				//top.css('background-color','#000');
-			}
-		}else{
-			if(top.hasClass('fixed')){
-				top.addClass('static');
-				top.removeClass('fixed');
-			}
-		}
-}
-});
 
 $(document).on('click | focus', '.asset-item',function(){
 	$(".asset-item.active").removeClass("active");
-	if(! $(this).hasClass("active") ){;
+	me = $(this);
+	pose = me.position();
+	my_left = pose.left;
+	my_top = pose.top;
+	my_width = me.css("width");
+	if(! me.hasClass("active") ){;
 	
-		$(this).addClass("active");
+		me.addClass("active");
 		my_id = this.id.split("_")[1];
 		form_data = {
 				ajax: 1
@@ -32,7 +19,7 @@ $(document).on('click | focus', '.asset-item',function(){
 			url: base_url + "asset/view/" + my_id,
 			data: form_data,
 			success: function(data){
-				$(".details-block").html(data).fadeIn();
+				$(".details-block").css({"top":my_top, "z-index": 1000,"left":my_width}).html(data).fadeIn();
 			}
 		});
 	}else{
@@ -41,5 +28,6 @@ $(document).on('click | focus', '.asset-item',function(){
 });
 
 $(document).on('blur','.asset-item', function(){
-	//$(this).removeClass("active");
+	$(this).removeClass("active");
 });
+

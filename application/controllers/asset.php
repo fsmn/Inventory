@@ -33,8 +33,6 @@ class Asset extends MY_Controller
         $asset->codes = $this->code->get_for_asset($asset_id);
         $asset->files = $this->file->get_for_asset($asset_id);
         $data["asset"] = $asset;
-        print_r($asset);
-        die();
         $this->load->view("asset/view", $data);
     }
 }

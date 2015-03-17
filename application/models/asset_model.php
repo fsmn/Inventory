@@ -39,7 +39,7 @@ class Asset_model extends MY_Model
         $this->db->join("vendor", "vendor.id=asset.vendor_id");
         $this->db->select("asset.*");
         $this->db->select("vendor.name vendor, vendor.type vendor_type,vendor.contact,vendor.address,vendor.locality,vendor.url,vendor.phone,vendor.fax,vendor.email,vendor.customer_id");
-        $result = $this->db->get()->result();
+        $result = $this->db->get()->row();
         return $result;
     }
 
