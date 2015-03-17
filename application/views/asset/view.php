@@ -1,9 +1,14 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 // view.php Chris Dart Mar 17, 2015 2:45:59 PM chrisdart@cerebratorium.com
-
+print_r($asset);
+die();
 ?>
-<h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'><a href="#" class='no_link' id='<?=$asset->id?>'><?="$asset->product&nbsp;"; if($asset->version != ''){echo "$asset->version&nbsp;";} if($asset->name!=''){echo "($asset->name)";} ?></a></h4>
+<h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
+<a href="#" class='no_link' id='<?=$asset->id?>'>
+<?=$asset->product;?> &nbsp;
+<?=$asset->version != ''?$asset->version:"";?>
+<?=$asset->name!=''?"($asset->name)":""; ?></a></h4>
 <div>
 <span class='button edit small asset_edit' id='a_<?=$asset->id; ?>'>Edit</span>
 <div class='asset-details' id='details_<?=$asset->id?>'>
@@ -50,7 +55,7 @@
 <p>
 <b>Purchase Order: </b>&nbsp;<a href="http://orders.fsmn.org/order/view/<?=$asset->po;?>" target="_blank"><?=$asset->po;?></a>
 </p>
-<? endif;
+<? endif; ?>
 
 </div>
 <fieldset class='code-list list'>
