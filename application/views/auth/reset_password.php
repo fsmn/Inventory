@@ -1,6 +1,7 @@
+<div class="login center-block">
 <h1><?php echo lang('reset_password_heading');?></h1>
 
-<div id="infoMessage"><?php echo $message;?></div>
+<div id="alert alert-warning"><?php echo $message;?></div>
 
 <?php echo form_open('auth/reset_password/' . $code);?>
 
@@ -21,3 +22,4 @@
 
 <?php echo form_close();?>
 
+</div>

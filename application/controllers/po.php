@@ -21,6 +21,10 @@ class PO extends MY_Controller
     {
         $order = $this->po->get_by_po($po);
         $order->items = $this->item->get_by_po($order->id);
+        $data["order"] = $order;
+        $data["target"] = "po/view";
+        $data["title"] = "FSMN PO# $po";
+        $this->load->view("page/index",$data);
     }
 
     function create ($vendor_id = FALSE)

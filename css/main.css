@@ -45,7 +45,9 @@ footer {
 
 .details-block {
 	box-shadow: 2px 2px 4px #CCC;
-	padding: 1em; overflow : auto; max-height : 500px;
+	padding: 1em;
+	overflow: auto;
+	max-height: 500px;
 	width: 50%;
 	position: absolute;
 	margin: 0 1em;
@@ -54,14 +56,52 @@ footer {
 	background-color: #fff;
 }
 
-.sfixed {
-	position: fixed;
-	top: 10px;
-	left: 48%;
-	width: 35% !important;
+ul.button-list {
+	list-style: none;
+	padding: 0;
 }
 
-.dstatic {
-	position: static;
+ul.button-list li {
+	display: inline-block;
+}
+
+ul.button-list li a {
+	margin: 0 .25em;
+}
+
+.items {
+	clear: both;
+}
+
+table.item-list {
+	clear: both;
+}
+
+table.item-list th.price, table.item-list th.total {
+	text-align: right;
+}
+
+.left-box, .right-box {
+	width: 45%;
 	float: left;
+}
+
+.left-box fieldset, .right-box fieldset {
+	height: 2.65in;
+}
+
+@media ( max-width :740px) {
+	.left-box, .right-box {
+		width: 100%;
+		float: none;
+	}
+}
+
+@media print {
+	.btn, .btn-group {
+		display: none;
+	}
+	.left-box fieldset, .right-box fieldset {
+		height: 2in;
+	}
 }
