@@ -9,6 +9,14 @@ body {
 	padding: 1em;
 }
 
+nav {
+	
+}
+
+nav .btn-group.utility {
+	float: right;
+}
+
 .row {
 	margin: 0;
 }
@@ -43,6 +51,7 @@ footer {
 	margin: 0 1em;
 	overflow: auto;
 	max-height: 500px;
+	background-color: #fff;
 }
 
 .sfixed {

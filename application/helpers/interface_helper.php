@@ -102,7 +102,7 @@ function create_button ($data)
                 $id = "id='" . $data["id"] . "'";
             }
 
-            $button = "<$tag tag='button' $href $id $class $target $title>$text</$tag>";
+            $button = "<$tag $href $id $class $target $title>$text</$tag>";
 
             if (array_key_exists("enclosure", $data)) {
                 if (array_key_exists("tag", $data["enclosure"])) {
@@ -343,14 +343,19 @@ function get_button_style ($style)
 {
     $class = array("btn");
     switch ($style) {
+    	case "insert":
         case "new":
             $class[] = "btn-warning";
             break;
+        case "update":
         case "edit":
             $class[] = "btn-success";
             break;
         case "delete":
             $class[] = "btn-danger";
+            break;
+        case "link":
+            $class[] = "btn-link";
             break;
         default:
             $class[] = "btn-default";
