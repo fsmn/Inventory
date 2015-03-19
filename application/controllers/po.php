@@ -65,4 +65,40 @@ class PO extends MY_Controller
 
         redirect("po/view/$po");
     }
+
+    function edit($id){
+        $this->load->model("vendor_model", "vendor");
+        $vendors = $this->vendor->get_all("vendor");
+        $data["vendors"] = get_keyed_pairs($vendors, array(
+                "id",
+                "name"
+        ));
+        $methods = $this->po->get_distinct("method");
+        $data["methods"] = get_keyed_pairs($methods, array(
+                "method",
+                "method"
+        ));
+        $payment_types = $this->po->get_distinct("payment_type");
+        $data["payment_types"] = get_keyed_pairs($payment_types, array(
+                "payment_type",
+                "payment_type"
+        ));
+        $categories = $this->po->get_distinct("category");
+        $data["categories"] = get_keyed_pairs($categories, array(
+                "category",
+                "category"
+        ));
+        $data["target"] = "po/edit";
+        $data["action"] = "update";
+        $data["po"] = $this->po->get($id);
+        $data["vendor_id"] = NULL;
+        $this->load->view("page/index", $data);
+
+    }
+
+    function update(){
+        $this->po->update();
+        $po = $this->po->get($this->input->post("id"))->po;
+        redirect("po/view/$po");
+    }
 }

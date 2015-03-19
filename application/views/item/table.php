@@ -12,7 +12,7 @@ if(!isset($print)){
 			<th class='description'>Description</th>
 			<th class='category'>Category</th>
 			<th class='price currency'>Price</th>
-			<th class='total currency'>Total</th>    			
+			<th class='total currency'>Total</th>
     			<th class="clear"></th>
 
 
@@ -27,7 +27,7 @@ if(!isset($print)){
 					"style" => "edit",
 					"class" => "edit-item btn-xs",
 					"id" => "edit-item_$item->id",
-					"href" => site_url ( "item/edit/$item->id" ) 
+					"href" => site_url ( "item/edit/$item->id" )
 			);
 			$buttons [] = array (
 					"text" => "Delete",
@@ -46,16 +46,16 @@ if(!isset($print)){
 		<td><?=$item->category;?></td>
 		<td style="text-align: right"><?=get_as_price($item->price);?></td>
 		<td style="text-align: right"><?=get_as_price(strval($item->item_count)*strval($item->price));?></td>
-			
+
 			<? $grand_total += $total;?>
 
 			<td class="clear">
 			<?=create_button_bar($buttons); ?>
-			
+
 			</td>
 	</tr>
 
-		
+
 			<? endforeach; 	?>
 		 <tr>
 		<td style="text-align: right" colspan="6">Total: <span

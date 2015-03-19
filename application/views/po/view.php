@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-$order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po btn-sm","href"=>site_url("po/edit"));
+$order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po btn-sm","href"=>site_url("po/edit/$order->id"));
 $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"delete-order btn-sm","id"=>"delete-po_$order->id","href"=>site_url("po/delete"));
 ?>
 <h1>
@@ -33,7 +33,7 @@ $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"dele
 	</div>
 </div>
 <div class="items">
-<? $item_buttons[] = array("text"=>"Add Item","style"=>"new","class"=>"btn-xs add-item","id"=>"add-item_$order->id","href"=>site_url("item/create/$order->id")); 
+<? $item_buttons[] = array("text"=>"Add Item","style"=>"new","class"=>"btn-xs add-item","id"=>"add-item_$order->id","href"=>site_url("item/create/$order->po/$order->id"));
 echo create_button_bar($item_buttons,"toolbar");?>
 <div id='item-table'>
 <?php $this->load->view('item/table',array("items"=>$order->items));?>
