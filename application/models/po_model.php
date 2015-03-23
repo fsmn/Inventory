@@ -33,7 +33,7 @@ class PO_Model extends MY_Model
         );
         foreach ($variables as $variable) {
             if ($this->input->post($variable)) {
-                $this->$variable = $this->input->post($variable);
+                $this->$variable = urldecode($this->input->post($variable));
             }
         }
 

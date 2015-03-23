@@ -78,10 +78,11 @@ $total = get_as_price(strval($item_count) * strval($price));
 			style="width: 5em"
 			value="<?=$total?>">
 	</p>
-</form>
 <p>
 	<input
 		type="submit"
 		class="button save_item <?=$action;?> <?=implode(" ",get_button_style($action));?>"
 		value="<?=ucfirst($action);?>" />
 </p>
+</form>
+

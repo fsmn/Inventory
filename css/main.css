@@ -21,6 +21,11 @@ nav .btn-group.utility {
 	margin: 0;
 }
 
+.purchase-order {
+	width: 8in;
+	margin: .5in auto;
+}
+
 .vendor-list {
 	float: left;
 }
@@ -83,11 +88,30 @@ table.item-list th.price, table.item-list th.total {
 
 .left-box, .right-box {
 	width: 45%;
-	float: left;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .left-box fieldset, .right-box fieldset {
 	height: 2.65in;
+}
+
+.ui-dialog {
+	background-color: white;
+	  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+  box-shadow: 2px 2px 3px #aaa;
+}
+
+.ui-dialog-title {
+	min-height: 16.43px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 @media ( max-width :740px) {
@@ -97,11 +121,3 @@ table.item-list th.price, table.item-list th.total {
 	}
 }
 
-@media print {
-	.btn, .btn-group {
-		display: none;
-	}
-	.left-box fieldset, .right-box fieldset {
-		height: 2in;
-	}
-}

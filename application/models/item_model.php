@@ -24,7 +24,7 @@ class Item_Model extends MY_Model
                 "category"
         );
         foreach ($variables as $variable) {
-            $this->$variable = $this->input->post($variable);
+            $this->$variable = urldecode($this->input->post($variable));
         }
     }
 
@@ -44,5 +44,9 @@ class Item_Model extends MY_Model
         $this->prepare_variables();
         $id = $this->_insert("item");
         return $id;
+    }
+
+    function update($id,$values = NULL){
+        $this->_update("item",$id,$values);
     }
 }

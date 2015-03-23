@@ -35,4 +35,8 @@ class Asset extends MY_Controller
         $data["asset"] = $asset;
         $this->load->view("asset/view", $data);
     }
+
+    function create($vendor_id = NULL){
+
+    }
 }

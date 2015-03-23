@@ -38,4 +38,27 @@ class Item extends MY_Controller
         $po = $this->item->get($id)->po;
         redirect("po/view/$po");
     }
+
+    function edit($id){
+        $categories = $this->po->get_distinct("category");
+        $data["categories"] = get_keyed_pairs($categories, array("category","category"));
+        $data["item"] = $this->item->get($id);
+        $data["po"] = $data["item"]->po;
+        $data["po_id"] = $data["item"]->po_id;
+        $data["action"] = "update";
+        $data["target"] = "item/edit";
+        if($this->input->get("ajax")){
+            $this->load->view($data["target"], $data);
+        }else{
+            $data["title"] = sprintf("Editing an order item");
+            $this->load->view("page/index",$data);
+        }
+    }
+
+    function update(){
+        $id = $this->input->post("id");
+$this->item->update($id);
+$po = $this->input->post("po");
+redirect("po/view/$po");
+    }
 }

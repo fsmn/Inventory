@@ -29,7 +29,7 @@
 	?></span></p>
 <p><label for="payment_type">Payment Type: </label><span
 	id="payment-type-view"> <?php
-	echo form_dropdown('payment_type', $payment_types, get_value($po, 'payment_type'), 'id="payment_type"');
+	echo form_dropdown('payment_type', $payment_types, urlencode(get_value($po, 'payment_type')), 'id="payment_type"');
 	?></span></p>
 
 
@@ -39,7 +39,7 @@
 	value="<?=get_value($po, 'billing_contact', 'Garth Morrisette'); ?>"/></p>
 <p></p>
 <p><label for="category">Order Category: </label> <span
-	id="category-view"> <?=form_dropdown('category', $categories, get_value($po, 'category'), 'id="category"');
+	id="category-view"> <?=form_dropdown('category', $categories, urlencode(get_value($po, 'category')), 'id="category"');
 	?> </span></p>
 <p><label for="quote">Vendor Quote Number: </label> <input type="text"
 	name="quote" id="quote" style="width: auto;"

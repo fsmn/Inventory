@@ -15,6 +15,7 @@ class PO extends MY_Controller
 
     function index ()
     {
+
     }
 
     function view ($po)
@@ -22,7 +23,11 @@ class PO extends MY_Controller
         $order = $this->po->get_by_po($po);
         $order->items = $this->item->get_by_po($order->id);
         $data["order"] = $order;
+        if($this->input->get("print") == 1){
+            $data["target"] = "po/print";
+        }else{
         $data["target"] = "po/view";
+        }
         $data["title"] = "FSMN PO# $po";
         $this->load->view("page/index",$data);
     }
@@ -54,7 +59,11 @@ class PO extends MY_Controller
         $data["action"] = "insert";
         $data["po"] = FALSE;
         $data["vendor_id"] = $vendor_id;
+        if($this->input->get("ajax")== 1){
+            $this->load->view($data["target"],$data);
+        }else{
         $this->load->view("page/index", $data);
+        }
     }
 
     function insert ()

@@ -6,7 +6,7 @@ $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"dele
 <h1>
 	Purchase Order: <?=$order->po; ?>
 </h1>
-<?=create_button(array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id")); ?>
+<?=create_button(array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank")); ?>
 <div id="page-box">
 	<div class="address-row clearfix">
 		<div class="left-box">
