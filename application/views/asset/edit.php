@@ -1,7 +1,6 @@
 <?php
-
 ?>
-<form id="asset_editor" name="asset_editor"
+<form id="asset_editor" class="editor" name="asset_editor"
 	action="<? echo site_url("asset/$action"); ?>" method="post">
 	<input type="hidden" name="id" id="id"
 		value="<?=get_value($asset, 'id')?>" /> <input type="hidden"
@@ -66,13 +65,17 @@
 			value="<?=get_value($asset,"po");?>" /></span>
 	</p>
 	<p>
-		<? if($action == "update"){ ?>
-		<input type="hidden" name="ajax" id="ajax" value="1" /> <span
-			class="button asset_save">Save</span>&nbsp;<span
-			class="button delete asset_delete">Delete</span>
-		<? }elseif($action == "insert") {?>
-		<input type="submit" class="button" value="Add Asset" />
-		<? }?>
+
+		<p>
+
+		<input type="submit" class="save_order <?=$action;?> <?=implode(" ",get_button_style($action));?>" value="<?=ucfirst($action);?>" />
+
+		<input type="hidden" name="ajax" id="ajax" value="1" />
+
+		<? if($action == "update"): ?>
+		<span
+			class="asset_delete <?=implode(" ",get_button_style("delete"));?>">Delete</span>
+		<? endif;?>
 
 	</p>
 </form>

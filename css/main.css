@@ -114,6 +114,13 @@ table.item-list th.price, table.item-list th.total {
   border-bottom: 1px solid #e5e5e5;
 }
 
+form.editor {
+	max-width: 350px;
+	width: 100%;
+	margin: 3em auto;
+}
+
+
 @media ( max-width :740px) {
 	.left-box, .right-box {
 		width: 100%;

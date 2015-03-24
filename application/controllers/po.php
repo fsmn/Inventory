@@ -57,10 +57,11 @@ class PO extends MY_Controller
         ));
         $data["target"] = "po/edit";
         $data["action"] = "insert";
+       $data["title"] = "Create a Purchase Order";
         $data["po"] = FALSE;
         $data["vendor_id"] = $vendor_id;
         if($this->input->get("ajax")== 1){
-            $this->load->view($data["target"],$data);
+            $this->load->view("page/modal",$data);
         }else{
         $this->load->view("page/index", $data);
         }
@@ -97,11 +98,18 @@ class PO extends MY_Controller
                 "category",
                 "category"
         ));
+        $order = $this->po->get($id);
+        $data["po"] = $order;
+
         $data["target"] = "po/edit";
+        $data["title"] = sprintf("Editing PO #%s",$order->po);
         $data["action"] = "update";
-        $data["po"] = $this->po->get($id);
         $data["vendor_id"] = NULL;
+        if($this->input->get("ajax")==1){
+            $this->load->view("page/modal",$data);
+        }else{
         $this->load->view("page/index", $data);
+        }
 
     }
 

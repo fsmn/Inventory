@@ -52,4 +52,8 @@ class Vendor_Model extends MY_Model
         $result = $this->db->get()->result();
         return $result;
     }
+
+    function get_distinct($field){
+        return $this->_get_distinct("vendor", $field);
+    }
 }

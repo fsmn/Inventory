@@ -5,6 +5,38 @@ function mysql_timestamp ()
 	return date ( 'Y-m-d H:i:s' );
 }
 
+/*
+ * @function format_date
+* @params $date date string
+* @params $format string
+*description:  this shouldn't be in this file, but I didn't want to create a new file with general formatting tools yet.
+*/
+function format_date($date, $format = "standard"){
+    //$format=mysql//yyyy-mm-dd
+    //$format=standard//mm-dd-yyyy
+    $clean_date = str_replace("-","/",$date);
+    switch($format){
+    	case "mysql":
+    	    $parts = explode("/", $clean_date);
+    	    $month = $parts[0];
+    	    $day = $parts[1];
+    	    $year = $parts[2];
+    	    $output = "$year-$month-$day";
+    	    break;
+    	case "standard":
+    	    $parts = explode("/", $clean_date);
+    	    $year = $parts[0];
+    	    $month = $parts[1];
+    	    $day = $parts[2];
+    	    $output = "$month/$day/$year";
+    	    break;
+    	default:
+    	    $output = $clean_date;
+    }
+    return $output;
+}
+
+
 function bake_cookie ( $name, $value )
 {
 	if (is_array ( $value )) {
@@ -13,7 +45,7 @@ function bake_cookie ( $name, $value )
 	set_cookie ( array (
 			"name" => $name,
 			"value" => $value,
-			"expire" => 0 
+			"expire" => 0
 	) );
 }
 
@@ -22,7 +54,7 @@ function burn_cookie ( $name )
 	set_cookie ( array (
 			"name" => $name,
 			"value" => "",
-			"expire" => NULL 
+			"expire" => NULL
 	) );
 }
 
@@ -75,7 +107,7 @@ function get_keyed_pairs ( $list, $pairs, $initialBlank = NULL, $other = NULL, $
 	if (! empty ( $alternate )) {
 		$output [$alternate ['name']] = $alternate ['value'];
 	}
-	
+
 	foreach ( $list as $item ) {
 		$key_name = $pairs [0];
 		$key_value = $pairs [1];
@@ -90,12 +122,12 @@ function get_keyed_pairs ( $list, $pairs, $initialBlank = NULL, $other = NULL, $
 function get_value ( $object, $item, $default = null )
 {
 	$output = $default;
-	
+
 	if ($default) {
 		$output = $default;
 	}
 	if ($object) {
-		
+
 		$var_list = get_object_vars ( $object );
 		$var_keys = array_keys ( $var_list );
 		if (in_array ( $item, $var_keys )) {
@@ -129,7 +161,7 @@ function get_user_name ( $user )
 function format_latin_name ( $genus, $species = NULL )
 {
 	$output [] = ucfirst ( $genus );
-	
+
 	if ($species) {
 		$output [] = strtolower ( $species );
 	}
@@ -178,7 +210,7 @@ function format_dimensions ( $min = FALSE, $max = FALSE, $unit = "Inches", $dire
 	if ($direction) {
 		$output = sprintf ( "%s%s", $output, $direction );
 	}
-	
+
 	return $output;
 }
 
@@ -204,24 +236,24 @@ function format_address ( $grower )
 	else {
 		$street = implode ( " ", $street );
 	}
-	
+
 	if (empty ( $grower->country )) {
 		$country = "USA";
 	}
 	else {
 		$country = $grower->country;
 	}
-	
+
 	return array (
 			"street" => $street,
 			"locale" => $locale,
-			"country" => $country 
+			"country" => $country
 	);
 }
 
 /**
  *
- * @param stObj $order        	
+ * @param stObj $order
  * @return string if the difference between two prices is greater than a set
  *         amount, there is a discrepancy.
  *         This is used exclusively to provide a class tag for the orders where
@@ -247,8 +279,8 @@ function decode_string ( $string )
 /**
  * Create a custom sql sorting string.
  *
- * @param array $values        	
- * @param string $field        	
+ * @param array $values
+ * @param string $field
  * @return string
  */
 function get_custom_order ( $values = array(NULL,"Hostas","Daylilies","Coleus","Basil","Lavender"), $field = "name" )

@@ -30,6 +30,13 @@ class MY_Model extends CI_Model
         return $result;
     }
 
+    function _get_distinct($db,$field){
+        $this->db->from($db);
+        $this->db->distinct($field);
+        $this->db->order_by($field);
+        $result = $this->db->get()->result();
+        return $result;
+    }
 
 
     function _insert ($db)

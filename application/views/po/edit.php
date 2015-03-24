@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<form id="order_editor" action="<?=site_url("po/$action"); ?>"
+<form id="order_editor" class="editor" action="<?=site_url("po/$action"); ?>"
 	method="post" name="order_editor">
 	<input type="hidden" name="id" value="<?=get_value($po,"id");?>"/>
 	<input type="hidden" name="user_id" value="<?=$this->ion_auth->get_user_id();?>"/>

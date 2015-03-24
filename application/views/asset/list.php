@@ -6,7 +6,7 @@
 <? foreach ($vendors as $vendor) :
     ?>
 <div class="block vendor-block">
-	<h2><?= $vendor->name; ?></h2>
+	<h2><a href="<?=site_url("vendor/view/$vendor->id");?>"><?= $vendor->name; ?></a></h2>
 	<ul class="list-group">
    <? foreach ($vendor->assets as $asset): ?>
        <li

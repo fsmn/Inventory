@@ -62,6 +62,22 @@ class PO_Model extends MY_Model
         return $this->get($id);
     }
 
+    function get_for_vendor ($vendor_id)
+    {
+        $query = "SELECT `po`.*,`vendor`.`name` AS `vendor`,`i`.`total`
+         FROM `po` JOIN
+        (SELECT `item`.`po_id`, `item`.`item_count` * `item`.`price` AS `total`
+        FROM `item`,`po` WHERE `item`.`po_id` = `po`.`id` AND `po`.`vendor_id` = $vendor_id) AS `i` ON `i`.`po_id` = `po`.`id`
+        JOIN  `vendor` ON  `po`.`vendor_id` = `vendor`.`id`
+        WHERE `vendor_id` = $vendor_id ORDER BY `po`.`po_date` DESC";
+        return $this->db->query($query)->result();
+//         $this->db->where("vendor_id", $vendor_id);
+//         $this->db->from("po");
+//         $this->db->order_by("po_date", "DESC");
+//         $result = $this->db->get()->result();
+//         return $result;
+    }
+
     function update ($id, $values = FALSE)
     {
         $this->_update("po", $id, $values);

@@ -1,6 +1,6 @@
 <?php
 
-$order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po btn-sm","href"=>site_url("po/edit/$order->id"));
+$order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po edit btn-sm","href"=>site_url("po/edit/$order->id"));
 $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"delete-order btn-sm","id"=>"delete-po_$order->id","href"=>site_url("po/delete"));
 ?>
 <h1>
@@ -10,7 +10,7 @@ $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"dele
 <div id="page-box">
 	<div class="address-row clearfix">
 		<div class="left-box">
-		<? $this->load->view('vendor/view'); ?>
+		<? $this->load->view('po/vendor'); ?>
 		</div>
 		<div class="right-box">
 			<fieldset>

@@ -39,5 +39,6 @@ if(!isset($target)){
 <? $this->load->view("page/footer");?>
 </div>
 </div>
+<div id="popup"></div>
 </body>
 </html>
