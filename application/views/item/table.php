@@ -57,10 +57,11 @@ if(!isset($print)){
 
 
 			<? endforeach; 	?>
+		<?php if(isset($item)):?>
 		 <tr>
 		<td style="text-align: right" colspan="6">Total: <span
 			id="total_<?=$item->po?>"><?=get_as_price($grand_total);?></span></td>
 			<td></td>
 	</tr>
-
+<?php endif;?>
 </table>

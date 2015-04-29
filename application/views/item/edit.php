@@ -6,6 +6,7 @@ $total = get_as_price(strval($item_count) * strval($price));
 ?>
 <form
 	id="item_editor"
+	class="editor"
 	action="<?=site_url("item/$action")?>"
 	method="post"
 	name="item_editor">

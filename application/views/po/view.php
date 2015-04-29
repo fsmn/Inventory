@@ -33,7 +33,7 @@ $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"dele
 	</div>
 </div>
 <div class="items">
-<? $item_buttons[] = array("text"=>"Add Item","style"=>"new","class"=>"btn-xs add-item","id"=>"add-item_$order->id","href"=>site_url("item/create/$order->po/$order->id"));
+<? $item_buttons[] = array("text"=>"Add Item","style"=>"new","class"=>"btn-xs add-item create","id"=>"add-item_$order->id","href"=>site_url("item/create/$order->po/$order->id"));
 echo create_button_bar($item_buttons,"toolbar");?>
 <div id='item-table'>
 <?php $this->load->view('item/table',array("items"=>$order->items));?>

@@ -25,10 +25,11 @@ class Item extends MY_Controller
         $data["po_id"] = $po_id;
         $data["action"] = "insert";
         $data["target"] = "item/edit";
-        if ($this->input->get("ajax")) {
-            $this->load->view($data["target"], $data);
+        $data["title"] = sprintf("Add Item to PO#%s", $po);
+
+        if ($this->input->get("ajax")==1) {
+            $this->load->view("page/modal", $data);
         } else {
-            $data["title"] = sprintf("Add Item to PO#%s", $po);
             $this->load->view("page/index", $data);
         }
     }
