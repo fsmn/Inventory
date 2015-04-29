@@ -1,7 +1,7 @@
 <?php
 
 $order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po edit btn-sm","href"=>site_url("po/edit/$order->id"));
-$order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"delete-order btn-sm","id"=>"delete-po_$order->id","href"=>site_url("po/delete"));
+$order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"delete-order delete btn-sm","id"=>"delete-po_$order->id","href"=>site_url("po/delete"));
 ?>
 <h1>
 	Purchase Order: <?=$order->po; ?>

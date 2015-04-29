@@ -83,6 +83,10 @@ class PO_Model extends MY_Model
         $this->_update("po", $id, $values);
     }
 
+    function delete($id){
+        $this->_delete("po",$id);
+    }
+
     function insert ()
     {
         $this->prepare_variables();

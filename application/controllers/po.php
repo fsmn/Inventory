@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 // po.php Chris Dart Mar 6, 2015 7:12:38 PM chrisdart@cerebratorium.com
@@ -15,7 +14,6 @@ class PO extends MY_Controller
 
     function index ()
     {
-
     }
 
     function view ($po)
@@ -23,13 +21,13 @@ class PO extends MY_Controller
         $order = $this->po->get_by_po($po);
         $order->items = $this->item->get_by_po($order->id);
         $data["order"] = $order;
-        if($this->input->get("print") == 1){
+        if ($this->input->get("print") == 1) {
             $data["target"] = "po/print";
-        }else{
-        $data["target"] = "po/view";
+        } else {
+            $data["target"] = "po/view";
         }
         $data["title"] = "FSMN PO# $po";
-        $this->load->view("page/index",$data);
+        $this->load->view("page/index", $data);
     }
 
     function create ($vendor_id = FALSE)
@@ -57,26 +55,26 @@ class PO extends MY_Controller
         ));
         $data["target"] = "po/edit";
         $data["action"] = "insert";
-       $data["title"] = "Create a Purchase Order";
+        $data["title"] = "Create a Purchase Order";
         $data["po"] = FALSE;
         $data["vendor_id"] = $vendor_id;
-        if($this->input->get("ajax")== 1){
-            $this->load->view("page/modal",$data);
-        }else{
-        $this->load->view("page/index", $data);
+        if ($this->input->get("ajax") == 1) {
+            $this->load->view("page/modal", $data);
+        } else {
+            $this->load->view("page/index", $data);
         }
     }
 
     function insert ()
     {
-
         $id = $this->po->insert();
         $po = $this->po->get($id)->po;
 
         redirect("po/view/$po");
     }
 
-    function edit($id){
+    function edit ($id)
+    {
         $this->load->model("vendor_model", "vendor");
         $vendors = $this->vendor->get_all("vendor");
         $data["vendors"] = get_keyed_pairs($vendors, array(
@@ -102,20 +100,33 @@ class PO extends MY_Controller
         $data["po"] = $order;
 
         $data["target"] = "po/edit";
-        $data["title"] = sprintf("Editing PO #%s",$order->po);
+        $data["title"] = sprintf("Editing PO #%s", $order->po);
         $data["action"] = "update";
         $data["vendor_id"] = NULL;
-        if($this->input->get("ajax")==1){
-            $this->load->view("page/modal",$data);
-        }else{
-        $this->load->view("page/index", $data);
+        if ($this->input->get("ajax") == 1) {
+            $this->load->view("page/modal", $data);
+        } else {
+            $this->load->view("page/index", $data);
         }
-
     }
 
-    function update(){
+    function update ()
+    {
         $this->po->update();
         $po = $this->po->get($this->input->post("id"))->po;
         redirect("po/view/$po");
+    }
+
+    function delete ()
+    {
+        if ($id = $this->input->post("id")) {
+
+            $po = $this->po->get($id);
+            $this->po->delete($id);
+            $data["target"] = "po/delete";
+            $data["title"] = "PO $po->po Deleted";
+            $data["po"] = $po;
+            $this->load->view("page/modal",$data);
+        }
     }
 }
