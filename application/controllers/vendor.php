@@ -15,7 +15,9 @@ class Vendor extends MY_Controller
     {
         $vendor = $this->vendor->get($id);
         $this->load->model("po_model","po");
+        $this->load->model("asset_model","asset");
         $vendor->pos = $this->po->get_for_vendor($id);
+        $vendor->assets = $this->asset->get_for_vendor($id);
         $data["vendor"] = $vendor;
         $data["target"] = "vendor/view";
         $data["title"] = sprintf("Viewing %s", $data["vendor"]->name);

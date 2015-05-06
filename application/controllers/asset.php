@@ -55,7 +55,7 @@ class Asset extends MY_Controller
         ), TRUE);
         $this->load->model("vendor_model", "vendor");
 
-        $developers = $this->vendor->get_all();
+        $developers = $this->vendor->get_all("developer");
         $data["developers"] = get_keyed_pairs($developers, array(
                 "id",
                 "name"

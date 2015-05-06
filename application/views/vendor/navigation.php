@@ -5,4 +5,6 @@
 $buttons[] = array("text"=>"Edit Vendor","style"=>"edit","class"=>"edit-vendor edit btn-sm","id"=>"edit-vendor_$id","href"=>site_url("vendor/edit/$id"));
 $buttons[] = array("text"=>"View Orders","style"=>"default","class"=>"view-orders btn-sm","id"=>"view-orders_$id","href"=>site_url("vendor/view/$id"));
 $buttons[] = array("text"=>"New Order","style"=>"new","class"=>"new-order create btn-sm","id"=>"new-po_$id","href"=>site_url("po/create/$id"));
+$buttons[] = array("text"=>"New Asset","style"=>"new","class"=>"new-asset create btn-sm","id"=>"new-po_$id","href"=>site_url("asset/create/$id?vendor_id=$id"));
+
 echo create_button_bar($buttons);

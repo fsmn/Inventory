@@ -39,4 +39,18 @@
 </div>
 <? endif; ?>
 </div>
+<h3>Orders</h3>
 <? $this->load->view("po/list",array("pos"=>$vendor->pos));?>
+<div class="asset-block">
+<h3>Assets</h3>
+<ul class="list-group">
+ <? foreach ($vendor->assets as $asset): ?>
+       <li
+			class="list-group-item asset-item"
+			id="asset-item_<?=$asset->id;?>">
+       <?=$asset->product;?><?=$asset->name?sprintf(" (%s)",$asset->name):"";?>
+       </li>
+    <? endforeach; ?>
+    </ul>
+    </div>
+    <aside class="details-block float"></aside>
