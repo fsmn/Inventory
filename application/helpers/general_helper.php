@@ -283,7 +283,7 @@ function decode_string ( $string )
  * @param string $field
  * @return string
  */
-function get_custom_order ( $values = array(NULL,"Hostas","Daylilies","Coleus","Basil","Lavender"), $field = "name" )
+function get_custom_order ( $values = array(NULL), $field = "name" )
 {
 	// @TODO there should be a UI-available tool for global sorting.
 	$order [] = "CASE";
@@ -299,5 +299,16 @@ function get_custom_order ( $values = array(NULL,"Hostas","Daylilies","Coleus","
 	}
 	$order [] = "END";
 	return implode ( " ", $order );
+}
+
+function ucfirst_array($array){
+	if(!is_array($array)){
+		$array = explode(",",$array);
+	}
+	
+	foreach($array as $item){
+		$output[] = ucfirst($item);
+	}
+	return $output;
 }
 

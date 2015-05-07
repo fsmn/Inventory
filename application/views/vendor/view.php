@@ -17,7 +17,7 @@
 <? endif; ?>
 <? if($url = get_value($vendor,"url",FALSE)): ?>
 <div class="attribute url">
-<a href='$vendor->url' target='_blank'><?=$url;?></a>
+<a href='<?php echo $vendor->url; ?>' target='_blank'><?=$url;?></a>
 </div>
 <? endif; ?>
 <? if($phone = get_value($vendor,"phone",FALSE)): ?>
@@ -32,6 +32,11 @@
 <?=$fax; ?>
 </div>
 <? endif; ?>
+<?php if($vendor->type):?>
+<label for="attribute type">Type:</label>
+<?php $types = ucfirst_array(get_value($vendor,"type",array()));?>
+<?php echo implode(", ",$types);?>
+<?php endif;?>
 <? if($customer_id = get_value($vendor,"customer_id",FALSE)): ?>
 <div class="attribute customer-id">
 <label for="customer_id">Customer ID: </label>
@@ -39,8 +44,13 @@
 </div>
 <? endif; ?>
 </div>
+<?php if($vendor->pos):?>
+<div class="order-block">
 <h3>Orders</h3>
 <? $this->load->view("po/list",array("pos"=>$vendor->pos));?>
+</div>
+<?php endif;?>
+<?php if($vendor->assets):?>
 <div class="asset-block">
 <h3>Assets</h3>
 <ul class="list-group">
@@ -54,3 +64,4 @@
     </ul>
     </div>
     <aside class="details-block float"></aside>
+    <?php endif; 

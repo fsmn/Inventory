@@ -10,7 +10,17 @@ class Vendor extends MY_Controller
         parent::__construct();
         $this->load->model("vendor_model", "vendor");
     }
-
+function index(){
+	$this->load->model ( "asset_model", "asset" );
+	$vendors = $this->vendor->get_all ( );
+	foreach ( $vendors as $vendor ) {
+		$vendor->assets = $this->asset->get_for_vendor ( $vendor->id );
+	}
+	$data ["vendors"] = $vendors;
+	$data ["target"] = "vendor/list";
+	$data ["title"] = "Vendor List";
+	$this->load->view ( "page/index", $data );
+}
     function view ($id)
     {
         $vendor = $this->vendor->get($id);
@@ -37,5 +47,11 @@ class Vendor extends MY_Controller
         } else {
             $this->load->view("page/index", $data);
         }
+    }
+    
+    function update(){
+    	$id = $this->input->post("id");
+    	$this->vendor->update($id);
+    	redirect("vendor/view/$id");
     }
 }

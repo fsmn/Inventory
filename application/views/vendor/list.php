@@ -5,9 +5,10 @@
 <div class="vendor-list">
 <? foreach ($vendors as $vendor) :
     ?>
-<div class="block vendor-block">
-	<h2><a href="<?=site_url("vendor/view/$vendor->id");?>"><?= $vendor->name; ?></a></h2>
-	<ul class="list-group">
+<div class="block vendor-block column">
+	<h4><a href="<?=site_url("vendor/view/$vendor->id");?>"><?= $vendor->name; ?></a></h4>
+	<?php $this->load->view("vendor/navigation",array("id"=>$vendor->id,"vendor"=>$vendor));?>
+	<!--<ul class="list-group">
    <? foreach ($vendor->assets as $asset): ?>
        <li
 			class="list-group-item asset-item"
@@ -15,7 +16,8 @@
        <?=$asset->product;?><?=$asset->name?sprintf(" (%s)",$asset->name):"";?>
        </li>
     <? endforeach; ?>
-    </ul>
+        </ul>-->
+        
 </div>
 <? endforeach; ?>
 <aside class="details-block float">

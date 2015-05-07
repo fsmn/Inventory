@@ -5,6 +5,11 @@
 	<input type="hidden" name="id" id="id"
 		value="<?=get_value($asset, 'id')?>" /> <input type="hidden"
 		name="action" id="action" value="<?=$action?>" />
+			<p>
+		<label for="vendor_id">Developer&nbsp;</label> <span
+			id='vendor_list'> <?=form_dropdown('vendor_id', $developers, get_value($asset, 'vendor_id',$vendor_id), 'id="vendor_id"')?>
+		</span>
+	</p>
 	<p>
 		<label for="product">Product Name&nbsp;</label> <input type="text"
 			id="product" name="product" value="<?=get_value($asset, 'product');?>" />
@@ -53,11 +58,7 @@
 			id="year_removed" name="year_removed"
 			value="<?=get_value($asset,"year_removed");?>" size="5" />
 	</div>
-	<p>
-		<label for="vendor_id">Developer&nbsp;</label> <span
-			id='vendor_list'> <?=form_dropdown('vendor_id', $developers, get_value($asset, 'vendor_id'), 'id="vendor_id"')?>
-		</span>
-	</p>
+
 	<p>
 	<label for="po">Purchase Order</label>
 	<span id="po-field"><input

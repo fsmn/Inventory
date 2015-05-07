@@ -33,7 +33,7 @@ class PO extends MY_Controller
     function create ($vendor_id = FALSE)
     {
         $this->load->model("vendor_model", "vendor");
-        $vendors = $this->vendor->get_all("vendor");
+        $vendors = $this->vendor->get_all();
         $data["vendors"] = get_keyed_pairs($vendors, array(
                 "id",
                 "name"
@@ -58,6 +58,7 @@ class PO extends MY_Controller
         $data["title"] = "Create a Purchase Order";
         $data["po"] = FALSE;
         $data["vendor_id"] = $vendor_id;
+
         if ($this->input->get("ajax") == 1) {
             $this->load->view("page/modal", $data);
         } else {

@@ -1,5 +1,5 @@
 <?php
-
+echo $vendor_id;
 ?>
 <form id="order_editor" class="editor" action="<?=site_url("po/$action"); ?>"
 	method="post" name="order_editor">

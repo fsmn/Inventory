@@ -1,4 +1,6 @@
 <?php
+$types = explode(",", get_value($vendor,"type",array()));
+$vendor_types = array("developer","vendor");
 ?>
 <form name="vendor_editor" id="vendor_editor" class="editor" action="<? echo site_url("vendor/$action"); ?>"
 	method="post">
@@ -7,6 +9,11 @@
 <p><label for="name">Vendor</label> <input type="text"
 	name="name" id="name" style="width: auto"
 	value="<?php echo get_value($vendor, 'name'); ?>"/></p>
+	<p><label for="type"></label>
+	<?php foreach($vendor_types as $type):?>
+	<?php echo ucfirst($type);?> <input type="checkbox" name="type[]" value="<?php echo $type; ?>" <?php echo in_array($type,$types)?"checked":"";?>/><br/>
+	<?php endforeach;?>
+	
 <p><label for="contact">Contact</label> <input type="text"
 	name="contact" id="contact" style="width: auto"
 	value="<?php echo get_value($vendor, 'contact'); ?>"/></p>
@@ -20,7 +27,7 @@
 	name="url" id="url" style="width: auto"
 	value="<?php echo get_value($vendor, 'url'); ?>"/></p>
 <p><label for="phone">Phone</label> <input type="text"
-	name="phone" id="phonw" style="width: auto"
+	name="phone" id="phone" style="width: auto"
 	value="<?php echo get_value($vendor, 'phone'); ?>"/></p>
 <p><label for="fax">Fax</label><input type="text" name="fax"
 	id="fax" style="width: auto"

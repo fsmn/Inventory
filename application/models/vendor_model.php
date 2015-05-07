@@ -30,12 +30,15 @@ class Vendor_Model extends MY_Model
                 "phone",
                 "fax",
                 "email",
-                "customer_id"
+                "customer_id",
         );
         foreach ($variables as $variable) {
             if ($value = $this->input->post($variable)) {
-                $this->variable = $value;
+                $this->$variable = $value;
             }
+        }
+        if($type = $this->input->post("type[]")){
+        	$this->type = implode(",", $type);
         }
         $this->rec_modifier = $this->ion_auth->get_user_id();
     }
@@ -45,9 +48,11 @@ class Vendor_Model extends MY_Model
         return $this->_get("vendor", $id);
     }
 
-    function get_all($type){
+    function get_all($type = NULL){
         $this->db->from("vendor");
+        if($type){
         $this->db->like("type",$type);
+        }
         $this->db->order_by("name");
         $result = $this->db->get()->result();
         return $result;
@@ -55,5 +60,10 @@ class Vendor_Model extends MY_Model
 
     function get_distinct($field){
         return $this->_get_distinct("vendor", $field);
+    }
+    
+    function update($id){
+    	
+    	$this->_update("vendor",$id);
     }
 }

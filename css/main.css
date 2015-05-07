@@ -7,6 +7,7 @@
 
 body {
 	padding: 1em;
+	transition: all .5s ease;
 }
 
 nav {
@@ -27,10 +28,10 @@ nav .btn-group.utility {
 }
 
 .vendor-list {
-	float: left;
+	/*float: left;*/
 }
 
-.vendor-block, .asset-block {
+.asset-block {
 	width: 50%;
 }
 
@@ -40,6 +41,16 @@ nav .btn-group.utility {
 
 .row .field-envelope {
 	display: inline-block;
+}
+
+.column {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
+}
+
+.vendor-list .column {
+	width: 30%;
 }
 
 footer {
@@ -122,10 +133,19 @@ form.editor {
 }
 
 
-@media ( max-width :740px) {
+@media ( max-width: 1046px) {
 	.left-box, .right-box {
 		width: 100%;
 		float: none;
 	}
+	.vendor-list .column {
+	min-width: 50%;
+	}
+	
 }
 
+@media (max-width: 480px){
+	.vendor-list .column {
+	width: 100%;
+	}
+}

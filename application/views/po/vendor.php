@@ -1,8 +1,8 @@
 <?php
 
-?><fieldset><legend><?=$order->vendor; ?>
+?><fieldset><legend><a href="<?=site_url("vendor/view/$order->vendor_id");?>"><?=$order->vendor; ?></a>
 </legend>
- <? $this->load->view("vendor/navigation",array("id"=>$order->vendor_id)); ?>
+ <?// $this->load->view("vendor/navigation",array("id"=>$order->vendor_id)); ?>
 
 <div id="vendor-view">
 <? if($contact = get_value($order,"contact",FALSE)):?>

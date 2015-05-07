@@ -50,7 +50,7 @@ class MY_Model extends CI_Model
         }
     }
 
-    function _update ($db, $id, $values)
+    function _update ($db, $id, $values = NULL)
     {
         if (IS_EDITOR) {
             $this->db->where("id", $id);
@@ -81,13 +81,13 @@ class MY_Model extends CI_Model
         }
     }
 
-    function _log ($element = "notice")
+    function _log ($element = "warning")
     {
         $last_query = $this->db->last_query();
-        $this->load->model("user_preferences_model","user_prefs");
+       // $this->load->model("user_preferences_model","user_prefs");
 
-        if ($this->user_prefs->get($this->ion_auth->user()->row()->id,"dev") == 1) {
+        //if ($this->user_prefs->get($this->ion_auth->user()->row()->id,"dev") == 1) {
             $this->session->set_flashdata($element, $last_query);
-        }
+       // }
     }
 }
