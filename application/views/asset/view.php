@@ -52,7 +52,7 @@
 </p>
 <? if(get_value($asset,"po")):?>
 <p>
-<b>Purchase Order: </b>&nbsp;<a href="http://orders.fsmn.org/order/view/<?=$asset->po;?>" target="_blank"><?=$asset->po;?></a>
+<b>Purchase Order: </b>&nbsp;<a href="<?=site_url("po/view/$asset->po");?>"><?=$asset->po;?></a>
 </p>
 <? endif; ?>
 

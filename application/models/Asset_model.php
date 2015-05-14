@@ -73,4 +73,45 @@ class Asset_model extends MY_Model
         $this->prepare_variables();
         return $this->_insert("asset");
     }
+    
+    function search($where = array()){
+    	$this->db->from('asset');
+    	//$field_list = $this->db->list_fields('asset');
+    	if(!empty($where)){
+    		if(is_array($where)){
+    			$keys = array_keys($where);
+    			$values = array_values($where);
+    			foreach($where as $key=>$value){
+    			//for($i = 0; $i < count($where); $i++){
+//     				$this_key = $keys[$i];
+//     				$this_value = $values[$i];
+    				//if(in_array($this_key,$field_list) && !empty($this_value)){
+    					switch($key){
+    						case "name":
+    						case "serial_number":
+    						case "product":
+    							$this->db->like("asset." . $key,"$value");
+    							break;
+    						default:
+    							$this->db->where("asset." . $key, $value);
+    							break;
+    
+    					}
+    				//}
+    			}
+    		}
+    	}
+    
+    
+    	$this->db->order_by('asset.type', 'asc');
+    	$this->db->order_by('asset.status', 'asc');
+    	$this->db->order_by('asset.product', 'asc');
+    	$this->db->order_by('asset.version', 'asc');
+    	$this->db->order_by('asset.name', 'asc');
+    	$this->db->join("vendor","asset.vendor_id=vendor.id");
+    	$this->db->select("vendor.name as vendor, asset.*");
+    	$result = $this->db->get()->result();
+    	return $result;
+    }
+    
 }

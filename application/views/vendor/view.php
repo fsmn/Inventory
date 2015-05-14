@@ -51,17 +51,5 @@
 </div>
 <?php endif;?>
 <?php if($vendor->assets):?>
-<div class="asset-block">
-<h3>Assets</h3>
-<ul class="list-group">
- <? foreach ($vendor->assets as $asset): ?>
-       <li
-			class="list-group-item asset-item"
-			id="asset-item_<?=$asset->id;?>">
-       <?=$asset->product;?><?=$asset->name?sprintf(" (%s)",$asset->name):"";?>
-       </li>
-    <? endforeach; ?>
-    </ul>
-    </div>
-    <aside class="details-block float"></aside>
-    <?php endif; 
+<?php $this->load->view("asset/list",array("assets"=>$vendor->assets));?>
+<?php endif; 

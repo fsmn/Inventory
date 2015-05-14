@@ -53,3 +53,32 @@ function delete_entity(me){
 		});
 	}
 }
+
+$(document).on('blur','.view-inline', function(){
+	$(this).removeClass("active");
+});
+
+$(document).on("click | focus",".view-inline",function(e){
+	e.preventDefault();
+	$(".view-inline.active").removeClass("active");
+	me = $(this);
+	pose = me.position();
+	my_left = pose.left;
+	my_top = pose.top;
+	my_width = me.css("width");
+	my_url = me.attr("href");
+	if(! me.hasClass("active") ){;
+		me.addClass("active");
+		form_data = {
+				ajax: 1
+		};
+		$.ajax({
+			type:"get",
+			url: my_url,
+			data: form_data,
+			success: function(data){
+				$(".details-block").css({"top":my_top, "z-index": 1000,"left":my_width}).html(data).fadeIn();
+			}
+		});
+	}
+});

@@ -39,6 +39,15 @@ nav .btn-group.utility {
 	cursor: pointer;
 }
 
+ul.list-group {
+	padding-left: 0;
+}
+
+ul.list-group li {
+	list-style: none;
+	
+}
+
 .row .field-envelope {
 	display: inline-block;
 }
@@ -46,11 +55,25 @@ nav .btn-group.utility {
 .column {
 	display: inline-block;
 	vertical-align: top;
-	width: 50%;
+	width: 40%;
 }
 
 .vendor-list .column {
 	width: 30%;
+}
+
+.form-dialog .column {
+	width: 20%;
+	padding: .2em 0;
+}
+
+.form-dialog label {
+	display: block;
+}
+
+.form-dialog {
+	width: 80%;
+	margin: 0 auto;
 }
 
 footer {
