@@ -12,7 +12,7 @@
 	</p>
 	<p>
 		<label for="product">Product Name&nbsp;</label> <input type="text"
-			id="product" name="product" value="<?=get_value($asset, 'product');?>" />
+			id="product" name="product" required value="<?=get_value($asset, 'product');?>" />
 	</p>
 	<p>
 		<label for="name">Asset Name</label> <input type="text" id="name"
@@ -25,7 +25,7 @@
 	</p>
 
 	<p>
-		<label for="type">Type&nbsp;</label> <span id='type_field'> <?=form_dropdown('type', $types, get_value($asset, 'type'), 'id="type"');?>
+		<label for="type">Type&nbsp;</label> <span id='type_field'> <?=form_dropdown('type', $types, get_value($asset, 'type'), 'id="type" required');?>
 		</span>
 	</p>
 	<p>
@@ -37,8 +37,8 @@
 	</p>
 	<p>
 		<label for="year_acquired">Year Acquired</label> <span
-			id="yearAquiredField"> <input type="text" id="year_acquired"
-			name="year_acquired" value="<?=get_value($asset,"year_acquired");?>"
+			id="year-acquired-field"> <input type="text" id="year_acquired"
+			name="year_acquired" required value="<?=get_value($asset,"year_acquired");?>"
 			size="5" />
 		</span>
 	</p>
@@ -74,8 +74,8 @@
 		<input type="hidden" name="ajax" id="ajax" value="1" />
 
 		<? if($action == "update"): ?>
-		<span
-			class="asset_delete <?=implode(" ",get_button_style("delete"));?>">Delete</span>
+		<a href="<?php echo site_url("asset/delete");?>"
+			class="asset_delete delete <?=implode(" ",get_button_style("delete"));?>" id="delete-asset_<?php echo $asset->id; ?>">Delete</a>
 		<? endif;?>
 
 	</p>

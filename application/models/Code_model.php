@@ -40,7 +40,7 @@ class Code_model extends MY_Model{
 	    $this->_delete("code", $id);
 	}
 
-	function delete_code_by_asset( $asset_id )
+	function delete_for_asset( $asset_id )
 	{
 		$id_array = array('asset_id' => $asset_id );
 		$this->db->delete('code', $id_array);

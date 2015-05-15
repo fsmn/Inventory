@@ -71,7 +71,7 @@
 
 		<div class="actions">
 			<div class="column">
-				<input type="submit" class="save_order search" value="Search" />
+				<input type="submit" class="save_order btn btn-default search" value="Search" />
 			</div>
 			<div class="column">
 				<a href="<?php echo site_url("asset/search");?>"

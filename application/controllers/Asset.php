@@ -79,6 +79,13 @@ class Asset extends MY_Controller {
 		$this->asset->update($id);
 		redirect("asset/view/$id");
 	}
+	
+	function delete(){
+		if($id = $this->input->post("id")){
+			$vendor_id = $this->asset->delete($id);
+			echo sprintf("<h3>The asset has been deleted</h3><a href='%s'>View Vendor</a>",site_url("vendor/view/$vendor_id"));
+		}
+	}
 	function search()
 	{
 		$this->load->model ( "vendor_model", "vendor" );

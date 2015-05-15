@@ -10,18 +10,16 @@ $(document).on('click','.delete',function(e){
 });
 
 $(document).ready(function() {
-    // run test on initial page load
+    // put the footer at the bottom of the window
     move_footer();
 
     // run test on resize of the window
     $(window).resize(move_footer);
 });
-
+//function to put the footer always at the bottom of the page no matter how big the document contents are. 
 function move_footer(){
 	win_height = $(window).height();
 	doc_height = $(document).height();
-	console.log("doc" + doc_height);
-	console.log("Window" + win_height);
 	if(win_height > doc_height){
 		height = win_height;
 	}else if(doc_height > win_height ){
@@ -29,7 +27,7 @@ function move_footer(){
 	}else{
 		height = win_height;
 	}
-$("footer").css("top",height - 25 + "px").addClass("js-positioning");
+	$("footer").css("top",height - 25 + "px").addClass("js-positioning");
 	
 }
 
@@ -56,10 +54,12 @@ function show_popup(me){
 	});
 }
 
+
+
 function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
-	question = confirm("Are you sure you want to delete this order? This cannot be undone!");
+	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
 		console.log(question);
 		form_data = {
@@ -73,8 +73,8 @@ function delete_entity(me){
 			url: target,
 			success: function(data){
 				console.log(data);
-				$("#popup").html(data);
-				$("#my_dialog").modal("show");
+				$("#popup .modal-body").html(data);
+				
 			},
 			error: function(data){
 				console.log(data);

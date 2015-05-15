@@ -79,6 +79,14 @@ class Asset_model extends MY_Model
     	return $this->_update("asset", $id);
     }
     
+    function delete($id){
+    	$asset = $this->get($id);
+    	$this->_delete("asset",$id);
+    	$this->load->model("code_model","code");
+    	$this->code->delete_for_asset($id);
+    	return $asset->vendor_id;
+    }
+    
     function search($where = array()){
     	$this->db->from('asset');
     	//$field_list = $this->db->list_fields('asset');
