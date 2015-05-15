@@ -11,7 +11,7 @@
       	<?php echo form_input($email);?>
       </p>
 
-      <p><?php echo form_submit('submit', "Reset Password","class='button edit'");?></p>
+      <p><?php echo form_submit('submit', "Reset Password","class='btn btn-danger'");?></p>
 
 <?php echo form_close();?>
 </div>

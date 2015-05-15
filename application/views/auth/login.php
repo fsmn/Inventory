@@ -5,7 +5,6 @@
 <div class="alert alert-warning"><?=$message;?></div>
 <? endif; ?>
 <?php echo form_open("auth/login");?>
-
   <p>
     <?php echo form_input($identity,'',"class='form-control input-lg' placeholder='email address'");?>
   </p>
