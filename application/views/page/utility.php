@@ -6,5 +6,5 @@ $buttons[] = array("text"=>sprintf("%s %s", $user->first_name,  $user->last_name
 if(IS_ADMIN){
 		$buttons[] = array("text"=>"Manage Users", "style"=>"link","href"=>site_url("auth") );
 }
-$buttons[] = array("text"=>"Log Out","href"=>site_url("auth/logout"),"style"=>"link", "tag"=>"a");
+$buttons[] = array("text"=>"Log Out","href"=>site_url("auth/logout"),"style"=>"link");
 echo create_button_bar($buttons,"toolbar",array("class"=>"utility"));
