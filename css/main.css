@@ -182,7 +182,11 @@ table.item-list th.price, table.item-list th.total {
 	.form-dialog{
 	width: 100%;
 	}
+	.form-dialog input {
+	max-width: 95%;
+	}
 	.column {
 	width: 45% !important;
 	}
 }
+
