@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-
 .login {
 	max-width: 350px;
 	margin: 0 auto;
@@ -160,6 +159,10 @@ table.item-list th.price, table.item-list th.total {
 	margin: 0;
 }
 
+.js-positioning {
+	position: absolute;
+	transition: all .1s ease;
+}
 
 @media ( max-width: 1046px) {
 	.left-box, .right-box {
@@ -175,5 +178,11 @@ table.item-list th.price, table.item-list th.total {
 @media (max-width: 480px){
 	.vendor-list .column {
 	width: 100%;
+	}
+	.form-dialog{
+	width: 100%;
+	}
+	.column {
+	width: 45% !important;
 	}
 }

@@ -11,15 +11,26 @@ $(document).on('click','.delete',function(e){
 
 $(document).ready(function() {
     // run test on initial page load
-    check_size();
+    move_footer();
 
     // run test on resize of the window
-    $(window).resize(check_size);
+    $(window).resize(move_footer);
 });
 
-//Function to the css rule
-function check_size(){
-    console.log($(".modal-body form").css("width"));
+function move_footer(){
+	win_height = $(window).height();
+	doc_height = $(document).height();
+	console.log("doc" + doc_height);
+	console.log("Window" + win_height);
+	if(win_height > doc_height){
+		height = win_height;
+	}else if(doc_height > win_height ){
+		height = doc_height;
+	}else{
+		height = win_height;
+	}
+$("footer").css("top",height - 25 + "px").addClass("js-positioning");
+	
 }
 
 function show_popup(me){
@@ -80,6 +91,7 @@ $(document).on("click | focus",".view-inline",function(e){
 	e.preventDefault();
 	$(".view-inline.active").removeClass("active");
 	me = $(this);
+	console.log(me.parent().attr("id").split("_")[1]);
 	pose = me.position();
 	my_left = pose.left;
 	my_top = pose.top;
@@ -96,6 +108,8 @@ $(document).on("click | focus",".view-inline",function(e){
 			data: form_data,
 			success: function(data){
 				$(".details-block").css({"top":my_top, "z-index": 1000,"left":my_width}).html(data).fadeIn();
+				document.location = "#asset-header_" + me.parent("li").attr("id").split("_")[1];
+				me.addClass("active");
 			}
 		});
 	}
