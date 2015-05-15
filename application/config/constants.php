@@ -86,4 +86,4 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('APP_NAME','Inventory System');
-define('APP_VERSION',"Alpha1.1");
+define('APP_VERSION',"2015-05-15-alpha");
