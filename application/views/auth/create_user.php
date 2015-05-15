@@ -1,4 +1,6 @@
+<?php if(!$ajax):?>
 <h1><?php echo lang('create_user_heading');?></h1>
+<?php endif;?>
 <p><?php echo lang('create_user_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -29,6 +31,6 @@
       </p>
 
 
-      <p><?php echo form_submit('submit', "Create User","class='button new'");?></p>
+      <p><?php echo form_submit('submit', "Create User","class='button new btn btn-warning'");?></p>
 
 <?php echo form_close();?>

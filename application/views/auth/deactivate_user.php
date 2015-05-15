@@ -1,4 +1,6 @@
+<?php if(!$ajax):?>
 <h1><?php echo lang('deactivate_heading');?></h1>
+<?php endif; ?>
 <p><?php echo sprintf(lang('deactivate_subheading'), $user->username);?></p>
 
 <?php echo form_open("auth/deactivate/".$user->id);?>
@@ -13,6 +15,6 @@
   <?php echo form_hidden($csrf); ?>
   <?php echo form_hidden(array('id'=>$user->id)); ?>
 
-  <p><?php echo form_submit('submit', "Deactivate","class='button edit'");?></p>
+  <p><?php echo form_submit('submit', "Deactivate","class='btn btn-danger edit'");?></p>
 
 <?php echo form_close();?>

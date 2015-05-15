@@ -9,19 +9,37 @@ $(document).on('click','.delete',function(e){
 	delete_entity(this);
 });
 
+$(document).ready(function() {
+    // run test on initial page load
+    check_size();
+
+    // run test on resize of the window
+    $(window).resize(check_size);
+});
+
+//Function to the css rule
+function check_size(){
+    console.log($(".modal-body form").css("width"));
+}
+
 function show_popup(me){
 	target = $(me).attr("href");
 	form_data = {
 			ajax: 1
 	};
-	console.log(form_data);
+	window_width = $(window).width();
 	$.ajax({
 		type: "get",
 		data: form_data,
 		url: target,
 		success: function(data){
 			$("#popup").html(data);
-			$("#my_dialog").modal("show");	
+			$("#my_dialog").modal("show");
+			//on larger screens, shrink the dialog to a more friendly size
+			if(window_width > 768){
+				my_content = $(".modal-body form").css("max-width");
+				$(".modal-dialog").css("width",my_content);
+			}
 			
 		}
 	});

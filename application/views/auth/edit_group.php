@@ -1,4 +1,6 @@
+<?php if(!$ajax):?>
 <h1><?php echo lang('edit_group_heading');?></h1>
+<?php endif;?>
 <p><?php echo lang('edit_group_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
@@ -15,6 +17,6 @@
             <?php echo form_input($group_description);?>
       </p>
 
-      <p><?php echo form_submit('submit', "Save","class='button edit'");?></p>
+      <p><?php echo form_submit('submit', "Save","class='btn btn-success'");?></p>
 
 <?php echo form_close();?>
