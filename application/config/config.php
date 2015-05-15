@@ -348,12 +348,14 @@ $config['encryption_key'] = '4133b25ad25fc6168d57ca44ce25c5bd';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'user';
+
+$config['sess_driver'] = 'database';
+$config['sess_cookie_name'] = 'user_sessions';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = '/var/tmp';
+$config['sess_save_path'] = 'user_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -399,7 +401,7 @@ $config['standardize_newlines'] = FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -415,7 +417,7 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'crsf_token';
 $config['csrf_cookie_name'] = 'crsf_cookie';
 $config['csrf_expire'] = 7200;
@@ -467,7 +469,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*
