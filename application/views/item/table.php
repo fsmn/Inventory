@@ -4,7 +4,7 @@ if(!isset($print)){
 	$print = "FALSE";
 }
 ?>
-<table class="item-list list table table-hover">
+<table class="item-list list table table-hover table-responsive">
 	<thead>
 		<tr>
 			<th class='count'>CT</th>

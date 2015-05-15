@@ -54,7 +54,7 @@
 	?>
 </p>
 <p>
-	<b>Developer:</b>&nbsp;<a href="<?=site_url("developer/view/$asset->vendor_id"); ?>"><?=$asset->vendor?></a>
+	<b>Developer:</b>&nbsp;<a href="<?=site_url("vendor/view/$asset->vendor_id"); ?>"><?=$asset->vendor?></a>
 </p>
 <? if(get_value($asset,"po")):?>
 <p>

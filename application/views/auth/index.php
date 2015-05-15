@@ -6,7 +6,7 @@ $buttons[] = array("text"=>"Create Group","class"=>array("button create dialog b
 ?> <h2>Users</h2>
 
 <?=create_button_bar($buttons); ?>
-<table class="table table-striped table-hover table bordered table-condensed">
+<table class="table table-striped table-hover table bordered table-condensed table-responsive">
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
