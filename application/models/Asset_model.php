@@ -74,6 +74,11 @@ class Asset_model extends MY_Model
         return $this->_insert("asset");
     }
     
+    function update($id){
+    	$this->prepare_variables();
+    	return $this->_update("asset", $id);
+    }
+    
     function search($where = array()){
     	$this->db->from('asset');
     	//$field_list = $this->db->list_fields('asset');

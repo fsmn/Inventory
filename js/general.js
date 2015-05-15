@@ -50,7 +50,7 @@ function delete_entity(me){
 			error: function(data){
 				console.log(data);
 			}
-		});
+		}); 
 	}
 }
 

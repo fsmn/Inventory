@@ -4,12 +4,18 @@
 
 ?>
 <h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
-<a href="#" class='no_link' id='<?=$asset->id?>'>
+<a href="<?php echo site_url("asset/view/$asset->id");?>" id='<?=$asset->id?>'>
 <?=$asset->product;?> &nbsp;
 <?=$asset->version != ''?$asset->version:"";?>
 <?=$asset->name!=''?"($asset->name)":""; ?></a></h4>
 <div>
-<span class='button edit small asset_edit' id='a_<?=$asset->id; ?>'>Edit</span>
+<?php echo create_button_bar(array(array(
+		"text"=>"Edit",
+		"href"=>site_url("asset/edit/$asset->id"),
+		"class"=>array("edit","dialog"),
+		"style"=>"edit",
+		
+)))?>
 <div class='asset-details' id='details_<?=$asset->id?>'>
 
 <p>

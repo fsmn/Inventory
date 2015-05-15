@@ -49,6 +49,24 @@ class Asset extends MY_Controller {
 			$this->load->view ( "page/modal", $data );
 		}
 	}
+	
+	function edit($id){
+		$asset =  $this->asset->get($id);
+
+		$data["asset"] = $asset;
+		$data["action"] = "update";
+		$data["vendor_id"] = $asset->vendor_id;
+		$data ["target"] = "asset/edit";
+		$data ["title"] = "Edit $asset->name";
+		$data["types"] = $this->_type_list();
+		$data["statuses"] = $this->_status_list();
+		$data["developers"] = $this->_developer_list();
+		if($this->input->get("ajax")==1){
+			$this->load->view("page/modal",$data);
+		}else{
+			$this->load->view("page/index",$data);
+		}
+	}
 
 	function insert()
 	{
@@ -56,6 +74,11 @@ class Asset extends MY_Controller {
 		redirect ( "asset/view/$id" );
 	}
 
+	function update(){
+		$id = $this->input->post("id");
+		$this->asset->update($id);
+		redirect("asset/view/$id");
+	}
 	function search()
 	{
 		$this->load->model ( "vendor_model", "vendor" );
@@ -102,6 +125,7 @@ class Asset extends MY_Controller {
 
 	function _developer_list($initial_blank = FALSE)
 	{
+		$this->load->model("vendor_model","vendor");
 		$developers = $this->vendor->get_all ( "developer" );
 		return get_keyed_pairs ( $developers, array (
 				"id",
