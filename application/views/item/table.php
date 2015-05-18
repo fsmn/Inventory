@@ -25,16 +25,16 @@ if(!isset($print)){
 			$buttons [] = array (
 					"text" => "Edit",
 					"style" => "edit",
-					"class" => "edit-item btn-xs",
+					"class" => "edit-item edit dialog btn-xs",
 					"id" => "edit-item_$item->id",
 					"href" => site_url ( "item/edit/$item->id" )
 			);
 			$buttons [] = array (
 					"text" => "Delete",
 					"style" => "delete",
-					"class" => "delete-item btn-xs",
+					"class" => "delete-item delete btn-xs",
 					"id" =>  "delete-item_$item->id",
-					"url" => site_url ( "item/delete/$item->id" ) ,
+					"href" => site_url ( "item/delete" ) ,
 			);
 			$total = strval ( $item->item_count ) * strval ( $item->price );
 			?>

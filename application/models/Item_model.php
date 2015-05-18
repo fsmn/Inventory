@@ -49,4 +49,8 @@ class Item_Model extends MY_Model
     function update($id,$values = NULL){
         $this->_update("item",$id,$values);
     }
+    
+    function delete($id){
+    	$this->_delete("item",$id);
+    }
 }

@@ -26,7 +26,9 @@ class Asset extends MY_Controller {
 		$data ["asset"] = $asset;
 		$data ["target"] = "asset/view";
 		$data ["title"] = "Viewing $asset->name";
+		$data["is_inline"] = FALSE;
 		if ($this->input->get ( "ajax" ) == 1) {
+			$data["is_inline"] = TRUE;
 			$this->load->view ( $data ["target"], $data );
 		} else {
 			$this->load->view ( "page/index", $data );

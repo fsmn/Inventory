@@ -59,6 +59,7 @@ function show_popup(me){
 function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
+	console.log(my_id);
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
 		console.log(question);
@@ -66,15 +67,14 @@ function delete_entity(me){
 				ajax : 1,
 				id: my_id
 		}
-		
 		$.ajax({
 			type: "post",
 			data: form_data,
 			url: target,
 			success: function(data){
 				console.log(data);
-				$("#popup .modal-body").html(data);
-				
+				$("#popup").html(data);
+				$("#my_dialog").modal("show");
 			},
 			error: function(data){
 				console.log(data);
