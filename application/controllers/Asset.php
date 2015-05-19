@@ -103,7 +103,6 @@ class Asset extends MY_Controller {
 		$data ["statuses"] = $this->_status_list ();
 		$data ["types"] = $this->_type_list ();
 		
-		$data ["title"] = "Search Assets";
 		$assets = array ();
 		$variables = array (
 				"type",
@@ -130,12 +129,13 @@ class Asset extends MY_Controller {
 		if ($this->input->get ( "is_search" )) { // active search has been submitted
 			
 			$assets = $this->asset->search ( $where );
+			$data["refine"] = TRUE;
 		}
 		$data ['assets'] = NULL;
 		if (count ( $assets ) > 0) {
 			$data ['assets'] = $assets;
 		}
-		$data ['title'] = "Asset Database";
+		$data ["title"] = "Search Assets";
 		$data ['target'] = 'asset/search';
 		$this->load->view ( 'page/index', $data );
 	}

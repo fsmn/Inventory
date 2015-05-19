@@ -71,11 +71,36 @@ class PO_Model extends MY_Model
         JOIN  `vendor` ON  `po`.`vendor_id` = `vendor`.`id`
         WHERE `vendor_id` = $vendor_id ORDER BY `po`.`po_date` DESC";
         return $this->db->query($query)->result();
-//         $this->db->where("vendor_id", $vendor_id);
-//         $this->db->from("po");
-//         $this->db->order_by("po_date", "DESC");
-//         $result = $this->db->get()->result();
-//         return $result;
+    }
+    
+    function search($where = array()){
+    	$this->db->from("po");
+    	$this->db->join("item","po.id = item.po_id");
+    	$this->db->join("vendor","po.vendor_id = vendor.id");
+    	if(!empty($where)){
+    		if(is_array($where)){
+    			foreach($where as $key=>$value){
+    				switch($key){
+    					case "description":
+    					case "sku":
+    						$this->db->like("item." . $key,"$value");
+    						break;
+    					default:
+    						$this->db->where("po." . $key, $value);
+    						break;
+    	
+    				}
+    			}
+    		}
+    	}
+    	$this->db->select("item.description,item.sku");
+    	$this->db->select("po.*");
+    	$this->db->select("vendor.name as vendor");
+    	$this->db->order_by("po.po_date","desc");
+    	$result = $this->db->get()->result();
+    	$this->_log();
+    	return $result;
+    	
     }
 
     function update ($id, $values = FALSE)

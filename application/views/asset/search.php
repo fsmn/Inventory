@@ -3,7 +3,6 @@
 <h3><?php echo $title; ?></h3>
 <form name="asset-search" class="form-dialog" id="asset-search"
 	method="get" action="<?php echo site_url("asset/search");?>">
-	<h4>Search for Assets</h4>
 	<input type="hidden" name="is_search" id="is_search" value="1" />
 	<div>
 		<label for="vendor_id">Developer&nbsp;</label> <span id='vendor_list'> <?=form_dropdown('vendor_id', $developers, $this->input->get("vendor_id"), 'id="vendor_id"')?>

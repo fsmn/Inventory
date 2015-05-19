@@ -25,10 +25,14 @@ $grand_total = 0;
 <?=format_date($po->po_date);?>
 </td>
 			<td>
+			<?php if(isset($po->total)):?>
 <?=get_as_price($po->total);?>
+<?php endif; ?>
 </td>
 		</tr>
+		<?php if(isset($po->total)):?>
 <? $grand_total += $po->total;?>
+<?php  endif; ?>
 <? endforeach;?>
 </tbody>
 	<tfoot>

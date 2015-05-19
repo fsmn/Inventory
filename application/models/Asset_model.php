@@ -104,13 +104,7 @@ class Asset_model extends MY_Model
     	//$field_list = $this->db->list_fields('asset');
     	if(!empty($where)){
     		if(is_array($where)){
-    			$keys = array_keys($where);
-    			$values = array_values($where);
     			foreach($where as $key=>$value){
-    			//for($i = 0; $i < count($where); $i++){
-//     				$this_key = $keys[$i];
-//     				$this_value = $values[$i];
-    				//if(in_array($this_key,$field_list) && !empty($this_value)){
     					switch($key){
     						case "name":
     						case "serial_number":
@@ -122,7 +116,6 @@ class Asset_model extends MY_Model
     							break;
     
     					}
-    				//}
     			}
     		}
     	}
