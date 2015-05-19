@@ -26,6 +26,8 @@ class PO extends MY_Controller
         } else {
             $data["target"] = "po/view";
         }
+        $this->load->model("asset_model","asset");
+        $data["assets"] = $this->asset->get_by_po($po);
         $data["title"] = "FSMN PO# $po";
         $this->load->view("page/index", $data);
     }

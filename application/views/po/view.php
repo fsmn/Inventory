@@ -39,3 +39,7 @@ echo create_button_bar($item_buttons,"toolbar");?>
 <?php $this->load->view('item/table',array("items"=>$order->items));?>
 </div>
 </div>
+
+<?php if($assets):?>
+<a href="<?php echo site_url("asset/po_list/$order->po");?>" title="View ordered assets in service">View the above assets in service</a>
+<?php endif;

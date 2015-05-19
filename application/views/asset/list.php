@@ -1,6 +1,10 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-
-<h3>Assets</h3>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$header = "Assets";
+if(isset($po)){
+	$header = sprintf("<a href='%s' title='View the related asset for these assets'>%s for PO# %s</a>",site_url("/po/view/$po"),$header,$po);
+}
+?>
+<h3><?php echo $header;?></h3>
 <div class="asset-block">
 	<ul class="list-group">
  <? foreach ($assets as $asset): ?>

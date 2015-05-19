@@ -34,6 +34,14 @@ class Asset extends MY_Controller {
 			$this->load->view ( "page/index", $data );
 		}
 	}
+	
+	function po_list($po){
+		$data["po"] = $po;
+		$data["assets"] = $this->asset->get_by_po($po);
+		$data["title"] = "Assets purchased with PO# $po";
+		$data["target"] = "asset/list";
+		$this->load->view("page/index",$data);
+	}
 
 	function create($vendor_id = NULL)
 	{
