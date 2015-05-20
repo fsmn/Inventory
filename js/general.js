@@ -94,10 +94,10 @@ function show_popup(me){
 			$("#popup").html(data);
 			$("#my_dialog").modal("show");
 			//on larger screens, shrink the dialog to a more friendly size
-			if(window_width > 768){
-				//my_content = $(".modal-body form").css("max-width");
-				//$(".modal-dialog").css("width",my_content);
-			}
+//			if(window_width > 768){
+//				my_content = $(".modal-body form").css("max-width");
+//				$(".modal-dialog").css("width",my_content);
+//			}
 			
 		}
 	});

@@ -93,7 +93,15 @@ class Asset extends MY_Controller {
 	function delete(){
 		if($id = $this->input->post("id")){
 			$vendor_id = $this->asset->delete($id);
-			echo sprintf("<h3>The asset has been deleted</h3><a href='%s'>View Vendor</a>",site_url("vendor/view/$vendor_id"));
+			$this->load->model("vendor_model","vendor");
+			$data["vendor"] = $this->vendor->get($vendor_id);
+			$data["title"] = "Asset Deleted";
+			$data["target"] = "asset/delete";
+			if($this->input->post("ajax")){
+				$this->load->view("page/modal",$data);
+			}else{
+				$this->load->view("page/index",$data);
+			}
 		}
 	}
 	function search()
