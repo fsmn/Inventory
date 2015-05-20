@@ -33,6 +33,7 @@ if(!isset($hide_details)){
 						"id" => "edit-item_$item->id",
 						"href" => site_url ( "item/edit/$item->id" )
 				);
+				
 				$buttons [] = array (
 						"text" => "Delete",
 						"style" => "delete",

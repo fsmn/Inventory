@@ -22,7 +22,7 @@ $buttons [] = array (
 		),
 		"style" => "edit" 
 );
-if(!$is_inline){
+if(!$is_inline && IS_ADMIN){
 $buttons [] = array (
 		"text" => "Delete",
 		"href" => site_url ( "asset/delete" ),
