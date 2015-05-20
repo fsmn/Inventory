@@ -31,6 +31,14 @@ $(document).on("click",".po-details",function(e){
 	}
 });
 
+$(document).on("blur","#item_count,#price",function(){
+	my_count = Number($("#item_count").val());
+	my_total = Number($("#price").val());
+	product = my_count * my_total;
+	$("#total").val(product);
+	
+});
+
 
 $(document).on("keyup","#order-editor #po",function(){
 	me = $(this);

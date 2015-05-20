@@ -104,7 +104,7 @@ class PO extends MY_Controller {
 	function view($po)
 	{
 		$order = $this->po->get_by_po ( $po );
-		$order->items = $this->item->get_by_po ( $order->id );
+		$order->items = $this->item->get_for_po ( $order->id );
 		$data ["order"] = $order;
 		if ($this->input->get ( "print" ) == 1) {
 			$data ["target"] = "po/print";

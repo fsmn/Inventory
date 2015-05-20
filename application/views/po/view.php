@@ -21,7 +21,7 @@ $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"dele
 						Order Date: <b><?=$order->po_date; ?> </b> <br /> Order Method: <b>
 						<?=$order->method?>
 						</b> <br /> Payment Type:<b> <?=$order->payment_type; ?>
-						</b> <br /> Ordered By: <b><?=$order->ordered_by; ?> </b> <br />
+						</b> <br /> Ordered By: <b><?=$order->first_name . " " . $order->last_name; ?> </b> <br />
 						Billing Contact: <b><?=$order->billing_contact; ?> </b> <br />
 						Budget Category: <b><?=$order->category; ?> </b> <br />
 						Quote/Order Number: <b><?=$order->quote; ?> </b>

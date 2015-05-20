@@ -74,7 +74,7 @@
 				<input type="submit" class="save_order btn btn-default search" value="Search" />
 			</div>
 			<div class="column">
-				<a href="<?php echo site_url("asset/search");?>" title="reset this search">Reset</a>
+				<a href="<?php echo site_url("asset/search");?>" title="reset this search" class="btn btn-link">Reset</a>
 			</div>
 		</div>
 	</div>

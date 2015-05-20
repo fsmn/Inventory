@@ -49,7 +49,7 @@
 
 	<div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="billing_contact">Billing Contact: </label>
-		<div class="col-sm-8"><input type="text" class="form-control" name="billing_contact" id="billing_contact" style="width: auto;"
+		<div class="col-sm-8"><input type="text" class="form-control" name="billing_contact" id="billing_contact" readonly style="width: auto;"
 			value="<?=get_value($po, 'billing_contact', BILLING_CONTACT); ?>" /></div>
 	</div>
 	<div class="form-group">

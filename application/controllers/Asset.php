@@ -136,8 +136,14 @@ class Asset extends MY_Controller {
 			$data ['assets'] = $assets;
 		}
 		$data ["title"] = "Search Assets";
-		$data ['target'] = 'asset/search';
-		$this->load->view ( 'page/index', $data );
+		if($this->input->get("export")){
+			$this->load->helper("download");
+			$this->load->view('asset/export',$data);
+		}else{
+			$data ['target'] = 'asset/search';
+			$this->load->view ( 'page/index', $data );
+				
+		}
 	}
 
 	function _developer_list($initial_blank = FALSE)

@@ -5,6 +5,8 @@ if(isset($po)){
 }
 ?>
 <h3><?php echo $header;?></h3>
+<a href="<?php echo $_SERVER['REQUEST_URI']. "&export=true"; ?>" class="btn btn-default">Export <i class="fa fa-download"></i></a>
+
 <div class="asset-block">
 	<ul class="list-group">
  <? foreach ($assets as $asset): ?>

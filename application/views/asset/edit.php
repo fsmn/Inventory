@@ -61,8 +61,8 @@
 		<div class="col-sm-8"> <?=form_dropdown('status', $statuses, get_value($asset, 'status'), 'id="status" class="form-control"');?>
 		</div>
 	</div>
-	<div id="year_removed_block"
-		<? if(get_value($asset, 'status') != "Deacquisitioned" && get_value($asset, 'status') != "Destroyed" && get_value($asset, 'status') != "Stolen"){echo "style='display:none'";}?>
+	<div id="year_removed_block" class="form-group <? if(get_value($asset, 'status') != "Deacquisitioned" && get_value($asset, 'status') != "Destroyed" && get_value($asset, 'status') != "Stolen"){echo "style='display:none'";}?>">
+		
 		<label class="col-sm-4 control-label no-wrap" for="year_removed">Year Removed</label>
 		<div class="col-sm-8">
 			<input type="text" class="form-control year" id="year_removed" name="year_removed" value="<?=get_value($asset,"year_removed");?>" size="5" />&nbsp;&dash;&nbsp;
@@ -79,7 +79,7 @@
 	<div class="form-group">
 		<input type="hidden" name="ajax" id="ajax" value="1" />
 		<div class="col-sm-offset-4 col-sm-8">
-		<input type="submit" class="form-control" <?=$action;?> <?=implode(" ",get_button_style($action));?>" value="<?=ucfirst($action);?>" />
+		<input type="submit" class="form-control <?=$action;?> <?=implode(" ",get_button_style($action));?>" value="<?=ucfirst($action);?>" />
 		</div>
 	</div>
 </form>

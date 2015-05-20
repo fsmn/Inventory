@@ -167,8 +167,8 @@ table.item-list th.price, table.item-list th.total {
 }
 
 .modal-body form {
-	/* width: 100%; */
-	margin: 3em auto;
+	/* width: 100%; 
+	margin: 3em auto;*/
 }
 
 .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
