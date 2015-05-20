@@ -71,11 +71,22 @@ class PO extends MY_Controller {
 				burn_cookie ( $variable, $my_variable );
 			}
 		}
+		$date_range = array();
+		if($start_date = $this->input->get("start_date")){
+			$date_range["start_date"] = $start_date;
+		}
+		if($end_date = $this->input->get("end_date")){
+			$date_range["end_date"] = $end_date;
+		}
 		$data["refine"] = FALSE;
 		$pos = array ();
 		if ($this->input->get ( "is_search" )) { // active search has been submitted
 			
-			$pos = $this->po->search ( $where );
+			$pos = $this->po->search ( $where , $date_range);
+			$this->load->model("item_model","item");
+			foreach($pos as $po){
+				$po->items = $this->item->get_for_po($po->id);
+			}
 			$data["refine"] = TRUE;
 		}
 		$data ['pos'] = NULL;
@@ -192,6 +203,15 @@ class PO extends MY_Controller {
 		$this->po->update ();
 		$po = $this->po->get ( $this->input->post ( "id" ) )->po;
 		redirect ( "po/view/$po" );
+	}
+	
+	function po_exists($po){
+		if( $this->po->get_by_po($po)){
+			$output = TRUE;
+		}else{
+			$output= FALSE;
+		}
+		echo $output;
 	}
 
 	function delete()

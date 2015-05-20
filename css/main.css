@@ -13,6 +13,7 @@ nav {
 	
 }
 
+
 nav .btn-group.utility {
 	float: right;
 }
@@ -54,7 +55,8 @@ ul.list-group li {
 .column {
 	display: inline-block;
 	vertical-align: top;
-	width: 40%;
+	max-width: 40%;
+	margin-right:.5em;
 }
 
 .vendor-list .column {
@@ -62,7 +64,7 @@ ul.list-group li {
 }
 
 .form-dialog .column {
-	width: 20%;
+	max-width: 20%;
 	padding: .2em 0;
 }
 
@@ -71,9 +73,21 @@ ul.list-group li {
 }
 
 .form-dialog {
-	width: 80%;
+	/* width: 80%; */
 	margin: 0 auto;
 }
+
+form select.form-control {
+	display: inline-block;
+	width: auto;
+}
+
+form input.form-control {
+	display: inline-block;
+	width: auto;
+}
+
+
 
 footer {
 	width: 100%;
@@ -148,9 +162,12 @@ table.item-list th.price, table.item-list th.total {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.no-wrap {
+	white-space: nowrap;
+}
+
 .modal-body form {
-	max-width: 350px;
-	width: 100%;
+	/* width: 100%; */
 	margin: 3em auto;
 }
 
@@ -164,6 +181,12 @@ table.item-list th.price, table.item-list th.total {
 	transition: all .1s ease;
 }
 
+input.error {
+	background-color: red;
+}
+.details-row {
+	display: none;
+}
 @media ( max-width: 1046px) {
 	.left-box, .right-box {
 		width: 100%;

@@ -9,6 +9,47 @@ $(document).on('click','.delete',function(e){
 	delete_entity(this);
 });
 
+$(document).on("blur",".year",function(){
+	my_id = this.id;
+	my_val = Number($(this).val());
+	$("#" + my_id + "-next").val(my_val + 1);
+});
+
+$(document).on("click",".po-details",function(e){
+	e.preventDefault();
+	me = this;
+	my_parent = $(me).parents("tr");
+	my_id = my_parent.attr("id").split("_")[1];
+	if($(me).hasClass("hider")){
+		$(me).html("Show Items").removeClass("hider");
+		$("#details-row_" + my_id).fadeOut();
+
+	}else{
+		$(me).html("Hide Items").addClass("hider");
+		$(".details-row").fadeOut();
+		$("#details-row_" + my_id).fadeIn();
+	}
+});
+
+
+$(document).on("keyup","#order-editor #po",function(){
+	me = $(this);
+	po = me.val();
+	$.ajax({
+		type:"get",
+		url: base_url + "po/po_exists/" + po,
+		success: function(data){
+			if(data){
+			$("#valid-po").addClass("fa-thumbs-down").removeClass("fa-thumbs-up");
+			me.addClass("error");
+			}else{
+				$("#valid-po").removeClass("fa-thumbs-down").addClass("fa-thumbs-up");
+				me.removeClass("error");
+			}
+		}
+	});
+});
+
 $(document).ready(function() {
     // put the footer at the bottom of the window
     move_footer();
@@ -46,8 +87,8 @@ function show_popup(me){
 			$("#my_dialog").modal("show");
 			//on larger screens, shrink the dialog to a more friendly size
 			if(window_width > 768){
-				my_content = $(".modal-body form").css("max-width");
-				$(".modal-dialog").css("width",my_content);
+				//my_content = $(".modal-body form").css("max-width");
+				//$(".modal-dialog").css("width",my_content);
 			}
 			
 		}

@@ -9,7 +9,7 @@
 <div class="attribute contact"><?=$contact; ?></div>
 <? endif; ?>
 <? if($address = get_value($order,"address",FALSE)): ?>
-<div class='attribute address'><?$address;?>
+<div class='attribute address'><?php echo $address;?>
 <? if($locality = get_value($order,"locality",FALSE)): ?>
 <br/><?=$order->locality;?>
 <? endif; ?>

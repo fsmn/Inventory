@@ -87,3 +87,4 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('APP_NAME','Inventory System');
 define('APP_VERSION',"1.0-beta");
+define('BILLING_CONTACT',"Garth Morrisette");

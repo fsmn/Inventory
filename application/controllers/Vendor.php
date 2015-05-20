@@ -28,7 +28,12 @@ class Vendor extends MY_Controller {
 		$vendor = $this->vendor->get ( $id );
 		$this->load->model ( "po_model", "po" );
 		$this->load->model ( "asset_model", "asset" );
+		$this->load->model ( "item_model", "item" );
+		
 		$vendor->pos = $this->po->get_for_vendor ( $id );
+// 		foreach($vendor->pos as $po){
+// 			$po->items[] = $this->item->get_by_po($po->id);
+// 		}
 		$vendor->assets = $this->asset->get_for_vendor ( $id );
 		$data ["vendor"] = $vendor;
 		$data ["target"] = "vendor/view";
