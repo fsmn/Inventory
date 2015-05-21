@@ -1,12 +1,7 @@
 <?php
-$buttons[] = array("text"=>"New Code","class"=>"btn-xs new-code","id"=>"new-code_$asset_id","style"=>"new");
+$buttons[] = array("text"=>"New Code","class"=>"btn-xs new-code inline dialog","id"=>"new-code_$asset_id","style"=>"new","href"=>site_url("code/create/$asset_id"));
 print create_button_bar($buttons,"toolbar");
 ?>
 <? foreach($codes as $code):?>
-
-<div class="row code-row" id='code-row_<?=$asset_id;?>'>
-<? echo live_field("type",$code->type,"code",$code->id,array("envelope"=>"span"));?>
-<? echo live_field("value", $code->value, "code", $code->id, array("envelope"=>"span"));?>
-
-</div>
+<?php $this->load->view("code/row",array("code"=>$code));?>
 <? endforeach;

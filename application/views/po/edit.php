@@ -2,7 +2,7 @@
 ?>
 <form id="order-editor" class="form-dialog form-horizontal" action="<?=site_url("po/$action"); ?>" method="post" name="order-editor">
 	<input type="hidden" name="id" value="<?=get_value($po,"id");?>" />
-	<input type="hidden" name="user_id" value="<?=$this->ion_auth->get_user_id();?>" />
+	<input type="hidden" name="user_id" value="<?php echo get_value($po,"ordered_by",$this->ion_auth->get_user_id());?>"/>
 	<div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="vendor_id">Vendor: </label>
 		<div class="col-sm-8" id="vendor-view"><?=form_dropdown ( 'vendor_id', $vendors, get_value ( $po, 'vendor_id', $vendor_id ), 'id="vendor_id" class="form-control"' );?></div>

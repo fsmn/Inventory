@@ -18,9 +18,8 @@ class PO extends MY_Controller {
 
 	function search()
 	{
-	
 		$this->load->model ( "vendor_model", "vendor" );
-		$vendors = $this->vendor->get_all ("vendor");
+		$vendors = $this->vendor->get_all ( "vendor" );
 		$data ["vendors"] = get_keyed_pairs ( $vendors, array (
 				"id",
 				"name" 
@@ -71,23 +70,23 @@ class PO extends MY_Controller {
 				burn_cookie ( $variable, $my_variable );
 			}
 		}
-		$date_range = array();
-		if($start_date = $this->input->get("start_date")){
-			$date_range["start_date"] = $start_date;
+		$date_range = array ();
+		if ($start_date = $this->input->get ( "start_date" )) {
+			$date_range ["start_date"] = $start_date;
 		}
-		if($end_date = $this->input->get("end_date")){
-			$date_range["end_date"] = $end_date;
+		if ($end_date = $this->input->get ( "end_date" )) {
+			$date_range ["end_date"] = $end_date;
 		}
-		$data["refine"] = FALSE;
+		$data ["refine"] = FALSE;
 		$pos = array ();
 		if ($this->input->get ( "is_search" )) { // active search has been submitted
 			
-			$pos = $this->po->search ( $where , $date_range);
-			$this->load->model("item_model","item");
-			foreach($pos as $po){
-				$po->items = $this->item->get_for_po($po->id);
+			$pos = $this->po->search ( $where, $date_range );
+			$this->load->model ( "item_model", "item" );
+			foreach ( $pos as $po ) {
+				$po->items = $this->item->get_for_po ( $po->id );
 			}
-			$data["refine"] = TRUE;
+			$data ["refine"] = TRUE;
 		}
 		$data ['pos'] = NULL;
 		if (count ( $pos ) > 0) {
@@ -104,17 +103,21 @@ class PO extends MY_Controller {
 	function view($po)
 	{
 		$order = $this->po->get_by_po ( $po );
-		$order->items = $this->item->get_for_po ( $order->id );
-		$data ["order"] = $order;
-		if ($this->input->get ( "print" ) == 1) {
-			$data ["target"] = "po/print";
+		if ($order) {
+			$order->items = $this->item->get_for_po ( $order->id );
+			$data ["order"] = $order;
+			if ($this->input->get ( "print" ) == 1) {
+				$data ["target"] = "po/print";
+			} else {
+				$data ["target"] = "po/view";
+			}
+			$this->load->model ( "asset_model", "asset" );
+			$data ["assets"] = $this->asset->get_by_po ( $po );
+			$data ["title"] = "FSMN PO# $po";
+			$this->load->view ( "page/index", $data );
 		} else {
-			$data ["target"] = "po/view";
+			show_error ( "No such page" );
 		}
-		$this->load->model ( "asset_model", "asset" );
-		$data ["assets"] = $this->asset->get_by_po ( $po );
-		$data ["title"] = "FSMN PO# $po";
-		$this->load->view ( "page/index", $data );
 	}
 
 	function create($vendor_id = FALSE)
@@ -204,12 +207,13 @@ class PO extends MY_Controller {
 		$po = $this->po->get ( $this->input->post ( "id" ) )->po;
 		redirect ( "po/view/$po" );
 	}
-	
-	function po_exists($po){
-		if( $this->po->get_by_po($po)){
+
+	function po_exists($po)
+	{
+		if ($this->po->get_by_po ( $po )) {
 			$output = TRUE;
-		}else{
-			$output= FALSE;
+		} else {
+			$output = FALSE;
 		}
 		echo $output;
 	}

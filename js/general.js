@@ -1,4 +1,4 @@
-$(document).on("click",".create,.edit",function(e){
+$(document).on("click",".create.dialog,.edit.dialog",function(e){
 	e.preventDefault();
 	show_popup(this);
 	
@@ -29,6 +29,54 @@ $(document).on("click",".po-details",function(e){
 		$(".details-row").fadeOut();
 		$("#details-row_" + my_id).fadeIn();
 	}
+});
+
+/* Insert New Code for Assets */
+
+$(document).on("click",".new-code.inline.dialog",function(e){
+	e.preventDefault();
+	me = this;
+	my_parent = $(me).parents(".code-rows");
+	my_url = $(me).attr("href");
+	form_data = {
+		inline: true
+	}
+	$.ajax({
+		type: "get",
+		url: my_url,
+		data: form_data,
+		success: function(data){
+			$(my_parent).append(data);
+		}
+	});
+});
+
+$(document).on("click",".edit.inline",function(e){
+	e.preventDefault();
+	me = $(this);
+	my_id = me.parent().attr("id");
+	my_url = me.attr("href");
+	form_data = {
+		inline: 1	
+	};
+	$.ajax({
+		type: "get",
+		data: form_data,
+		url: my_url,
+		success: function(data){
+			me.parent().html(data);
+		}
+	});
+	
+	
+});
+
+$(document).on("change","select",function(){
+	me = $(this);
+	if(me.val() == "other"){
+		my_name = me.attr('name');
+	me.parent().html("<input type='text' name='" + my_name+ "' class='form-control' value=''/>");
+}
 });
 
 $(document).on("blur","#item_count,#price",function(){

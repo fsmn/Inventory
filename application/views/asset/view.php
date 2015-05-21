@@ -91,7 +91,7 @@ echo create_button_bar ( $buttons );
 
 	<fieldset class='code-list list'>
 		<legend>Codes</legend>
-		<div id='codes_<?=$asset->id?>'><?php
+		<div id='codes_<?=$asset->id?>' class="code-rows"><?php
 		$data ['asset_id'] = $asset->id;
 		$data ['codes'] = $asset->codes;
 		$this->load->view ( 'code/list', $data );

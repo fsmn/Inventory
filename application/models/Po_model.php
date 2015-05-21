@@ -44,7 +44,7 @@ class PO_Model extends MY_Model {
 		$this->db->from ( "po" );
 		$this->db->where ( "po.id", $id );
 		$this->db->join ( "vendor", "po.vendor_id = vendor.id", "LEFT" );
-		$this->db->join("users","po.ordered_by=users.id");
+		$this->db->join("users","po.ordered_by=users.id","LEFT");
 		$this->db->select("users.first_name,users.last_name");
 		$this->db->select ( "po.*" );
 		$this->db->select ( "vendor.name as vendor,vendor.contact,vendor.address,vendor.locality,vendor.url,vendor.phone,vendor.fax,vendor.email,vendor.customer_id" );

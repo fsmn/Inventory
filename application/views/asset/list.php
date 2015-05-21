@@ -18,5 +18,4 @@ if(isset($po)){
     <? endforeach; ?>
     </ul>
 </div>
-</div>
 <aside class="details-block float"></aside>

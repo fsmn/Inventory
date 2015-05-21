@@ -45,8 +45,7 @@
 		<label class="col-sm-4 control-label no-wrap" for="year_acquired">Year Acquired</label>
 		<div class="col-sm-8">
 			<input type="text" class="form-control year" id="year_acquired" name="year_acquired" required
-				value="<?=get_value($asset,"year_acquired");?>" size="5"
-			/>&nbsp;&dash;&nbsp;
+				value="<?=get_value($asset,"year_acquired");?>" size="5"/>&nbsp;&dash;&nbsp;
 			<input type="text" class="form-control" name="year-acquired-next" id="year_acquired-next" value="" readonly size=5 />
 		</div>
 	</div>
