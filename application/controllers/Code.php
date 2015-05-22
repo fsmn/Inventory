@@ -61,7 +61,7 @@ class Code extends MY_Controller{
 			if($this->input->post("inline")){
 				$this->load->view("code/row",$data);
 			}else{
-				//redirect("asset/view/$asset_id");
+				redirect("asset/view/$asset_id");
 			}
 		}
 	}

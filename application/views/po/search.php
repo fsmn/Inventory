@@ -1,6 +1,5 @@
 <?php
 ?>
-<h3><?php echo $title; ?></h3>
 <form id="order-search" class="editor form-dialog" action="<?php echo site_url("po/search"); ?>" method="get" name="order-search">
 	<input class="form-control" type="hidden" name="is_search" value=1 />
 	<div>
@@ -83,9 +82,4 @@
 
 <?php if($pos):?>
 <?php $this->load->view("po/list",array("pos"=>$pos));?>
-
-
-
-
-
 <?php endif;

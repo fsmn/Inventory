@@ -25,7 +25,7 @@ class Asset extends MY_Controller {
 		$asset->files = $this->file->get_for_asset ( $asset_id );
 		$data ["asset"] = $asset;
 		$data ["target"] = "asset/view";
-		$data ["title"] = "Viewing $asset->name";
+		$data ["title"] = "$asset->product $asset->version";
 		$data["is_inline"] = FALSE;
 		if ($this->input->get ( "ajax" ) == 1) {
 			$data["is_inline"] = TRUE;

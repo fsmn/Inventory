@@ -33,10 +33,11 @@ $(document).on("click",".po-details",function(e){
 
 /* Insert New Code for Assets */
 
-$(document).on("click",".new-code.inline.dialog",function(e){
+$(document).on("click",".create.inline",function(e){
 	e.preventDefault();
 	me = this;
-	my_parent = $(me).parents(".code-rows");
+	$(me).fadeOut();
+	my_parent = $(me).parents(".rows");
 	my_url = $(me).attr("href");
 	form_data = {
 		inline: true
@@ -47,6 +48,7 @@ $(document).on("click",".new-code.inline.dialog",function(e){
 		data: form_data,
 		success: function(data){
 			$(my_parent).append(data);
+			$(".new-row input[type='text']").focus();
 		}
 	});
 });
@@ -157,6 +159,7 @@ function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
 	console.log(my_id);
+
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
 		console.log(question);
@@ -170,8 +173,12 @@ function delete_entity(me){
 			url: target,
 			success: function(data){
 				console.log(data);
+				if($(me).hasClass("inline")){
+					$(me).parent().remove();
+				}else{
 				$("#popup").html(data);
 				$("#my_dialog").modal("show");
+				}
 			},
 			error: function(data){
 				console.log(data);

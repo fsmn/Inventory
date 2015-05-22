@@ -4,8 +4,11 @@
 
 ?>
 <footer>
-
+<?php if(isset($is_front)): ?>
 <span id="ci-version">
 <?="CI Version: v" . CI_VERSION;?>,
 </span>
-<span class='app-name'><?=APP_NAME;?>: <?=APP_VERSION;?></span></footer>
+<span class='app-name'><?=APP_NAME;?>: <?=APP_VERSION;?></span>
+
+<?php endif; ?>
+</footer>

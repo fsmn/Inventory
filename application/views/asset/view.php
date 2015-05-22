@@ -4,13 +4,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 // view.php Chris Dart Mar 17, 2015 2:45:59 PM chrisdart@cerebratorium.com
 
 ?>
-<h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
-	<a href="<?php echo site_url("asset/view/$asset->id");?>"
-		id='<?=$asset->id?>'>
-<?=$asset->product;?>&nbsp;
-<?=$asset->version != ''?$asset->version:"";?>
-<?=$asset->name!=''?"&nbsp;($asset->name)":""; ?></a>
-</h4>
+
 <div>
 <?php
 $buttons [] = array (
@@ -36,6 +30,13 @@ $buttons [] = array (
 }
 echo create_button_bar ( $buttons );
 ?>
+<h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
+	<a href="<?php echo site_url("asset/view/$asset->id");?>"
+		id='<?=$asset->id?>'>
+<?=$asset->product;?>&nbsp;
+<?=$asset->version != ''?$asset->version:"";?>
+<?=$asset->name!=''?"&nbsp;($asset->name)":""; ?></a>
+</h4>
 <div class='asset-details' id='details_<?=$asset->id?>'>
 
 		<p>
@@ -91,7 +92,7 @@ echo create_button_bar ( $buttons );
 
 	<fieldset class='code-list list'>
 		<legend>Codes</legend>
-		<div id='codes_<?=$asset->id?>' class="code-rows"><?php
+		<div id='codes_<?=$asset->id?>' class="rows code-rows"><?php
 		$data ['asset_id'] = $asset->id;
 		$data ['codes'] = $asset->codes;
 		$this->load->view ( 'code/list', $data );
@@ -102,7 +103,7 @@ echo create_button_bar ( $buttons );
 
 	<fieldset class="code-list list">
 		<legend>Files</legend>
-		<div id='files_<?=$asset->id?>'>
+		<div id='files_<?=$asset->id?>' class='rows file-rows'>
 <?php
 
 $data ['asset_id'] = $asset->id;

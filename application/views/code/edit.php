@@ -2,7 +2,7 @@
 
 if($action == "insert"):
 ?>
-<div class="row code-row" id='code-row_new_<?php echo $asset_id?>'>
+<div class="row code-row new-row" id='code-row_new_<?php echo $asset_id?>'>
 <?php endif; ?>
 <form name="code-row-insert" action="<?php echo site_url("code/$action");?>" method="post">
 <div class="form-group">

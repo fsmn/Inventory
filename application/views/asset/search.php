@@ -1,6 +1,5 @@
 <?php
 ?>
-<h3><?php echo $title; ?></h3>
 <form name="asset-search" class="form-dialog" id="asset-search" method="get" action="<?php echo site_url("asset/search");?>">
 	<input type="hidden" name="is_search" id="is_search" value="1" />
 	<div>

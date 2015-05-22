@@ -5,9 +5,9 @@ if(!isset($body_classes)){
     $body_classes = "";
 }
 if(!isset($title)){
-    $title = APP_NAME;
+    $window_title = APP_NAME;
 }else{
-    $title = sprintf("%s | %s",$title, APP_NAME);
+    $window_title = sprintf("%s | %s",$title, APP_NAME);
 }
 if(!isset($target)){
     $target = "welcome_message";
@@ -18,7 +18,7 @@ if(!isset($target)){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?=$title;?></title>
+<title><?=$window_title;?></title>
 <? $this->load->view("page/head");?>
 
 <body class="<?=$body_classes;?>">
@@ -34,6 +34,7 @@ if(!isset($target)){
 <? endif;?>
 <? $this->load->view("page/messages"); ?>
 <div class="content">
+<h1 class="title"><?php echo $title; ?></h1>
 <? $this->load->view($target);?>
 </div>
 <? $this->load->view("page/footer");?>
