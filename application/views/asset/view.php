@@ -71,8 +71,11 @@ echo create_button_bar ( $buttons );
 	<?=$asset->status?>
 	<?
 	
-	if ($asset->status == "Deacquisitioned" || $asset->status == "Destroyed" || $asset->status == "Stolen") {
+	if ($asset->status != "Active" && $asset->status != "Inactive" ) {
 		print " in $asset->year_removed";
+		if( $asset->status == "Sold"){
+			printf (" for $%s",$asset->sale_price);
+		}
 	}
 	?>
 </p>

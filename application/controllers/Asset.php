@@ -123,7 +123,7 @@ class Asset extends MY_Controller {
 				"po",
 				"year_acquired",
 				"year_removed",
-				"serial_number" 
+				"serial_number"
 		);
 		$where = NULL;
 		foreach ( $variables as $variable ) {

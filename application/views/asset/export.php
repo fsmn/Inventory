@@ -10,8 +10,11 @@ $fields = array(
 		"type"=>"Type",
 		"status"=>"Status",
 		"serial_number"=>"Serial Number",
+		"source"=>"How Acquired",
 		"year_acquired"=>"Year Acquired",
+		"purchase_price"=>"Purchase Price",
 		"year_removed"=>"Year Removed",
+		"sale_price"=>"Sale Price",
 		"vendor"=>"Developer",
 );
 foreach (array_values($fields) as $value) {

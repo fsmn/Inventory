@@ -15,6 +15,7 @@ class Asset_model extends MY_Model
     var $source;
     var $year_acquired;
     var $year_removed;
+    var $sale_price;
     var $rec_modifier;
     var $rec_modified;
 
@@ -31,7 +32,8 @@ class Asset_model extends MY_Model
                 "status",
                 "source",
                 "year_acquired",
-                "year_removed"
+                "year_removed",
+        		"sale_price"
         );
 
         foreach ($variables as $variable) {
