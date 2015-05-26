@@ -2,7 +2,9 @@
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 // view.php Chris Dart Mar 17, 2015 2:45:59 PM chrisdart@cerebratorium.com
-
+if(!isset($inline_edit)){
+	$inline_edit = FALSE;
+}
 ?>
 
 <div>
@@ -16,7 +18,7 @@ $buttons [] = array (
 		),
 		"style" => "edit" 
 );
-if(!$is_inline && IS_ADMIN){
+if(IS_ADMIN){
 $buttons [] = array (
 		"text" => "Delete",
 		"href" => site_url ( "asset/delete" ),
@@ -28,7 +30,9 @@ $buttons [] = array (
 		),
 );
 }
+if(!$is_inline){
 echo create_button_bar ( $buttons );
+}
 ?>
 <h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
 	<a href="<?php echo site_url("asset/view/$asset->id");?>"

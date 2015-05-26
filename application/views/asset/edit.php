@@ -58,7 +58,7 @@
 	<div id="purchase_price_block" class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="purchase_price">Purchase Price</label>
 		<div class="col-sm-8">$
-		<input type="number" class="form-control price" id="purchase_price" name="purchase_price" value="<?php echo get_value($asset,"purchase_price");?>" />
+		<input type="text" class="form-control price" id="purchase_price" name="purchase_price" value="<?php echo get_value($asset,"purchase_price");?>" />
 		</div>
 	</div>
 	<div class="form-group">
@@ -69,7 +69,7 @@
 	<div id="year_removed_block" class="form-group <? if(get_value($asset, 'status') == "Active" || get_value($asset, 'status') == "Inactive"){echo "style='display:none'";}?>">
 		
 		<label class="col-sm-4 control-label no-wrap" for="year_removed">Year Removed</label>
-		<div class="col-sm-8">$
+		<div class="col-sm-8">
 			<input type="number" class="form-control year" id="year_removed" name="year_removed" value="<?=get_value($asset,"year_removed");?>" size="5" />&nbsp;&dash;&nbsp;
 			<input type="text" class="form-control" name="year-removed_next" id="year_removed-next" value="" readonly size=5 /><br/>
 			
@@ -77,8 +77,8 @@
 </div>
 <div id="sale_price_block" class="form-group" <?php get_value($asset,"status") != "Sold"?"style='display:none'":""?>>
 		<label class="col-sm-4 control-label no-wrap" for="sale_price">Sale Price</label>
-		<div class="col-sm-8">
-		<input type="number" class="form-control price" id="sale_price" name="sale_price" value="<?php echo get_value($asset,"sale_price");?>" />
+		<div class="col-sm-8">$
+		<input type="text" class="form-control price" id="sale_price" name="sale_price" value="<?php echo get_value($asset,"sale_price");?>" />
 		</div>
 	</div>
 
