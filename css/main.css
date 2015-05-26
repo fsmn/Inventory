@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+
 .login {
 	max-width: 350px;
 	margin: 0 auto;
@@ -12,7 +13,6 @@ body {
 nav {
 	
 }
-
 
 nav .btn-group.utility {
 	float: right;
@@ -29,6 +29,7 @@ nav .btn-group.utility {
 
 .vendor-list {
 	/*float: left;*/
+	
 }
 
 .asset-block {
@@ -45,7 +46,6 @@ ul.list-group {
 
 ul.list-group li {
 	list-style: none;
-	
 }
 
 .row .field-envelope {
@@ -56,7 +56,7 @@ ul.list-group li {
 	display: inline-block;
 	vertical-align: top;
 	max-width: 40%;
-	margin-right:.5em;
+	margin-right: .5em;
 }
 
 .vendor-list .column {
@@ -86,8 +86,6 @@ form input.form-control {
 	display: inline-block;
 	width: auto;
 }
-
-
 
 footer {
 	width: 100%;
@@ -146,20 +144,20 @@ table.item-list th.price, table.item-list th.total {
 
 .ui-dialog {
 	background-color: white;
-	  position: relative;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  z-index: 1;
-  display: block;
-  box-shadow: 2px 2px 3px #aaa;
+	position: relative;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	z-index: 1;
+	display: block;
+	box-shadow: 2px 2px 3px #aaa;
 }
 
 .ui-dialog-title {
 	min-height: 16.43px;
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .no-wrap {
@@ -169,9 +167,11 @@ table.item-list th.price, table.item-list th.total {
 .modal-body form {
 	/* width: 100%; 
 	margin: 3em auto;*/
+	
 }
 
-.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox],
+	.radio input[type=radio], .radio-inline input[type=radio] {
 	position: relative;
 	margin: 0;
 }
@@ -184,45 +184,54 @@ table.item-list th.price, table.item-list th.total {
 input.error {
 	background-color: red;
 }
+
 .details-row {
 	display: none;
 }
+
 .code-element {
 	display: inline-block;
-	width:9em;
+	width: 9em;
 }
+
 .code-element.code-type {
 	text-align: right;
 	padding-right: 1em;
 }
+
 .code-element.code-value {
 	width: 15em;
 }
 
+input.price {
+	width: 6em !important;
+}
 
-@media ( max-width: 1046px) {
+input.year {
+	width: 5em !important;
+}
+
+@media ( max-width : 1046px) {
 	.left-box, .right-box {
 		width: 100%;
 		float: none;
 	}
 	.vendor-list .column {
-	min-width: 50%;
+		min-width: 50%;
 	}
-	
 }
 
-@media (max-width: 480px){
+@media ( max-width : 480px) {
 	.vendor-list .column {
-	width: 100%;
+		width: 100%;
 	}
-	.form-dialog{
-	width: 100%;
+	.form-dialog {
+		width: 100%;
 	}
 	.form-dialog input {
-	max-width: 95%;
+		max-width: 95%;
 	}
 	.column {
-	width: 45% !important;
+		width: 45% !important;
 	}
 }
-

@@ -65,6 +65,10 @@ echo create_button_bar ( $buttons );
 			<b>Source:&nbsp;</b>
 	<?=$asset->source;?>
 </p>
+<p>
+<b>Purchase Price:&nbsp;</b>
+<?php echo get_as_price($asset->purchase_price);?>
+</p>
 		<p>
 
 			<b>Status:&nbsp;</b>
@@ -74,7 +78,7 @@ echo create_button_bar ( $buttons );
 	if ($asset->status != "Active" && $asset->status != "Inactive" ) {
 		print " in $asset->year_removed";
 		if( $asset->status == "Sold"){
-			printf (" for $%s",$asset->sale_price);
+			printf (" for %s",get_as_price($asset->sale_price));
 		}
 	}
 	?>
