@@ -22,7 +22,7 @@ class Dashboard extends MY_Controller {
 	public function index()
 	{
 
-	    $data["body_classes"] = "front";
+	    $data["body_classes"] = array("is_front");
 	    $data["is_front"] = TRUE;
 	    $data["title"] = "Friends School Inventory System";
 	    $data["target"] = "dashboard";

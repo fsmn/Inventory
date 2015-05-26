@@ -12,7 +12,7 @@ $current_status = "";
 	<ul class="list-group">
  <? foreach ($assets as $asset): ?>
  <?php if($current_status !=$asset->status):?>
- <li><h3><?php echo $asset->status;?></h3>
+ <li><h4><?php echo $asset->status;?></h4>
  <?php $current_status = $asset->status;?>
  <?php endif;?>
        <li class=""

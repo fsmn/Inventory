@@ -115,6 +115,133 @@ $(document).ready(function() {
     // run test on resize of the window
     $(window).resize(move_footer);
 });
+
+$(document).on("click",".editor .field-envelope .edit-field",function(){
+	//if($("body").hasClass("editor")){
+		me = $(this);
+		my_parent = me.parent().attr("id");
+		my_attr = my_parent.split("__");
+		my_type = "text";
+		my_category = me.attr('menu');
+		my_name = me.attr("name");
+			if(me.hasClass("dropdown")){
+				my_type = "dropdown";
+			}else if(me.hasClass("checkbox")){
+				my_type = "checkbox";
+			}else if(me.hasClass("multiselect")){
+				my_type = "multiselect";
+			}else if(me.hasClass("textarea")){
+				my_type = "textarea";
+			}else if(me.hasClass("autocomplete")){
+				my_type = "autocomplete";
+			}
+			form_data = {
+					table: my_attr[0],
+					field: my_name,
+					id: my_attr[2],
+					type: my_type,
+					category: my_category,
+					value: me.html()
+			};
+	console.log(form_data);
+			$.ajax({
+				type:"get",
+				url: base_url +  "variable/edit_value",
+				data: form_data,
+				success: function(data){
+					$("#" + my_parent + " .edit-field").html(data);
+					$("#" + my_parent + " .edit-field").removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text");
+					$("#" + my_parent + " .live-field input").focus();
+					
+				}
+			});
+	//}
+	});
+$(document).on("blur",".field-envelope .live-field.text input",function(){
+	if($(this).hasClass("ui-autocomplete-input")){
+		update_field(this, "autocomplete");
+	
+	}else{
+		update_field(this, "text");
+	}
+	return false;
+});
+$(document).on("blur",".field-envelope .live-field input[type='checkbox']",function(){
+	update_field(this, "checkbox");
+});
+
+$(document).on("blur",".field-envelope .live-field textarea",function(){
+	update_field(this, "textarea");
+});
+$(document).on("blur",".field-envelope .live-field.category-dropdown select",function(){
+	console.log("here");
+	update_field(this, "category-dropdown");
+});
+
+$(document).on("blur",".field-envelope .live-field.subcategory-dropdown select",function(){
+	update_field(this, "subcategory-dropdown");
+});
+
+
+$(document).on("blur",".field-envelope .live-field select",function(){
+	update_field(this, "select");
+});
+
+//*/
+
+$(document).on("click", ".field-envelope .save-multiselect",function(){
+	console.log(this);
+	update_field(this, "multiselect");
+	
+});
+
+function update_field(me,my_type){
+	my_parent = $(me).parents(".field-envelope").attr("id");
+	my_attr = my_parent.split("__");
+	my_value = $("#" + my_parent).children(".live-field").children("input"|"textarea").val();
+	my_category = false;
+	if(my_type == "autocomplete"){
+		my_value = $("#" + my_parent).children(".live-field").children("input").val();
+
+	}else if(my_type == "multiselect"){
+		my_value = $("#" + my_parent).children(".multiselect").children("select").val();
+	}else if(my_type == "checkbox"){
+		my_category = "checkbox";
+		if($(me).attr("checked") == true){
+			my_value = 1;
+		}else {
+			my_value = 0;
+		}
+	}
+	
+	is_persistent = $(me).hasClass("persistent");
+	
+	//don't do anything if the value is empty and it is a persistent field 
+	if(is_persistent && my_value == ""){
+		return false;
+	}
+	
+	form_data = {
+			table: my_attr[0],
+			field: my_attr[1],
+			id: my_attr[2],
+			value: my_value,
+			category: my_category
+	};
+	console.log(form_data);
+
+	$.ajax({
+		type:"post",
+		url: base_url + my_attr[0] + "/update_value",
+		data: form_data,
+		success: function(data){
+			if(!is_persistent){
+			$("#" + my_parent + " .live-field").html(data);
+			$("#" + my_parent + " .live-field").addClass("edit-field field").removeClass("live-field text");
+			}
+		}
+	});
+}
 //function to put the footer always at the bottom of the page no matter how big the document contents are. 
 function move_footer(){
 	win_height = $(window).height();

@@ -28,4 +28,28 @@ class Variable_model extends MY_Model{
 		return $this->var_key;
 	}
 	
+	function get_pairs ($category, $order_by = array())
+	{
+		 
+		$this->db->where('category', $category);
+		$this->db->select('var_key');
+		$this->db->select('var_value');
+		$direction = "ASC";
+		$order_field = "key";
+	
+		if (!empty($order_by)) {
+			if (array_key_exists('direction', $order_by)) {
+				$direction = $order_by['direction'];
+			}
+			if (array_key_exists('field', $order_by)) {
+				$order_field = $order_by['field'];
+			}
+		}
+	
+		$this->db->order_by($order_field, $direction);
+		$this->db->from('variable');
+		$result = $this->db->get()->result();
+		return $result;
+	}
+	
 }

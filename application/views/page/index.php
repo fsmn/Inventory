@@ -2,8 +2,19 @@
 
 // index.php Chris Dart Mar 6, 2015 12:32:10 PM chrisdart@cerebratorium.com
 if(!isset($body_classes)){
-    $body_classes = "";
+	$body_classes = array("not_front");
 }
+if(IS_EDITOR){
+	$body_classes[] = "editor";
+}
+if(IS_ADMIN){
+	$body_classes[] = "admin";
+}
+if(IS_ADMIN !=1 || IS_EDITOR !=1){
+	$body_classes[] = "viewer";
+}
+
+$body_classes[] = $this->uri->segment(1);
 if(!isset($title)){
     $window_title = APP_NAME;
 }else{
@@ -21,7 +32,7 @@ if(!isset($target)){
 <title><?=$window_title;?></title>
 <? $this->load->view("page/head");?>
 
-<body class="<?=$body_classes;?>">
+<body class="<?=implode(" ", $body_classes);?>">
 <div class="page-wrapper">
 <div class="page">
 <header class="header">

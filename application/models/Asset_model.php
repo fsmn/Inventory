@@ -90,9 +90,10 @@ class Asset_model extends MY_Model
         return $this->_insert("asset");
     }
     
-    function update($id){
+    function update($id,$values = array()){
     	$this->prepare_variables();
-    	return $this->_update("asset", $id);
+    	return $this->_update("asset", $id,$values);
+    	$this->_log();
     }
     
     function delete($id){

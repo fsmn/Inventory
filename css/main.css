@@ -211,6 +211,28 @@ input.year {
 	width: 5em !important;
 }
 
+.viewer .edit, .viewer .delete , .viewer .create {
+	display: none;
+}
+
+.viewer nav .create {
+	display: inherit;
+} 
+
+.editor .edit-field {
+	min-width: 2em;
+	text-indent: 3px;
+	transition: all .25s ease;
+}
+
+.editor .edit-field:hover {
+	cursor: pointer;
+	background-image: url(images/edit_item.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 1em;
+}
+
 @media ( max-width : 1046px) {
 	.left-box, .right-box {
 		width: 100%;

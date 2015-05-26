@@ -62,7 +62,7 @@ class MY_Model extends CI_Model
 
                 if (count($values) == 1) {
                     $keys = array_keys($values);
-                    return $this->get_value($id, $keys[0]);
+                    return $this->_get_value($db,$id, $keys[0]);
                 }
             }
         } else {
