@@ -23,7 +23,7 @@ class Dashboard extends MY_Controller {
 	{
 
 	    $data["body_classes"] = "front";
-	    $data["is_front"] = $true;
+	    $data["is_front"] = TRUE;
 	    $data["title"] = "Friends School Inventory System";
 	    $data["target"] = "dashboard";
 		$this->load->view('page/index', $data);
