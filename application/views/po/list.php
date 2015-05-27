@@ -60,7 +60,7 @@ $grand_total = 0;
 	</tbody>
 	<tfoot>
 		<tr>
-			<th colspan=4></th>
+			<th colspan=5></th>
 			<th>
 				<?php echo get_as_price($grand_total);?>
 			</th>
