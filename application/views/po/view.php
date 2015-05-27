@@ -3,9 +3,6 @@
 $order_buttons[] = array("text"=>"Edit","style"=>"edit","class"=>"edit-po edit btn-sm","href"=>site_url("po/edit/$order->id"));
 $order_buttons[] = array("text"=>"Delete Order","style"=>"delete","class"=>"delete-order delete btn-sm","id"=>"delete-po_$order->id","href"=>site_url("po/delete"));
 ?>
-<h1>
-	Purchase Order: <?=$order->po; ?>
-</h1>
 <?=create_button(array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank")); ?>
 <div id="page-box">
 	<div class="address-row clearfix">
