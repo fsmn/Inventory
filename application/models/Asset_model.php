@@ -63,6 +63,7 @@ class Asset_model extends MY_Model
     {
         $this->db->from("asset");
         $this->db->where("vendor_id", $vendor_id);
+        $this->db->order_by("asset.status");
         $this->db->order_by("asset.name");
         $result = $this->db->get()->result();
         return $result;
@@ -124,8 +125,6 @@ class Asset_model extends MY_Model
     			}
     		}
     	}
-    
-    
     	$this->db->order_by('asset.type', 'asc');
     	$this->db->order_by('asset.status', 'asc');
     	$this->db->order_by('asset.product', 'asc');
