@@ -6,6 +6,10 @@ body {
 	margin: 0;
 }
 
+h1.title {
+	display: none;
+}
+
 .btn,.btn-group {
 	display: none;
 }
