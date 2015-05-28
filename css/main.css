@@ -211,13 +211,13 @@ input.year {
 	width: 5em !important;
 }
 
-.viewer .edit, .viewer .delete , .viewer .create {
+.viewer .edit, .viewer .delete, .viewer .create {
 	display: none;
 }
 
 .viewer nav .create {
 	display: inherit;
-} 
+}
 
 .editor .edit-field {
 	min-width: 2em;
@@ -231,6 +231,10 @@ input.year {
 	background-repeat: no-repeat;
 	background-position: center left;
 	padding-left: 1em;
+}
+
+.edit-field.usd::before {
+	content: "$";
 }
 
 @media ( max-width : 1046px) {

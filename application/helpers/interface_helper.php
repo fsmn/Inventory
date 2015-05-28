@@ -204,6 +204,11 @@ function create_edit_field($field_name, $value, $label, $options = array())
 		$table = $options ["table"];
 		$id = $options ["id"];
 	}
+	$money = "";
+	if(array_key_exists("money", $options)){
+		$classes[] = "usd";
+	}
+	
 	/*
 	 * The id is split with the "-" delimiter in javascript when the field is
 	 * clicked

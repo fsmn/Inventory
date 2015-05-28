@@ -143,7 +143,6 @@ $(document).on("click",".editor .field-envelope .edit-field",function(){
 					category: my_category,
 					value: me.html()
 			};
-	console.log(form_data);
 			$.ajax({
 				type:"get",
 				url: base_url +  "variable/edit_value",
@@ -242,6 +241,7 @@ function update_field(me,my_type){
 		}
 	});
 }
+
 //function to put the footer always at the bottom of the page no matter how big the document contents are. 
 function move_footer(){
 	win_height = $(window).height();
@@ -338,7 +338,11 @@ $(document).on("click | focus",".view-inline",function(e){
 			url: my_url,
 			data: form_data,
 			success: function(data){
-				$(".details-block").css({"top":my_top, "z-index": 1000,"left":my_width}).html(data).fadeIn();
+				details_block = $(".details-block");
+				details_block.html(data).css("position","relative").css("width","auto");
+				me.parent("li").append(details_block);
+				details_block.fadeIn();
+//				$(".details-block").css({"top":my_top, "z-index": 1000,"left":my_width}).html(data).fadeIn();
 				document.location = "#asset-header_" + me.parent("li").attr("id").split("_")[1];
 				me.addClass("active");
 			}
