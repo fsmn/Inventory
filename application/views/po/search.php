@@ -10,7 +10,7 @@
 
 
 
-		<div class="column">
+		<div class="column mobile-clear">
 			<label for="start_date">Date Range</label>
 			<span style="white-space: nowrap;">
 				<input class="form-control" type="date" name="start_date" id="date_start" style="width: auto;"
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div>
-		<div class="column" style="max-width: 350px; width: 350px;">
+		<div class="column details no-wrap">
 			<label for="description">Description of Item</label>
 			<input class="form-control" type="text" name="description" id="description" style="width: 100%"
 				value="<?php echo $this->input->get('description');?>"
@@ -53,7 +53,7 @@
 			<label for="ordered_by">Ordered By: </label>
 	<?php echo form_dropdown('ordered_by',$users,$this->input->get("ordered_by"), 'class="form-control"');?>
 	</div>
-		<div class="column">
+		<div class="column no-wrap">
 			<label for="vendor_id">Vendor: </label>
 		<?php echo form_dropdown('vendor_id',$vendors,$this->input->get('vendor_id'),'class="form-control"');?>
 	</div>

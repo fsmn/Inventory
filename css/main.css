@@ -34,6 +34,7 @@ nav .btn-group.utility {
 
 .asset-block {
 	/* width: 50%; */
+	
 }
 
 .list-group-item:hover {
@@ -68,6 +69,10 @@ ul.list-group li {
 	padding: .2em 0;
 }
 
+.form-dialog .column.details {
+	min-width: 50%;
+}
+
 .form-dialog label {
 	display: block;
 }
@@ -98,12 +103,12 @@ footer {
 	padding: 1em;
 	overflow: auto;
 	width: 100%;
-	/* position: absolute; */
-	margin: 0 1em;
+	/* position: absolute; */ margin : 0 1em;
 	overflow: auto;
 	/* max-height: 500px; */
 	background-color: #fff;
 	display: none;
+	margin: 0 1em
 }
 
 .details-block li p {
@@ -241,6 +246,7 @@ input.year {
 }
 
 
+
 @media ( max-width : 1046px) {
 	.left-box, .right-box {
 		width: 100%;
@@ -251,7 +257,7 @@ input.year {
 	}
 }
 
-@media ( max-width : 480px) {
+@media ( max-width : 768px) {
 	.vendor-list .column {
 		width: 100%;
 	}
@@ -261,16 +267,23 @@ input.year {
 	.form-dialog input {
 		max-width: 95%;
 	}
-	
-	.form-dialog .column {
-	max-width: 46%;
-	width: auto;
+	.form-dialog .column.mobile-clear {
+		display: block;
 	}
-	.form-dialog .column.no-wrap{
-	max-width: 100%;
+	.form-dialog .column {
+		max-width: 46%;
+		width: auto;
+	}
+
+	.form-dialog .column.no-wrap {
+		max-width: 100%;
 	}
 	.column {
-		max-width: 100% ;
-		width: 100% ;
+		max-width: 100%;
+		width: 100%;
+	}
+		.form-dialog .column.details{
+	width: 100%;
+	display: block;
 	}
 }
