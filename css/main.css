@@ -103,7 +103,8 @@ footer {
 	padding: 1em;
 	overflow: auto;
 	width: 100%;
-	/* position: absolute; */ margin : 0 1em;
+	/* position: absolute; */
+	margin: 0 1em;
 	overflow: auto;
 	/* max-height: 500px; */
 	background-color: #fff;
@@ -245,7 +246,14 @@ input.year {
 	content: "$";
 }
 
+ul.unformatted {
+	padding: 0;
+}
 
+ul.unformatted li {
+	list-style: none;
+	line-height: initial;
+}
 
 @media ( max-width : 1046px) {
 	.left-box, .right-box {
@@ -274,7 +282,6 @@ input.year {
 		max-width: 46%;
 		width: auto;
 	}
-
 	.form-dialog .column.no-wrap {
 		max-width: 100%;
 	}
@@ -282,8 +289,14 @@ input.year {
 		max-width: 100%;
 		width: 100%;
 	}
-		.form-dialog .column.details{
-	width: 100%;
-	display: block;
+	.form-dialog .column.details {
+		width: 100%;
+		display: block;
+	}
+}
+
+@media ( max-width : 400px) {
+	table.table.table-responsive td, table.table.table-responsive th {
+		display: block;
 	}
 }

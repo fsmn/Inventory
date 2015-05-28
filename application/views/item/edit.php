@@ -22,15 +22,17 @@ $total = get_as_price ( strval ( $item_count ) * strval ( $price ) );
 		<div class="col-sm-8"><input type="text" class="form-control" name="sku" required id="sku" style="width: auto" value="<?=get_value($item, 'sku'); ?>"/>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group details">
 		<label class="col-sm-4 control-label" for="description">Description: </label>
 		<div class="col-sm-8">
-		<textarea id="description" class="form-control" required name="description" style="width: auto; height: 70px; scrollbar: auto"><?=get_value($item, 'description');?></textarea>
+		<textarea id="description" class="form-control details" required name="description" ><?=get_value($item, 'description');?></textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="category">Category: </label>
+		<div class="col-sm-8">
 <?=form_dropdown('category', $categories, get_value($item, 'category'), 'id="category" class="form-control"');?>
+</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="price">Unit Price: $</label>

@@ -207,6 +207,20 @@ class PO extends MY_Controller {
 		$po = $this->po->get ( $this->input->post ( "id" ) )->po;
 		redirect ( "po/view/$po" );
 	}
+	
+	function update_value()
+	{
+		$id = $this->input->post ( "id" );
+		$value = $this->input->post ( "value" );
+		if (is_array ( $value )) {
+			$value = implode ( ",", $value );
+		}
+		$values = array (
+				$this->input->post ( "field" ) => $value
+		);
+		$this->po->update ( $id, $values );
+		echo $value;
+	}
 
 	function po_exists($po)
 	{

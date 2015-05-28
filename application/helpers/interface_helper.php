@@ -252,6 +252,19 @@ function edit_field($field_name, $value, $label, $table, $id, $options = array()
 	return create_edit_field ( $field_name, $value, $label, $options );
 }
 
+
+function inline_field($field_name,$object,$table,$options = array()){
+	$value = $object->$field_name;
+	$id = $object->id;
+	$label = ucfirst(clean_string($field_name));
+	if(array_key_exists("id",$options)){
+		$id = $options['id'];
+	}
+	if(array_key_exists("label",$options)){
+		$label = $options['label'];
+	}
+	return  edit_field($field_name,$value,$label,$table,$id,$options);
+}
 /**
  * create a persistent field that updates the database on blur through ajax
  *
