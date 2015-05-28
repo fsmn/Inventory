@@ -33,7 +33,7 @@ nav .btn-group.utility {
 }
 
 .asset-block {
-	width: 50%;
+	/* width: 50%; */
 }
 
 .list-group-item:hover {
@@ -97,14 +97,17 @@ footer {
 	box-shadow: 2px 2px 4px #CCC;
 	padding: 1em;
 	overflow: auto;
-	max-height: 500px;
-	width: 50%;
-	position: absolute;
+	width: 100%;
+	/* position: absolute; */
 	margin: 0 1em;
 	overflow: auto;
-	max-height: 500px;
+	/* max-height: 500px; */
 	background-color: #fff;
 	display: none;
+}
+
+.details-block li p {
+	white-space: nowrap;
 }
 
 ul.button-list {
@@ -237,6 +240,7 @@ input.year {
 	content: "$";
 }
 
+
 @media ( max-width : 1046px) {
 	.left-box, .right-box {
 		width: 100%;
@@ -257,7 +261,16 @@ input.year {
 	.form-dialog input {
 		max-width: 95%;
 	}
+	
+	.form-dialog .column {
+	max-width: 46%;
+	width: auto;
+	}
+	.form-dialog .column.no-wrap{
+	max-width: 100%;
+	}
 	.column {
-		width: 45% !important;
+		max-width: 100% ;
+		width: 100% ;
 	}
 }

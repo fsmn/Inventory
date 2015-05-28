@@ -154,7 +154,6 @@ class Asset extends MY_Controller {
 			}
 		}
 		if ($this->input->get ( "is_search" )) { // active search has been submitted
-			
 			$assets = $this->asset->search ( $where );
 			$data ["refine"] = TRUE;
 		}
