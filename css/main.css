@@ -5,6 +5,10 @@
 	margin: 0 auto;
 }
 
+.not-logged-in h1.title {
+	display: none;
+}
+
 body {
 	padding: 1em;
 	transition: all .5s ease;

@@ -49,6 +49,7 @@ class Auth extends CI_Controller {
 	function login()
 	{
 		$this->data ['title'] = "Login";
+		$this->data['body_classes'] = array("not-logged-in");
 		
 		// validate form input
 		$this->form_validation->set_rules ( 'identity', 'Identity', 'required' );
