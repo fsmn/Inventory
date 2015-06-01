@@ -205,8 +205,8 @@ function create_edit_field($field_name, $value, $label, $options = array())
 		$id = $options ["id"];
 	}
 	$money = "";
-	if(array_key_exists("money", $options)){
-		$classes[] = "usd";
+	if (array_key_exists ( "money", $options )) {
+		$classes [] = "usd";
 	}
 	
 	/*
@@ -252,19 +252,23 @@ function edit_field($field_name, $value, $label, $table, $id, $options = array()
 	return create_edit_field ( $field_name, $value, $label, $options );
 }
 
-
-function inline_field($field_name,$object,$table,$options = array()){
+function inline_field($field_name, $object, $table, $options = array())
+{
 	$value = $object->$field_name;
 	$id = $object->id;
-	$label = ucfirst(clean_string($field_name));
-	if(array_key_exists("id",$options)){
-		$id = $options['id'];
+	$label = ucfirst ( clean_string ( $field_name ) );
+	if (array_key_exists ( "id", $options )) {
+		$id = $options ['id'];
 	}
-	if(array_key_exists("label",$options)){
-		$label = $options['label'];
+	if (array_key_exists ( "label", $options )) {
+		$label = $options ['label'];
 	}
-	return  edit_field($field_name,$value,$label,$table,$id,$options);
+	if (! array_key_exists ( "class", $options )) {
+		$options ['class'] = "editable";
+	}
+	return edit_field ( $field_name, $value, $label, $table, $id, $options );
 }
+
 /**
  * create a persistent field that updates the database on blur through ajax
  *
@@ -369,6 +373,9 @@ function get_button_style($style)
 		case "link" :
 			$class [] = "btn-link";
 			break;
+		case "notice" :
+			$class [] = "btn-info";
+			break;
 		case "insert" :
 		case "new" :
 		// $class[] = "btn-warning";
@@ -377,6 +384,7 @@ function get_button_style($style)
 		case "edit" :
 		// $class[] = "btn-success";
 		// break;
+		
 		default :
 			$class [] = "btn-default";
 	}

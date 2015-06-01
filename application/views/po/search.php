@@ -50,8 +50,8 @@
 			?></span>
 		</div>
 		<div class="column">
-			<label for="ordered_by">Ordered By: </label>
-	<?php echo form_dropdown('ordered_by',$users,$this->input->get("ordered_by"), 'class="form-control"');?>
+			<label for="orderer_id">Ordered By: </label>
+	<?php echo form_dropdown('orderer_id',$users,$this->input->get("orderer_id"), 'class="form-control"');?>
 	</div>
 		<div class="column no-wrap">
 			<label for="vendor_id">Vendor: </label>

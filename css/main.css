@@ -232,13 +232,13 @@ input.year {
 	display: inherit;
 }
 
-.editor .edit-field {
+.editor .edit-field.editable {
 	min-width: 2em;
 	text-indent: 3px;
 	transition: all .25s ease;
 }
 
-.editor .edit-field:hover {
+.editor .edit-field.editable:hover {
 	cursor: pointer;
 	background-image: url(images/edit_item.png);
 	background-repeat: no-repeat;

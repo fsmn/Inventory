@@ -4,13 +4,11 @@
 if(!isset($body_classes)){
 	$body_classes = array("not_front");
 }
-if(IS_EDITOR){
-	$body_classes[] = "editor";
-}
 if(IS_ADMIN){
 	$body_classes[] = "admin";
-}
-if(IS_ADMIN !=1 || IS_EDITOR !=1){
+}elseif(IS_EDITOR){
+	$body_classes[] = "editor";
+}else{
 	$body_classes[] = "viewer";
 }
 

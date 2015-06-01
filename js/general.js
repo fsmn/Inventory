@@ -116,7 +116,7 @@ $(document).ready(function() {
     $(window).resize(move_footer);
 });
 
-$(document).on("click",".editor .field-envelope .edit-field",function(){
+$(document).on("click",".editor .field-envelope .edit-field.editable",function(){
 	//if($("body").hasClass("editor")){
 		me = $(this);
 		my_parent = me.parent().attr("id");
