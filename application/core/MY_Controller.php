@@ -17,7 +17,7 @@ class MY_Controller extends CI_Controller
             redirect("auth/login");
         } else {
             $this->load->model("ion_auth_model");
-            
+            define('IS_ADMIN',$this->ion_auth->in_group(1));
         }
     }
 

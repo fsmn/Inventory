@@ -271,7 +271,7 @@ function inline_field($field_name, $object, $table, $options = array())
 
 /**
  * create a persistent field that updates the database on blur through ajax
- *
+ * DEPRECATED for inline_field
  * @param string $field_name        	
  * @param string $value        	
  * @param string $table        	
@@ -279,9 +279,10 @@ function inline_field($field_name, $object, $table, $options = array())
  * @param array $options        	
  * @return string
  */
+/*
 function live_field($field_name, $value, $table, $id, $options = array())
 {
-	if (IS_ADMIN) {
+	if (TRUE) {
 		$size = "auto";
 		if (in_array ( "size", $options )) {
 			$size = $options ["size"];
@@ -307,7 +308,7 @@ function live_field($field_name, $value, $table, $id, $options = array())
 	}
 	return $output;
 }
-
+*/
 /**
  * create a checkbox with labels
  *

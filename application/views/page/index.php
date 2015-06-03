@@ -6,6 +6,7 @@ if(!isset($body_classes)){
 }
 if($this->ion_auth->in_group(1)){
 	$body_classes[] = "admin";
+	$body_classes[] = "editor";
 }elseif($this->ion_auth->in_group(array(1,2))){
 	$body_classes[] = "editor";
 }else{
