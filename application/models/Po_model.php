@@ -119,6 +119,7 @@ class PO_Model extends MY_Model {
 		$this->db->select ( "item.description,item.sku" );
 		$this->db->select ( "po.*" );
 		$this->db->select ( "vendor.name as vendor" );
+		$this->db->order_by("po.approved","ASC");
 		$this->db->order_by ( "po.po_date", "desc" );
 		$result = $this->db->get ()->result ();
 		return $result;

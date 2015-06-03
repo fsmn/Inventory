@@ -4,9 +4,9 @@
 if(!isset($body_classes)){
 	$body_classes = array("not_front");
 }
-if(IS_ADMIN){
+if($this->ion_auth->in_group(1)){
 	$body_classes[] = "admin";
-}elseif(IS_EDITOR){
+}elseif($this->ion_auth->in_group(array(1,2))){
 	$body_classes[] = "editor";
 }else{
 	$body_classes[] = "viewer";

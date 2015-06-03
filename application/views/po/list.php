@@ -13,12 +13,15 @@ $grand_total = 0;
 			<th>Vendor</th>
 			<th>Category</th>
 			<th>Date</th>
+			<th>Approved</th>
 			<th>Total</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php $previous_po = 0;?>
 		<? foreach($pos as $po): ?>
+		<?php if($po->po != $previous_po):?>
+		<?php $previous_po = $po->po;?>
 		<tr id="po-row_<?php echo $po->po;?>">
 			<td>
 				<a href="<?php echo site_url("po/view/$po->po");?>"><?php echo $po->po;?></a>
@@ -34,6 +37,9 @@ $grand_total = 0;
 			</td>
 			<td>
 				<?php echo format_date($po->po_date);?>
+			</td>
+			<td>
+			<?php echo $po->approved?"Yes":"No"?>
 			</td>
 			<td>
 				<?php $po->total = 0;?>
@@ -56,6 +62,7 @@ $grand_total = 0;
 		<?php if(isset($po->total)):?>
 			<? $grand_total += $po->total;?>
 		<?php  endif; ?>
+		<?php endif; ?>
 		<? endforeach;?>
 	</tbody>
 	<tfoot>
