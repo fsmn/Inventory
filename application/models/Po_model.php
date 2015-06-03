@@ -4,7 +4,6 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 // po_model.php Chris Dart Mar 6, 2015 6:35:01 PM chrisdart@cerebratorium.com
 class PO_Model extends MY_Model {
 	var $vendor_id;
-	var $user_id;
 	var $po;
 	var $po_date;
 	var $method;
@@ -22,7 +21,6 @@ class PO_Model extends MY_Model {
 		$variables = array (
 				"vendor_id",
 				"orderer_id",
-				"user_id",
 				"po",
 				"po_date",
 				"method",
