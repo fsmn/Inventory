@@ -18,7 +18,7 @@ $buttons [] = array (
 		),
 		"style" => "edit" 
 );
-if (IS_ADMIN) {
+if ($this->ion_auth->in_group(1)) {
 	$buttons [] = array (
 			"text" => "Delete",
 			"href" => site_url ( "asset/delete" ),

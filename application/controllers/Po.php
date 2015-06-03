@@ -203,7 +203,8 @@ class PO extends MY_Controller {
 
 	function update()
 	{
-		$this->po->update ();
+		$id = $this->input->post("id");
+		$this->po->update ($id);
 		$po = $this->po->get ( $this->input->post ( "id" ) )->po;
 		redirect ( "po/view/$po" );
 	}

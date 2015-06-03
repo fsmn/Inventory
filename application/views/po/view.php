@@ -1,6 +1,6 @@
 <?php
 $inline_field_class = $order->approved?"readonly":"editable";
-if (! $order->approved || IS_ADMIN) {
+if (! $order->approved || $this->ion_auth->in_group(1)) {
 	$order_buttons [] = array (
 			"text" => "Edit",
 			"style" => "edit",
@@ -63,8 +63,9 @@ $order_buttons [] = array (
 						<li><label for="billing_contact">Billing Contact:&nbsp;</label><?php echo $order->billing_contact;?>
 					</li>
 					<?php echo inline_field("category",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
+					<?php if($order->quote):?>
 					<?php echo inline_field("quote",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
-					
+					<?php endif; ?>
 					</ul>
 				</div>
 

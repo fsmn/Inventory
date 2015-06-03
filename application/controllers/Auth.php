@@ -16,8 +16,7 @@ class Auth extends CI_Controller {
 		
 		$this->lang->load ( 'auth' );
 		$this->load->helper ( 'language' );
-		//define ( "IS_EDITOR", 0 );
-		//define ( "IS_ADMIN", 0 );
+
 	}
 	
 	// redirect if needed, otherwise display the user list
@@ -31,8 +30,7 @@ class Auth extends CI_Controller {
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error ( 'You must be an administrator to view this page.' );
 		} else {
-			define('IS_EDITOR', $this->ion_auth->in_group(array(1,2)));
-			define('IS_ADMIN', $this->ion_auth->in_group(1));
+			
 			// set the flash data error message if there is one
 			$this->data ['message'] = (validation_errors ()) ? validation_errors () : $this->session->flashdata ( 'message' );
 			

@@ -41,7 +41,7 @@ class MY_Model extends CI_Model
 
     function _insert ($db)
     {
-        if (IS_EDITOR) {
+        if ($this->ion_auth->in_group(array(1,2))) {
             $this->db->insert($db, $this);
             $id = $this->db->insert_id();
             return $id;
@@ -52,7 +52,7 @@ class MY_Model extends CI_Model
 
     function _update ($db, $id, $values = NULL)
     {
-        if (IS_EDITOR) {
+        if ($this->ion_auth->in_group(array(1,2))) {
             $this->db->where("id", $id);
             if (empty($values)) {
                 $this->prepare_variables();
@@ -72,7 +72,7 @@ class MY_Model extends CI_Model
 
     function _delete ($db, $id)
     {
-        if (IS_EDITOR) {
+        if ($this->ion_auth->in_group(array(1,2))) {
             $this->db->delete($db, array(
                     "id" => $id
             ));
