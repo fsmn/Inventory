@@ -21,6 +21,7 @@ class PO_Model extends MY_Model {
 	{
 		$variables = array (
 				"vendor_id",
+				"orderer_id",
 				"user_id",
 				"po",
 				"po_date",
