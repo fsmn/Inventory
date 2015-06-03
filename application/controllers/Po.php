@@ -226,6 +226,12 @@ class PO extends MY_Controller {
 	function request_approval($id = FALSE){
 		$this->load->model("user_model","user");
 		$approvers = $this->user->get_group_members(4);
+		//approvers cannot approve their own POs.
+		foreach($approvers as $key=>$approver){
+			if($approver->id == $this->ion_auth->get_user_id()){
+				unset($approvers[$key]);
+			}
+		}
 		if($id){
 			$data["target"] = "po/approval";
 			$data["title"] = "Request Approval";
