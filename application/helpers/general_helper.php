@@ -58,33 +58,10 @@ function burn_cookie ( $name )
 	) );
 }
 
-function create_input ( $object, $name, $label, $id = NULL, $default_value = FALSE, $required = FALSE, $classes = array() )
-{
-	if (! $id) {
-		$id = $name;
-	}
-	$class = "";
-	if ($classes) {
-		if (is_array ( $classes )) {
-			$class = join ( " ", $classes );
-		}
-		else {
-			$class = $classes;
-		}
-	}
-	if ($required) {
-		$required = "required";
-	}
-	$value = "";
-	if ($default_value) {
-		$value = get_cookie ( $name );
-	}
-	return sprintf ( "<label for='%s'>%s: </label><input type='text' name='%s' id='%s' value='%s' class='%s' %s/>", $name, $label, $name, $id, get_value ( $object, $name, $value ), $class, $required );
-}
 
 function get_current_year ()
 {
-	if (date ( "m" ) > 8) { // after August
+	if (date ( "m" ) > 6) { // after August
 		$year = date ( "Y" ) + 1;
 	}
 	else {
@@ -92,6 +69,8 @@ function get_current_year ()
 	}
 	return $year;
 }
+
+
 
 /*
  * @params $table varchar table name @params $data array consisting of "where"
@@ -158,123 +137,13 @@ function get_user_name ( $user )
 	return sprintf ( "%s %s", $user->first_name, $user->last_name );
 }
 
-function format_latin_name ( $genus, $species = NULL )
-{
-	$output [] = ucfirst ( $genus );
-
-	if ($species) {
-		$output [] = strtolower ( $species );
-	}
-	return implode ( " ", $output );
-}
-
-function format_catalog ( $order_id, $category )
-{
-	return sprintf ( "%s%s", ucfirst ( substr ( $category, 0, 1 ) ), $order_id );
-}
-
-function abbr_unit ( $measure )
-{
-	switch ($measure) {
-		case "Feet" :
-			$output = "&#39;";
-			break;
-		case "Inches" :
-		default :
-			$output = "&quot;";
-			break;
-	}
-	return $output;
-}
 
 function clean_string ( $string )
 {
 	return preg_replace ( "/[^a-zA-Z0-9\"\.\<\>\=]+/", " ", $string );
 }
 
-function format_dimensions ( $min = FALSE, $max = FALSE, $unit = "Inches", $direction = NULL )
-{
-	$output = "";
-	if (! $min && ! $max) {
-		$output = "";
-	}
-	elseif ($min == $max || ($min && ! $max)) {
-		$output = sprintf ( "%s%s", $min, ucfirst ( $unit ) );
-	}
-	elseif ($min == $max || ($max && ! $min)) {
-		$output = sprintf ( "%s%s", $max, ucfirst ( $unit ) );
-	}
-	else {
-		$output = sprintf ( "%s~%s%s", $min, $max, ucfirst ( $unit ) );
-	}
-	if ($direction) {
-		$output = sprintf ( "%s%s", $output, $direction );
-	}
 
-	return $output;
-}
-
-function format_address ( $grower )
-
-{
-	$street = array ();
-	if ($grower->street_address) {
-		$street [] = $grower->street_address;
-	}
-	if ($grower->po_box) {
-		$street [] = $grower->po_box;
-	}
-	if ($grower->city) {
-		$locale = sprintf ( "%s, %s %s", $grower->city, $grower->state, $grower->zip );
-	}
-	else {
-		$locale = "<span class='highlight'>NO CITY ENTERED</span>";
-	}
-	if (empty ( $street )) {
-		$street = "<span class='highlight'>NO STREET OR PO BOX ENTERED</span>";
-	}
-	else {
-		$street = implode ( " ", $street );
-	}
-
-	if (empty ( $grower->country )) {
-		$country = "USA";
-	}
-	else {
-		$country = $grower->country;
-	}
-
-	return array (
-			"street" => $street,
-			"locale" => $locale,
-			"country" => $country
-	);
-}
-
-/**
- *
- * @param stObj $order
- * @return string if the difference between two prices is greater than a set
- *         amount, there is a discrepancy.
- *         This is used exclusively to provide a class tag for the orders where
- *         there
- *         mistakes may have been entered into the system due to a bug in the
- *         user interface.
- */
-function has_price_discrepancy ( $order )
-{
-	$plant_value = round ( $order->flat_size * $order->plant_cost, 2 );
-	$output = "";
-	if (abs ( $plant_value - $order->flat_cost ) > .15) {
-		$output = "price-discrepancy";
-	}
-	return $output;
-}
-
-// remove underscores, capitalize words.
-function decode_string ( $string )
-{
-}
 
 /**
  * Create a custom sql sorting string.

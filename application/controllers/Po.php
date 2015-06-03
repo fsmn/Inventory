@@ -246,19 +246,9 @@ class PO extends MY_Controller {
 				$approver_id = $this->input->post("approver_id");
 				$this->po->update($id,array("approver_id"=>$approver_id));
 				$po = $this->po->get($id);
-				
-				$this->email->from($po->user_email);
-				$this->email->to("technology@fsmn.org");
-				$this->email->cc($po->user_email);
-				$subject = sprintf("Purchase Order from %s %s Needs Approval", $po->first_name ,$po->last_name);
-				$body[] = sprintf("%s %s as requested your approval for a purchase order from %s",$po->first_name, $po->last_name,$po->vendor);
-				$body[] = sprintf("Click on the following url to review and approve this purchase order: %s", site_url("po/view/$po->po?approval_request=TRUE"));
-				$message = implode("\n", $body);
-				$this->email->subject($subject);
-				$this->email->message($message);
-				$this->email->send();
+				$this->_notify("approval_request",$po);
 				$this->session->set_flashdata("warning",sprintf("The approval request has been sent to %s at %s",$po->approver,  $po->approver_email));
-				//redirect("po/view/$po->po");
+				redirect("po/view/$po->po");
 		}
 		
 	}
@@ -268,17 +258,8 @@ class PO extends MY_Controller {
 		//user must be an approver and they must be the requested approver on this PO. 
 		if($this->ion_auth->get_user_id() == $po->approver_id && $this->ion_auth->in_group(4) ){
 			$this->po->update($id,array("approved"=>1));
-			$this->email->from($po->approver_email);
-			$this->email->to("technology@fsmn.org");
-			$this->email->cc($po->approver_email);
-			$subject = "Your purchase order has been approved";
-			$body[] = sprintf("%s %s has approved purchase order %s. The business office has been notified of this approval.",$po->approver, $po->po);
-			$body[] = sprintf("You may view this purchase order at this link: %s", site_url("po/view/$po->po"));
-			$body[] = sprintf("NOTE: Please keep this email as official record that the purchase order was approved");
-			$message = implode("\n",$body);
-			$this->email->subject($subject);
-			$this->email->message($message);
-			$this->email->send();
+			$this->_notify("approval_granted",$po);
+			$this->_notify("business_office",$po);
 			$this->session->set_flashdata("warning","This PO has been approved and the requester and business office have both been notified");
 		}else{
 			$this->session->set_flashdata("warning","You are not authorized to approve this purchase order.");
@@ -296,6 +277,34 @@ class PO extends MY_Controller {
 		}
 		echo $output;
 	}
+	
+	function _notify($target,$po){
+		switch($target){
+			case "business_office":
+				$this->email->to("bookkeeper@fsmn.org");
+				$this->email->from($po->user_email);
+				$subject = "A Purchase Order Has Been Approved";
+				break;
+			case "approval_request":
+				$subject = "A Purchase Order Needs Your Approval";
+				$this->email->from(sprintf("%s %s <%s>",$po->first_name, $po->last_name, $po->user_email));
+				$this->email->to($po->approver);
+				$this->email->cc($po->user_email);
+				
+				break;
+			case "approval_granted":
+				$subject = sprintf("Purchase Order %s Approval Has Been Granted.",$po->po);
+				$this->email->from($po->approver_email);
+				$this->email->to($po->user_email);
+				$this->email->cc($po->approver_email);
+				break;
+		}
+		$message = $this->load->view("po/email/$target",array("po"=>$po), TRUE);
+		$this->email->subject($subject);
+		$this->email->message($message);
+		$this->email->send();
+		
+	}
 
 	function delete()
 	{
@@ -308,5 +317,7 @@ class PO extends MY_Controller {
 			$data ["po"] = $po;
 			$this->load->view ( "page/modal", $data );
 		}
+		
+		
 	}
 }
