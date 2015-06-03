@@ -50,6 +50,11 @@ $order_buttons [] = array (
 				<?=create_button_bar($order_buttons); ?>
 				<div id="order-info">
 					<ul class="unformatted">
+					<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
+					<?php if($order->approver_id): ?>
+					<li><label for="approver">Approver:&nbsp;</label>
+					<?php echo $order->approver_id?$order->approver:"";?></li>
+					<?php endif;?>
 					<?php echo inline_field("po_date",$order,"po",array("label"=>"Order Date","type"=>"date", "envelope"=>"li", "class"=>$inline_field_class));?>
 					<?php echo inline_field("method",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
 					<?php echo inline_field("payment_type",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
@@ -59,9 +64,7 @@ $order_buttons [] = array (
 					</li>
 					<?php echo inline_field("category",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
 					<?php echo inline_field("quote",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
-					<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
-					<li><label for="approver"><?php echo $order->approved?"Approved by:":"Requested from:";?>&nbsp;</label>
-					<?php echo $order->approver_id?$order->approver:"";?></li>
+					
 					</ul>
 				</div>
 
