@@ -61,7 +61,10 @@ class Vendor_Model extends MY_Model
     function get_distinct($field){
         return $this->_get_distinct("vendor", $field);
     }
-    
+    function insert(){
+    	$this->prepare_variables();
+    	return $this->_insert("vendor");
+    }
     function update($id){
     	
     	$this->_update("vendor",$id);

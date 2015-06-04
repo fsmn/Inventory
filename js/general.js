@@ -4,6 +4,17 @@ $(document).on("click",".create.dialog,.edit.dialog",function(e){
 	
 });
 
+$(document).on('click','.checkbox-required :checkbox',function(e){
+	me = $(this);
+	my_siblings = me.parents(".checkbox-required").children(".checkbox").children("label");
+	if(my_siblings.children("input:checked").length > 0){
+my_siblings.children("input").attr("required",false);
+	}else{
+		my_siblings.children("input").attr("required",true);
+
+	}
+});
+
 $(document).on('click','.delete',function(e){
 	e.preventDefault();
 	delete_entity(this);

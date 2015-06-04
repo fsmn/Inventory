@@ -17,16 +17,16 @@ $vendor_types = array (
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="name">Vendor</label>
 		<div class="col-sm-8">
-			<input type="text" class="form-control" name="name" id="name" style="width: auto" value="<?php echo get_value($vendor, 'name'); ?>" />
+			<input type="text" class="form-control" name="name" id="name" style="width: auto" value="<?php echo get_value($vendor, 'name'); ?>" required/>
 		</div>
 	</div>
 	
 <div class="form-group">
-<div class="col-sm-offset-4 col-sm-8">
+<div class="col-sm-offset-4 col-sm-8 checkbox-required">
 	<?php foreach($vendor_types as $type):?>
 		<div class="checkbox">
 		<label> 
-	<input type="checkbox" name="type[]" value="<?php echo $type; ?>" <?php echo in_array($type,$types)?"checked":"";?> aria-label="..."/>&nbsp;<?php echo ucfirst($type);?>
+	<input type="checkbox" name="type[]" value="<?php echo $type; ?>" <?php echo in_array($type,$types)?"checked":"";?> aria-label="..." required />&nbsp;<?php echo ucfirst($type);?>
 </label>
 </div>
 	<?php endforeach;?>
