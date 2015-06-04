@@ -7,7 +7,7 @@ if(in_array("vendor", explode(",",get_value($vendor,"type",array())))){
 	$buttons[] = array("text"=>"New Order","style"=>"new","class"=>"new-order create dialog btn-sm","id"=>"new-po_$id","href"=>site_url("po/create/$id"));
 	
 }
-if(in_array("developer", explode(",",get_value($vendor,"type",array())))){
+if(in_array("developer", explode(",",get_value($vendor,"type",array()))) && $this->ion_auth->in_group(1)){
 
 $buttons[] = array("text"=>"New Asset","style"=>"new","class"=>"new-asset create dialog btn-sm","id"=>"new-po_$id","href"=>site_url("asset/create/$id?vendor_id=$id"));
 }

@@ -123,7 +123,7 @@ class PO extends MY_Controller {
 	function create($vendor_id = FALSE)
 	{
 		$this->load->model ( "vendor_model", "vendor" );
-		$vendors = $this->vendor->get_all ();
+		$vendors = $this->vendor->get_all ("vendor");
 		$data ["vendors"] = get_keyed_pairs ( $vendors, array (
 				"id",
 				"name" 

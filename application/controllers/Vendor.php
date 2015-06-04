@@ -41,6 +41,23 @@ class Vendor extends MY_Controller {
 		
 		$this->load->view ( "page/index", $data );
 	}
+	
+	function create(){
+		$data['action'] = "insert";
+		$data['title'] = "Add a Vendor";
+		$data['vendor'] = FALSE;
+		$data['target'] = "vendor/edit";
+		if($this->input->get("ajax")==1){
+			$this->load->view("page/modal",$data);
+		}else{
+			$this->load->view("page/index",$data);
+		}
+	}
+	
+	function insert(){
+		$id = $this->vendor->insert();
+		redirect("vendor/view/$id");
+	}
 
 	function edit($id)
 	{

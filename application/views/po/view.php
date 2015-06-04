@@ -1,4 +1,5 @@
 <?php
+$order_buttons = array();
 $inline_field_class = $order->approved?"readonly":"editable";
 if (! $order->approved || $this->ion_auth->in_group(1)) {
 	$order_buttons [] = array (
@@ -30,6 +31,7 @@ if($this->ion_auth->get_user_id() == $order->approver_id && !$order->approved){
 			"href"=>site_url("po/grant_approval/$order->id"),
 	);
 }
+if(!$order->approved){
 $order_buttons [] = array (
 		"text" => "Delete Order",
 		"style" => "delete",
@@ -37,6 +39,7 @@ $order_buttons [] = array (
 		"id" => "delete-po_$order->id",
 		"href" => site_url ( "po/delete" ) 
 );
+}
 ?>
 <?=create_button(array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank")); ?>
 <div id="page-box">
@@ -47,7 +50,7 @@ $order_buttons [] = array (
 		<div class="right-box">
 			<fieldset>
 				<legend>Order Details</legend>
-				<?=create_button_bar($order_buttons); ?>
+				<?=$order_buttons?create_button_bar($order_buttons):""; ?>
 				<div id="order-info">
 					<ul class="unformatted">
 					<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
@@ -75,7 +78,7 @@ $order_buttons [] = array (
 </div>
 <div class="items">
 <?
-
+if(!$order->approved){
 $item_buttons [] = array (
 		"text" => "Add Item",
 		"style" => "new",
@@ -84,9 +87,10 @@ $item_buttons [] = array (
 		"href" => site_url ( "item/create/$order->po/$order->id" ) 
 );
 echo create_button_bar ( $item_buttons, "toolbar" );
+}
 ?>
 <div id='item-table'>
-<?php $this->load->view('item/table',array("items"=>$order->items));?>
+<?php $this->load->view('item/table',array("items"=>$order->items, "approved"=>$order->approved));?>
 </div>
 </div>
 
