@@ -288,7 +288,7 @@ class PO extends MY_Controller {
 			case "approval_request":
 				$subject = "A Purchase Order Needs Your Approval";
 				$this->email->from(sprintf("%s %s <%s>",$po->first_name, $po->last_name, $po->user_email));
-				$this->email->to($po->approver);
+				$this->email->to($po->approver_email);
 				$this->email->cc($po->user_email);
 				
 				break;
