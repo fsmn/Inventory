@@ -55,7 +55,7 @@ if(!isset($hide_details)){
 			<? $grand_total += $total;?>
 
 		<td class="clear">
-			<? echo !$hide_details && !$approved?create_button_bar($buttons):""; ?>
+			<? echo !$print || (!$hide_details && !$approved)?create_button_bar($buttons):""; ?>
 		</td>
 		</tr>
 				<? endforeach; 	?>
