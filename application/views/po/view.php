@@ -1,7 +1,7 @@
 <?php
 $order_buttons = array();
 $inline_field_class = $order->approved?"readonly":"editable";
-if (! $order->approved || $this->ion_auth->in_group(1)) {
+if (! $order->approved || $this->ion_auth->get_user_id() == $order->approver) {
 	$order_buttons [] = array (
 			"text" => "Edit",
 			"style" => "edit",

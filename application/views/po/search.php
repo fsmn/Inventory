@@ -16,7 +16,7 @@
 				<input class="form-control" type="date" name="start_date" id="date_start" style="width: auto;"
 					value="<?php echo $this->input->get("start_date");?>"
 				/>
-				&nbsp;&dash;&nbsp;
+				&nbsp;-&nbsp;
 				<input class="form-control" type="date" name="end_date" id="date_end" style="width: auto;"
 					value="<?php echo $this->input->get("end_date");?>"
 				/>
