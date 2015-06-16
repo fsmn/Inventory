@@ -42,14 +42,14 @@
 		<div class="column no-wrap">
 			<label for="year_acquired">School Year Acquired</label>
 				<input type="text" class="form-control year" id="year_acquired" name="year_acquired" value="<?php $this->input->get("year_acquired");?>" size="5" />
-			&nbsp;&dash;&nbsp;
+			&nbsp;-&nbsp;
 			<input type="text" class="form-control" readonly name="year-acquired-next" id="year_acquired-next" value="" size="5"/>
 
 		</div>
 		<div id="year_removed_block" class="column no-wrap">
 			<label for="year_removed">School Year Removed</label>
 			<input type="text"  class="form-control year"  id="year_removed" name="year_removed"  value="<?php echo $this->input->get("year_removed");?>" size="5" />
-			&nbsp;&dash;&nbsp;<input type="text"  class="form-control"  name="year-removed-next" id="year_removed-next" value="" readonly size="5"/>
+			&nbsp;-&nbsp;<input type="text"  class="form-control"  name="year-removed-next" id="year_removed-next" value="" readonly size="5"/>
 
 		</div>
 		<div class="source-order">

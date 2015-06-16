@@ -45,7 +45,7 @@
 		<label class="col-sm-4 control-label no-wrap" for="year_acquired">Year Acquired</label>
 		<div class="col-sm-8">
 			<input type="text" class="form-control year" id="year_acquired" name="year_acquired" required
-				value="<?=get_value($asset,"year_acquired");?>" size="5"/>&nbsp;&dash;&nbsp;
+				value="<?=get_value($asset,"year_acquired");?>" size="5"/>&nbsp;-&nbsp;
 			<input type="text" class="form-control" name="year-acquired-next" id="year_acquired-next" value="" readonly size=5 />
 		</div>
 	</div>
@@ -70,7 +70,7 @@
 		
 		<label class="col-sm-4 control-label no-wrap" for="year_removed">Year Removed</label>
 		<div class="col-sm-8">
-			<input type="number" class="form-control year" id="year_removed" name="year_removed" value="<?=get_value($asset,"year_removed");?>" size="5" />&nbsp;&dash;&nbsp;
+			<input type="number" class="form-control year" id="year_removed" name="year_removed" value="<?=get_value($asset,"year_removed");?>" size="5" />&nbsp;-&nbsp;
 			<input type="text" class="form-control" name="year-removed_next" id="year_removed-next" value="" readonly size=5 /><br/>
 			
 		</div>
