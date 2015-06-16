@@ -12,5 +12,5 @@
 		<input type="file" name="userfile" class="form-control" size="20" />
 		<input type="submit" class='btn btn-default btn-xs' value="Upload" />
 	</div>
-	</form>
+	<?php echo form_close();?>
 </div>
