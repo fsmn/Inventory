@@ -283,10 +283,10 @@ class PO extends MY_Controller {
 			case "business_office":
 				$this->email->to("bookkeeper@fsmn.org");
 				$this->email->from($po->user_email);
-				$subject = "A Purchase Order Has Been Approved";
+				$subject = sprintf("Purchase Order %s Has Been Approved",$po->po);
 				break;
 			case "approval_request":
-				$subject = "A Purchase Order Needs Your Approval";
+				$subject = sprintf("Purchase Order %s Needs Your Approval",$po->po);
 				$this->email->from($po->user_email);
 				$this->email->to($po->approver_email);
 				$this->email->cc($po->user_email);
