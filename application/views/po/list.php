@@ -24,7 +24,7 @@ $grand_total = 0;
 		<?php $previous_po = $po->po;?>
 		<tr id="po-row_<?php echo $po->po;?>">
 			<td>
-				<a href="<?php echo site_url("po/view/$po->po");?>"><?php echo $po->po;?></a>
+				<a href="<?php echo site_url("po/view/$po->po");?>" class="btn btn-default btn-xs"><?php echo $po->po;?></a>
 			</td>
 			<td>
 				<a href="<?php echo site_url("po/details/$po->po");?>" class="po-details">Show Items</a>
