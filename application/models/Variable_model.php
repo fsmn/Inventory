@@ -49,6 +49,7 @@ class Variable_model extends MY_Model{
 		$this->db->order_by($order_field, $direction);
 		$this->db->from('variable');
 		$result = $this->db->get()->result();
+		$this->_log();
 		return $result;
 	}
 	

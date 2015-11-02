@@ -14,4 +14,15 @@ class User_model extends Ion_auth_model{
 		$result = $this->db->get()->result();
 		return $result;
 	}
+	
+	function get_user($id){
+
+		$this->db->from("users");
+		$this->db->where("users.id",$id);
+		$this->db->select("users.id, users.first_name, users.last_name, users.email");
+		$result = $this->db->get()->row();
+		return $result;
+		
+		
+	}
 }

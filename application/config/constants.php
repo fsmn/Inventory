@@ -86,5 +86,5 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('APP_NAME','Inventory System');
-define('APP_VERSION',"1.5-beta");
+define('APP_VERSION',"2");
 define('BILLING_CONTACT',"Garth Morrisette");

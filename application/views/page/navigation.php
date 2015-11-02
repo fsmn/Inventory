@@ -26,6 +26,12 @@ $buttons [] = array (
 		"href" => site_url ( "vendor" ),
 		"style" => "default" 
 );
+
+$buttons [] = array(
+		"text"=>"Timesheet",
+		"href"=>site_url("timesheet"),
+		"style" => "default",
+);
 $buttons[] = array(
 		"text" => "New Vendor",
 		"href" => site_url("vendor/create"),
