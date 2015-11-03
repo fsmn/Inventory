@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $total_time = 0;
 ?>
+<?php echo create_button_bar(array(array("text"=>"New Entry","href"=>base_url("timesheet/create?ajax=1"),"class"=>"btn btn-default create dialog insert")));?>
 <div class='table-responsive'>
 <table class='table'>
 <tbody>
@@ -58,5 +59,4 @@ Total Time
 </tr>
 </tfoot>
 </table>
-<?php echo create_button_bar(array(array("text"=>"New Entry","href"=>base_url("timesheet/create?ajax=1"),"class"=>"btn btn-default create dialog insert")));?>
 </div>
