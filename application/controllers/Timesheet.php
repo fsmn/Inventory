@@ -17,7 +17,7 @@ class Timesheet extends MY_Controller {
 		if($this->input->get("show_all")){
 			$options = array();
 		}
-		$entries = $this->timesheet->get_for_user ( '1', $options);
+		$entries = $this->timesheet->get_for_user ( $this->ion_auth->get_user_id(), $options);
 		$data ['entries'] = $entries;
 		$data ['target'] = "timesheet/table";
 		$data ['title'] = "Time Tracker";
