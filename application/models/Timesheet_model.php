@@ -55,17 +55,19 @@ class Timesheet_model extends MY_Model {
 		if (array_key_exists ( 'end_day', $options )) {
 			$this->db->where ( 'day <=', $options ['end_day'] );
 		}
+		$this->db->join("variable","variable.category='time_category_$user_id' AND var_key = timesheet.category","LEFT");
 		$this->db->order_by ( 'day' );
 		$this->db->order_by('start_time');
 		$this->db->order_by ( 'end_time' );
+		$this->db->select("timesheet.*,variable.var_value");
 		$result =  $this->db->get ()->result ();
-		$this->_log();
 		return $result;
 	}
 
 	function insert()
 	{
 		$this->prepare_variables ();
+		$this->category = $this->variable->insert("time_category_$this->user_id",$this->category);
 		return $this->_insert ( 'timesheet' );
 	}
 
@@ -73,6 +75,7 @@ class Timesheet_model extends MY_Model {
 	{
 		if(empty($values)){
 			$this->prepare_variables();
+			$this->category = $this->variable->insert("time_category_$this->user_id",$this->category);
 			$values = (array)$this;
 			
 		}

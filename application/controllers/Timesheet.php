@@ -50,6 +50,7 @@ class Timesheet extends MY_Controller {
 	}
 	
 	public function insert(){
+		
 		 $this->timesheet->insert();
 		 redirect("timesheet");
 	}

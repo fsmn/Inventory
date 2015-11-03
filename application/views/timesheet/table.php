@@ -30,7 +30,7 @@ $total_time += $time_passed;
 echo round($time_passed,2);;?>
 </td>
 <td>
-<?php echo $entry->category; ?>
+<?php echo $entry->var_value; ?>
 </td>
 <td>
 <?php echo $entry->details; ?>
