@@ -25,7 +25,6 @@ class Variable_model extends MY_Model {
 		$this->db->where ( "category", $category );
 		$this->db->where ( "var_key", $key );
 		$result = $this->db->get ()->num_rows ();
-		$this->_log();
 		return $result;
 	}
 
@@ -60,7 +59,6 @@ class Variable_model extends MY_Model {
 		$this->db->order_by ( $order_field, $direction );
 		$this->db->from ( 'variable' );
 		$result = $this->db->get ()->result ();
-		$this->_log ();
 		return $result;
 	}
 }
