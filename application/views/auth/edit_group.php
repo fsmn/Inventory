@@ -7,16 +7,16 @@
 
 <?php echo form_open(current_url());?>
 
-      <p>
+<p>
             <?php echo form_label("Group Name:", 'group_name');?> <br />
             <?php echo form_input($group_name);?>
       </p>
 
-      <p>
+<p>
             <?php echo form_label("Description:", 'description');?> <br />
             <?php echo form_input($group_description);?>
       </p>
 
-      <p><?php echo form_submit('submit', "Save","class='btn btn-success'");?></p>
+<p><?php echo form_submit('submit', "Save","class='btn btn-success'");?></p>
 
 <?php echo form_close();?>

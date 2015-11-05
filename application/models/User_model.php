@@ -25,4 +25,6 @@ class User_model extends Ion_auth_model{
 		
 		
 	}
+	
+
 }

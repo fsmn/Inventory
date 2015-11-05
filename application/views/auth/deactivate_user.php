@@ -5,16 +5,16 @@
 
 <?php echo form_open("auth/deactivate/".$user->id);?>
 
-  <p>
+<p>
   	<?php echo form_label("Yes", 'confirm');?>
     <input type="radio" name="confirm" value="yes" checked="checked" />
     <?php echo form_label("No", 'confirm');?>
     <input type="radio" name="confirm" value="no" />
-  </p>
+</p>
 
-  <?php echo form_hidden($csrf); ?>
+<?php echo form_hidden($csrf); ?>
   <?php echo form_hidden(array('id'=>$user->id)); ?>
 
-  <p><?php echo form_submit('submit', "Deactivate","class='btn btn-danger edit'");?></p>
+<p><?php echo form_submit('submit', "Deactivate","class='btn btn-danger edit'");?></p>
 
 <?php echo form_close();?>

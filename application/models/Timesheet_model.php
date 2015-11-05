@@ -55,6 +55,9 @@ class Timesheet_model extends MY_Model {
 		if (array_key_exists ( 'end_day', $options )) {
 			$this->db->where ( 'day <=', $options ['end_day'] );
 		}
+		if(array_key_exists ('category',$options)){
+			$this->db->where('timesheet.category', $options['category']);
+		}
 		$this->db->join("variable","variable.category='time_category_$user_id' AND var_key = timesheet.category","LEFT");
 		$this->db->order_by ( 'day' );
 		$this->db->order_by('start_time');

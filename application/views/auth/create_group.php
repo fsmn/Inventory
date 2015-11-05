@@ -7,16 +7,16 @@
 
 <?php echo form_open("auth/create_group");?>
 
-      <p>
+<p>
             <?php echo form_label("Group Name:", 'group_name');?> <br />
             <?php echo form_input($group_name);?>
       </p>
 
-      <p>
+<p>
             <?php echo form_label("Description:", 'description');?> <br />
             <?php echo form_input($description);?>
       </p>
 
-      <p><?php echo form_submit('submit', "Add Group","class='button new btn btn-warning'");?></p>
+<p><?php echo form_submit('submit', "Add Group","class='button new btn btn-warning'");?></p>
 
 <?php echo form_close();?>

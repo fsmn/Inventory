@@ -1,8 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $total_time = 0;
+
+$buttons[] = array("text"=>"New Entry","href"=>base_url("timesheet/create?ajax=1"),"style"=>"new","class"=>"btn btn-default create dialog");
+$buttons[] = array("text"=>"Search","href"=>base_url("timesheet/search?ajax=1"),"style"=>"search","class"=>"btn btn-default create dialog");
 ?>
-<?php echo create_button_bar(array(array("text"=>"New Entry","href"=>base_url("timesheet/create?ajax=1"),"style"=>"new","class"=>"btn btn-default create dialog insert")));?>
+<?php echo create_button_bar($buttons);?>
 <div class='table-responsive'>
 <table class='table'>
 <tbody>
