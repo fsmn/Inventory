@@ -22,8 +22,8 @@ class Timesheet extends MY_Controller
 			}
 			$entries = $this->timesheet->get_for_user ( $this->ion_auth->get_user_id (), $options );
 			$data ['entries'] = $entries;
-			$data ['target'] = "timesheet/table";
 			$data ['title'] = "Time Tracker";
+			$data ['target'] = "timesheet/table";
 			$this->load->view ( 'page/index', $data );
 		}
 
@@ -47,7 +47,13 @@ class Timesheet extends MY_Controller
 				$data ['entries'] = $this->timesheet->get_for_user ( $user_id, $options );
 				$data ['target'] = "timesheet/table";
 				$data ['title'] = "Time Search Results for $user->first_name $user->last_name";
+				if($this->input->get("export")){
+					$this->load->helper ( "download" );
+					$data['filename'] = sprintf("%s_%s-timesheet_%s.csv",$user->first_name, $user->last_name, implode("_",$options));
+					$this->load->view ( "timesheet/export", $data );
+				}else{
 				$this->load->view ( 'page/index', $data );
+				}
 				
 			}
 			else {
