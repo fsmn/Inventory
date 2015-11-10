@@ -12,7 +12,7 @@
 <div class="form-group">
 <label class="col-sm-4 control-label no-wrap">Start Time:</label>
 <div class="col-sm-8">
-<input type="time" name="start_time" id="start_time" value="<?php echo get_value($entry,"start_time",date('H:i:s'));?>" required/>
+<input type="time" name="start_time" id="start_time" value="<?php echo get_value($entry,"start_time",date('H:i').":00");?>" required/>
 </div>
 </div>
 <div class="form-group">
