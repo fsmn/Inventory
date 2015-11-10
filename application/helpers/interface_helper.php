@@ -422,6 +422,8 @@ function add_fa_icon($class = array())
 		$output = "&nbsp;<i class='fa fa-exclamation-triangle'></i>";
 	} elseif (in_array ( "print", $class )) {
 		$output = "&nbsp;<i class='fa fa-print'></i>";
+	}elseif(in_array("time",$class)){
+		$output = "&nbsp;<i class'fa fa-clock-o'></i>";
 	} else {
 		$output = "";
 	}
