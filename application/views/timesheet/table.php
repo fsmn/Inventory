@@ -4,7 +4,9 @@ $total_time = 0;
 
 $buttons[] = array("text"=>"New Entry","href"=>base_url("timesheet/create?ajax=1"),"style"=>"new","class"=>"btn btn-default create dialog");
 $buttons[] = array("text"=>"Search","href"=>base_url("timesheet/search?ajax=1"),"style"=>"search","class"=>"btn btn-default create dialog","style"=>"refine");
+if($this->input->get("is_search")){
 $buttons[] = array("text"=>"Export","href"=> $_SERVER['REQUEST_URI']. "&export=true","style"=>"export","class"=>"btn btn-default export");
+}
 ?>
 <?php echo create_button_bar($buttons);?>
 <div class='table-responsive'>

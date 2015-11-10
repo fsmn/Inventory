@@ -14,17 +14,8 @@ class Timesheet extends MY_Controller
 
 		public function index ()
 		{
-			$options = array (
-					'day' => date ( 'Y-m-d' ) 
-			);
-			if ($this->input->get ( "show_all" )) {
-				$options = array ();
-			}
-			$entries = $this->timesheet->get_for_user ( $this->ion_auth->get_user_id (), $options );
-			$data ['entries'] = $entries;
-			$data ['title'] = "Time Tracker";
-			$data ['target'] = "timesheet/table";
-			$this->load->view ( 'page/index', $data );
+			//redirect to show the search for the current day
+			redirect(sprintf("timesheet/search?is_search=1&start_day=%s&end_day=%s&user=%s",date('Y-m-d'),date('Y-m-d'), $this->ion_auth->get_user_id ()));
 		}
 
 		public function search (  )
