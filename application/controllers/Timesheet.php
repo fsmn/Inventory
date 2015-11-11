@@ -106,7 +106,7 @@ class Timesheet extends MY_Controller {
 				"user_id" => $last_entry->user_id,
 				"day" => $last_entry->day,
 				"start_time" => $last_entry->end_time,
-				"end_time" => date ( "H:m" ) 
+				"end_time" => date ( "H:i" ) 
 		);
 		$this->timesheet->insert ( $values );
 		redirect ( "timesheet/search?is_search=1&start_day=$last_entry->day&end_day=$last_entry->day&user=$last_entry->user_id" );
