@@ -9,6 +9,13 @@ $buttons [] = array (
 		"href" => site_url ( "" ),
 		"style" => "default" 
 );
+
+$buttons [] = array(
+		"text"=>"Timesheet <i class='fa fa-clock-o'></i>",
+		"href"=>site_url("timesheet"),
+		"style"=>"default",
+);
+
 if ($this->ion_auth->in_group ( 1 )) {
 	$buttons [] = array (
 			"text" => "Assets",
@@ -27,11 +34,7 @@ $buttons [] = array (
 		"style" => "default" 
 );
 
-$buttons [] = array(
-		"text"=>"Timesheet <i class='fa fa-clock-o'></i>",
-		"href"=>site_url("timesheet"),
-		"style"=>"default",
-);
+
 $buttons[] = array(
 		"text" => "New Vendor",
 		"href" => site_url("vendor/create"),
