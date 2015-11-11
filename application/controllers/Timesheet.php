@@ -107,8 +107,7 @@ class Timesheet extends MY_Controller {
 				"day" => $last_entry->day,
 				"start_time" => $last_entry->end_time,
 				"end_time" => date ( "H:m" ) 
-		)
-		;
+		);
 		$this->timesheet->insert ( $values );
 		redirect ( "timesheet/search?is_search=1&start_day=$last_entry->day&end_day=$last_entry->day&user=$last_entry->user_id" );
 	}
@@ -146,13 +145,14 @@ class Timesheet extends MY_Controller {
 
 	public function update()
 	{
-			$this->timesheet->update ( $id );
-			redirect ( "timesheet" );
+		$id = $this->input->post ( "id" );
+		$this->timesheet->update ( $id );
+		redirect ( "timesheet" );
 	}
 
 	public function delete()
 	{
-		$id = $this->input->post("id");
+		$id = $this->input->post ( "id" );
 		$entry = $this->timesheet->get ( $id );
 		$this->timesheet->delete ( $id );
 		redirect ( "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user=$entry->user_id" );
