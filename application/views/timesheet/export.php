@@ -6,7 +6,7 @@ $fields = array (
 		"start_time" => "Start Time",
 		"end_time" => "End Time",
 		"total" => "Total",
-		"category" => "Category",
+		"var_value" => "Category",
 		"details" => "Details" 
 );
 $filename || $filename = "timesheet.csv";

@@ -34,7 +34,7 @@ class Timesheet extends MY_Controller {
 			}
 			$user = $this->user->get_user ( $user_id );
 			$data ['entries'] = $this->timesheet->get_for_user ( $user_id, $options );
-			$data ['target'] = "timesheet/table";
+			$data ['target'] = "timesheet/list";
 			$data ['title'] = "Time Search Results for $user->first_name $user->last_name";
 			if ($this->input->get ( "export" )) {
 				$this->load->helper ( "download" );

@@ -42,7 +42,7 @@ echo round($time_passed,2);;?>
 <td>
 <?php echo $entry->var_value; ?>
 </td>
-<td>
+<td style="max-width: 50em;">
 <?php echo $entry->details; ?>
 </td>
 
