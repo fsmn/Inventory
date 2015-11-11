@@ -17,8 +17,8 @@ $buttons[] = array("text"=>"Export","href"=> $_SERVER['REQUEST_URI']. "&export=t
 <tr>
 <td>
 <?php $inline_buttons = array();?>
-<?php $inline_buttons[] = array("text"=>"Edit","class"=>"button edit dialog insert","href"=>base_url("timesheet/edit/$entry->id?ajax=1"),"style"=>"edit");?>
-<?php $inline_buttons[] =  array("text"=>"Next  <i class='fa fa-arrow-down'></i>","class"=> "next","href"=>base_url("timesheet/next/$entry->id"),"title"=>"Next time entry starting at $entry->end_time","style"=>"btn");?>
+<?php $inline_buttons[] = array("text"=>"Edit","class"=>"btn-sm edit dialog insert","href"=>base_url("timesheet/edit/$entry->id?ajax=1"),"style"=>"edit");?>
+<?php $inline_buttons[] =  array("text"=>"Next  <i class='fa fa-arrow-down'></i>","class"=> "btn-sm next","href"=>base_url("timesheet/next/$entry->id"),"title"=>"Next time entry starting at $entry->end_time","style"=>"btn");?>
 
 <?php echo create_button_bar($inline_buttons);?>
 </td>

@@ -28,9 +28,9 @@ $buttons [] = array (
 );
 
 $buttons [] = array(
-		"text"=>"Timesheet",
+		"text"=>"Timesheet <i class='fa fa-clock-o'></i>",
 		"href"=>site_url("timesheet"),
-		"style" => "time",
+		"style"=>"default",
 );
 $buttons[] = array(
 		"text" => "New Vendor",
