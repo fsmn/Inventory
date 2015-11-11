@@ -1,5 +1,4 @@
 <?php
-
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 class Timesheet_model extends MY_Model {
 	var $user_id;
@@ -55,32 +54,38 @@ class Timesheet_model extends MY_Model {
 		if (array_key_exists ( 'end_day', $options )) {
 			$this->db->where ( 'day <=', $options ['end_day'] );
 		}
-		if(array_key_exists ('category',$options)){
-			$this->db->where('timesheet.category', $options['category']);
+		if (array_key_exists ( 'category', $options )) {
+			$this->db->where ( 'timesheet.category', $options ['category'] );
 		}
-		$this->db->join("variable","variable.category='time_category_$user_id' AND var_key = timesheet.category","LEFT");
+		$this->db->join ( "variable", "variable.category='time_category_$user_id' AND var_key = timesheet.category", "LEFT" );
 		$this->db->order_by ( 'day' );
-		$this->db->order_by('start_time');
+		$this->db->order_by ( 'start_time' );
 		$this->db->order_by ( 'end_time' );
-		$this->db->select("timesheet.*,variable.var_value");
-		$result =  $this->db->get ()->result ();
+		$this->db->select ( "timesheet.*,variable.var_value" );
+		$result = $this->db->get ()->result ();
 		return $result;
 	}
 
-	function insert()
+	function insert($values = array())
 	{
-		$this->prepare_variables ();
-		$this->category = $this->variable->insert("time_category_$this->user_id",$this->category);
+		if (empty ( $values )) {
+			$this->prepare_variables ();
+			$this->category = $this->variable->insert ( "time_category_$this->user_id", $this->category );
+		} else {
+			foreach ( $values as $key => $value ) {
+				$this->$key = $value;
+			}
+		}
+
 		return $this->_insert ( 'timesheet' );
 	}
 
 	function update($id, $values = array())
 	{
-		if(empty($values)){
-			$this->prepare_variables();
-			$this->category = $this->variable->insert("time_category_$this->user_id",$this->category);
-			$values = (array)$this;
-			
+		if (empty ( $values )) {
+			$this->prepare_variables ();
+			$this->category = $this->variable->insert ( "time_category_$this->user_id", $this->category );
+			$values = ( array ) $this;
 		}
 		return $this->_update ( 'timesheet', $id, $values );
 	}

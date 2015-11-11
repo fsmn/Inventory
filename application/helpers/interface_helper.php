@@ -49,7 +49,7 @@ if (! defined ( 'BASEPATH' ))
  *         id="er_2532">Edit Record</span></span>
  *        
  */
-function create_button ( $data )
+function create_button($data)
 {
 	if (array_key_exists ( "text", $data )) {
 		$tag = "a";
@@ -62,12 +62,10 @@ function create_button ( $data )
 			if (isset ( $data ["tag"] )) {
 				$tag = $data ["tag"];
 			}
-		}
-		else {
+		} else {
 			if (array_key_exists ( "href", $data )) {
 				$href = "href='" . $data ["href"] . "'";
-			}
-			else {
+			} else {
 				$href = "href='#'";
 			}
 		}
@@ -85,8 +83,7 @@ function create_button ( $data )
 				if (! is_array ( $data ["class"] )) {
 					$data ["class"] = explode ( " ", $data ["class"] );
 				}
-			}
-			else {
+			} else {
 				$data ["class"] = array ();
 			}
 			
@@ -121,13 +118,11 @@ function create_button ( $data )
 					$button = "<$enc_tag $enc_class $enc_id>$button</$enc_tag>";
 				}
 			}
-		}
-		else {
+		} else {
 			return $data ["text"];
 		}
 		return $button;
-	}
-	else {
+	} else {
 		return FALSE;
 	}
 }
@@ -139,7 +134,7 @@ function create_button ( $data )
  * @param array $options        	
  * @return string
  */
-function create_button_bar ( $buttons, $type = "list", $options = NULL )
+function create_button_bar($buttons, $type = "list", $options = NULL)
 {
 	$id = "";
 	$selection = "";
@@ -170,8 +165,7 @@ function create_button_bar ( $buttons, $type = "list", $options = NULL )
 		$contents = implode ( "</li><li>", $button_list );
 		$template = "<ul class='button-list'><li>$contents</li></ul>";
 		$output = sprintf ( "<div class='btn-group %s'  %s>%s</div>", $class, $id, $template );
-	}
-	elseif ($type == "toolbar") {
+	} elseif ($type == "toolbar") {
 		$contents = implode ( "", $button_list );
 		// $template = "<ul class='button-list'><li>$contents</li></ul>";
 		$output = sprintf ( "<div class='btn-group %s'  %s>%s</div>", $class, $id, $contents );
@@ -179,7 +173,7 @@ function create_button_bar ( $buttons, $type = "list", $options = NULL )
 	return $output;
 }
 
-function create_toolbar ( $buttons, $options = NULL )
+function create_toolbar($buttons, $options = NULL)
 {
 	return create_button_bar ( $buttons, "toolbar", $options );
 }
@@ -193,7 +187,7 @@ function create_toolbar ( $buttons, $options = NULL )
  * @param array $options
  *        	(envelope, class, attributes)
  */
-function create_edit_field ( $field_name, $value, $label, $options = array() )
+function create_edit_field($field_name, $value, $label, $options = array())
 {
 	$envelope = "p";
 	if (array_key_exists ( "envelope", $options )) {
@@ -251,14 +245,14 @@ function create_edit_field ( $field_name, $value, $label, $options = array() )
 	return implode ( "\r", $output );
 }
 
-function edit_field ( $field_name, $value, $label, $table, $id, $options = array() )
+function edit_field($field_name, $value, $label, $table, $id, $options = array())
 {
 	$options ["id"] = $id;
 	$options ["table"] = $table;
 	return create_edit_field ( $field_name, $value, $label, $options );
 }
 
-function inline_field ( $field_name, $object, $table, $options = array() )
+function inline_field($field_name, $object, $table, $options = array())
 {
 	$value = $object->$field_name;
 	$id = $object->id;
@@ -278,7 +272,7 @@ function inline_field ( $field_name, $object, $table, $options = array() )
 /**
  * create a persistent field that updates the database on blur through ajax
  * DEPRECATED for inline_field
- * 
+ *
  * @param string $field_name        	
  * @param string $value        	
  * @param string $table        	
@@ -324,7 +318,7 @@ function inline_field ( $field_name, $object, $table, $options = array() )
  * @param array $selections
  *        	@TODO add id option
  */
-function create_checkbox ( $name, $values, $selections = array() )
+function create_checkbox($name, $values, $selections = array())
 {
 	$output = array ();
 	foreach ( $values as $value ) {
@@ -337,7 +331,7 @@ function create_checkbox ( $name, $values, $selections = array() )
 	return implode ( "\r", $output );
 }
 
-function create_autocomplete ( $items, $selection, $id, $is_live = FALSE )
+function create_autocomplete($items, $selection, $id, $is_live = FALSE)
 {
 	$output [] = sprintf ( "<ul class='autocomplete-list' id='autocomplete-%s'>", $id );
 	foreach ( $items as $item ) {
@@ -360,7 +354,7 @@ function create_autocomplete ( $items, $selection, $id, $is_live = FALSE )
 	return implode ( "\r", $output );
 }
 
-function create_list ( $items )
+function create_list($items)
 {
 	$output = array ();
 	foreach ( $items as $item ) {
@@ -369,7 +363,7 @@ function create_list ( $items )
 	return json_encode ( $output );
 }
 
-function get_button_style ( $style )
+function get_button_style($style)
 {
 	$class = array (
 			"btn" 
@@ -384,6 +378,10 @@ function get_button_style ( $style )
 		case "notice" :
 			$class [] = "btn-info";
 			break;
+		case "small" :
+			$class [] = "btn-sm";
+			break;
+		
 		case "insert" :
 		case "new" :
 		// $class[] = "btn-warning";
@@ -406,42 +404,32 @@ function get_button_style ( $style )
  * @param array $class        	
  * @return string
  */
-function add_fa_icon ( $class = array() )
+function add_fa_icon($class = array())
 {
 	if (! is_array ( $class )) {
 		$class = explode ( " ", $class );
 	}
 	if (in_array ( "reorder", $class )) {
 		$output = "&nbsp;<i class='fa fa-shopping-cart'></i>";
-	}
-	elseif (in_array ( "export", $class )) {
+	} elseif (in_array ( "export", $class )) {
 		$output = "&nbsp;<i class='fa fa-cloud-download'></i>";
-	}
-	elseif (in_array ( "edit", $class )) {
+	} elseif (in_array ( "edit", $class )) {
 		$output = "&nbsp;<i class='fa fa-pencil-square-o'></i>";
-	}
-	elseif (in_array ( "update", $class )) {
+	} elseif (in_array ( "update", $class )) {
 		$output = "&nbsp;<i class='fa fa-arrow-up'></i>";
-	}
-	elseif (in_array ( "new", $class )) {
+	} elseif (in_array ( "new", $class )) {
 		$output = "&nbsp;<i class='fa fa-star'></i>";
-	}
-	elseif (in_array ( "details", $class )) {
+	} elseif (in_array ( "details", $class )) {
 		$output = "&nbsp;<i class='fa fa-eye'></i>";
-	}
-	elseif (in_array ( "refine", $class )) {
+	} elseif (in_array ( "refine", $class )) {
 		$output = "&nbsp;<i class='fa fa-search'></i>";
-	}
-	elseif (in_array ( "delete", $class )) {
+	} elseif (in_array ( "delete", $class )) {
 		$output = "&nbsp;<i class='fa fa-exclamation-triangle'></i>";
-	}
-	elseif (in_array ( "print", $class )) {
+	} elseif (in_array ( "print", $class )) {
 		$output = "&nbsp;<i class='fa fa-print'></i>";
-	}
-	elseif (in_array ( "time", $class )) {
+	} elseif (in_array ( "time", $class )) {
 		$output = "&nbsp;<i class='fa fa-clock-o'></i>";
-	}
-	else {
+	} else {
 		$output = "";
 	}
 	return $output;

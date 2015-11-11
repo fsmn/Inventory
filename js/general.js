@@ -314,8 +314,8 @@ function delete_entity(me){
 				if($(me).hasClass("inline")){
 					$(me).parent().remove();
 				}else{
-				$("#popup").html(data);
-				$("#my_dialog").modal("show");
+					$("#popup").html(data);
+					$("#my_dialog").modal("show");
 				}
 			},
 			error: function(data){

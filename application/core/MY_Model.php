@@ -48,6 +48,7 @@ class MY_Model extends CI_Model
         } else {
             return FALSE;
         }
+        $this->_log();
     }
 
     function _update ($db, $id, $values = NULL)

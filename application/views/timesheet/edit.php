@@ -36,6 +36,9 @@
 <div class="form-group">
 <div class="col-sm-offset-4 col-sm-8">
 <input type="submit" value="<?php echo ucfirst($action);?>" class="form-control insert btn-default"/>
+<?php if($action == "update"):?>
+&nbsp;<a href="<?php echo site_url("timesheet/delete");?>" class="delete delete-entry" id="delete_<?php echo $entry->id;?>">Delete</a>
+<?php endif; ?>
 </div>
 </div>
 </form>
