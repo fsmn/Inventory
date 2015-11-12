@@ -11,8 +11,13 @@ class MY_Controller extends CI_Controller
         if (! $this->ion_auth->logged_in()) {
          
             $uri = $_SERVER["REQUEST_URI"];
+            if(!$this->input->get("ajax")){
+            	
             if ($uri != "/auth") {
                 bake_cookie("uri", $uri);
+            }
+            }else{
+            	burn_cookie("uri");
             }
             redirect("auth/login");
         } else {
