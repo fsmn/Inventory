@@ -29,7 +29,7 @@
 <?php if(!empty($users)): ?>
 		<label class="col-sm-4 control-label no-wrap" for="User">User</label>
 		<div class="col-sm-8">
-	<?php echo form_dropdown("user",$users,$user_id,'class="form-control"'); ?>
+	<?php echo form_dropdown("user_id",$users,$user_id,'class="form-control"'); ?>
 	
 	</div>
 	<?php else: ?>

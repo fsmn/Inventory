@@ -29,10 +29,10 @@ $buttons[] = array("text"=>"Export","href"=> $_SERVER['REQUEST_URI']. "&export=t
 <?php endif; ?>
 </td>
 <td>
-<?php echo $entry->start_time; ?>
+<?php echo date('g:i a',strtotime("$entry->day $entry->start_time")); ?>
 </td>
 <td>
-<?php echo $entry->end_time; ?>
+<?php echo date('g:i a',strtotime("$entry->day $entry->end_time")); ?>
 </td>
 <td>
 <?php $time_passed = (strtotime($entry->day . $entry->end_time) - strtotime($entry->day . $entry->start_time))/3600;
