@@ -27,7 +27,6 @@ class Timesheet extends MY_Controller {
 					"category" 
 			);
 			$options = array ();
-			print $user_id;
 			foreach ( $fields as $field ) {
 				if ($value = $this->input->get ( $field )) {
 					$options [$field] = $value;
