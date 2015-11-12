@@ -13,20 +13,21 @@ class Timesheet extends MY_Controller {
 	public function index()
 	{
 		// redirect to show the search for the current day
-		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user=%s", date ( 'Y-m-d' ), date ( 'Y-m-d' ), $this->ion_auth->get_user_id () ) );
+		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user_id=%s", date ( 'Y-m-d' ), date ( 'Y-m-d' ), $this->ion_auth->get_user_id () ) );
 	}
 
 	public function search()
 	{
 		if ($this->input->get ( "is_search" )) {
-			$user_id = $this->input->get ( "user_id" ) || $user_id = $this->ion_auth->get_user_id ();
+			$user_id = $this->input->get ( "user_id" ) ;
+			$user_id || $user_id = $this->ion_auth->get_user_id ();
 			$fields = array (
 					"start_day",
 					"end_day",
 					"category" 
 			);
 			$options = array ();
-			
+			print $user_id;
 			foreach ( $fields as $field ) {
 				if ($value = $this->input->get ( $field )) {
 					$options [$field] = $value;
@@ -109,7 +110,7 @@ class Timesheet extends MY_Controller {
 				"end_time" => date ( "H:i" ) 
 		);
 		$this->timesheet->insert ( $values );
-		redirect ( "timesheet/search?is_search=1&start_day=$last_entry->day&end_day=$last_entry->day&user=$last_entry->user_id" );
+		redirect ( "timesheet/search?is_search=1&start_day=$last_entry->day&end_day=$last_entry->day&user_id=$last_entry->user_id" );
 	}
 
 	public function insert()
@@ -155,6 +156,6 @@ class Timesheet extends MY_Controller {
 		$id = $this->input->post ( "id" );
 		$entry = $this->timesheet->get ( $id );
 		$this->timesheet->delete ( $id );
-		redirect ( "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user=$entry->user_id" );
+		redirect ( "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user_id=$entry->user_id" );
 	}
 }
