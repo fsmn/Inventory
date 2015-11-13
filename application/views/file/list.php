@@ -1,13 +1,15 @@
 <?php
 $buttons[] = array("text"=>"Attach File","class"=>"create inline btn-xs","style"=>"new","id"=>"new-file_$id","href"=>site_url("file/create/$entity_type/$id"));
-echo create_button_bar($buttons,"toolbar");?>
+echo create_button_bar($buttons);?>
+<ul class="list-group">
 <? foreach($files as $file):?>
-<div class="row file-row" id="file-row_<?=$id;?>">
+<li class="row file-row list-group-item" id="file-row_<?=$id;?>">
 <a href="<?php echo base_url("uploads/$file->filename") ?>" target="_blank">
-<?=$file->description?>
+<?=$file->description?>&nbsp;<i class='fa fa-cloud-download'></i>
 </a>
 
-<? echo create_button(array("text"=>"Delete","style"=>"delete","class"=>"delete-file delete inline btn-xs","id"=>"delete-file_$file->id","href"=>site_url("file/delete/$file->id")));?>
+<? echo create_button_bar(array(array("text"=>"Delete","style"=>"delete","class"=>"delete-file delete inline btn-xs","id"=>"delete-file_$file->id","href"=>site_url("file/delete/$file->id"))));?>
 
-</div>
-<? endforeach;
+</li>
+<? endforeach;?>
+</ul>
