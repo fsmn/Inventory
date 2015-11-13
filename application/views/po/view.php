@@ -41,7 +41,9 @@ $order_buttons [] = array (
 );
 }
 ?>
-<?=create_button(array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank")); ?>
+<? $po_buttons[] = array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank");
+print create_button_bar($po_buttons);
+?>
 <div id="page-box">
 	<div class="address-row clearfix">
 		<div class="left-box">
@@ -70,6 +72,13 @@ $order_buttons [] = array (
 					<?php echo inline_field("quote",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
 					<?php endif; ?>
 					</ul>
+					<div id='files_<?=$order->id?>' class='rows file-rows'>
+					<?php
+$data['entity_type'] = "po";
+$data ['id'] = $order->id;
+$data ['files'] = $order->files;
+$this->load->view ( 'file/list', $data );
+?>
 				</div>
 
 			</fieldset>

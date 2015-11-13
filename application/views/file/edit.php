@@ -1,9 +1,9 @@
 <?php
 ?>
-<div class="row code-row new-row" id='file-row-new_<?php echo $asset_id?>'>
+<div class="row code-row new-row" id='file-row-new_<?php echo $entity_id?>'>
 
-<?php echo form_open_multipart("file/attach","class='form-inline'");?>
-<input type="hidden" name="asset_id" id="asset_id" value="<?=$asset_id?>" />
+<?php echo form_open_multipart("file/attach/$entity_type","class='form-inline'");?>
+<input type="hidden" name="entity_id" id="entity_id" value="<?=$entity_id?>" />
 	<input type="hidden" name="id" id="id" value="<?=get_value($file,'id');?>" />
 	<div class="form-group">
 		<label for="description" class="sr-only">Description: </label>

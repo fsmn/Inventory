@@ -1,8 +1,9 @@
 <?php
 class File_model extends MY_Model {
-	var $asset_id = '';
-	var $filename = '';
-	var $description = '';
+	var $entity_id;
+	var $entity_type;
+	var $filename;
+	var $description;
 
 	function __construct()
 	{
@@ -12,7 +13,8 @@ class File_model extends MY_Model {
 	function prepare_variables()
 	{
 		$variables = array (
-				"asset_id",
+				"entity_id",
+				"entity_type",
 				"filename",
 				"description" 
 		);
@@ -33,9 +35,10 @@ class File_model extends MY_Model {
 		return $this->_get ( "file", $id );
 	}
 
-	function get_for_asset($asset_id)
+	function get_for_entity($entity_type,$entity_id)
 	{
-		$this->db->where ( 'asset_id', $asset_id );
+		$this->db->where ( 'entity_id', $entity_id );
+		$this->db->where('entity_type',$entity_type);
 		$this->db->from ( 'file' );
 		$this->db->order_by ( 'filename' );
 		$result = $this->db->get ()->result ();

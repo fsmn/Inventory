@@ -22,7 +22,7 @@ class Asset extends MY_Controller {
 		
 		$asset = $this->asset->get ( $asset_id );
 		$asset->codes = $this->code->get_for_asset ( $asset_id );
-		$asset->files = $this->file->get_for_asset ( $asset_id );
+		$asset->files = $this->file->get_for_entity ( "asset",$asset_id );
 		$data ["asset"] = $asset;
 		$data ["target"] = "asset/view";
 		$data ["title"] = "$asset->product $asset->version";

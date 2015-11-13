@@ -23,10 +23,11 @@ class File extends MY_Controller {
 		$this->load->view ( 'file/view', $data );
 	}
 
-	function create($asset_id)
+	function create($entity_type,$id)
 	{
-		$data ['asset_id'] = $asset_id;
+		$data ['entity_id'] = $id;
 		$data ['action'] = "attach";
+		$data['entity_type'] = $entity_type;//the entity/table to which this file should be attached
 		$data ['target'] = "file/edit";
 		$data ['title'] = "Attach a file";
 		$data ['file'] = array ();
@@ -46,7 +47,8 @@ class File extends MY_Controller {
 			$file = $this->file_model->fetch_file ( $id );
 			$data ['file'] = $file;
 			$data ['error'] = '';
-			$data ['asset_id'] = $file->asset_id;
+			$data['entity_type'] = $file->entity_type;
+			$data ['entity_id'] = $file->entity_id;
 			$this->load->view ( 'barf', $data );
 		}
 	}
@@ -58,23 +60,32 @@ class File extends MY_Controller {
 		}
 	}
 
-	function attach()
+	/**
+	 *
+	 * @param int $entity
+	 */
+	function attach($entity_type)
 	{
 		$config ['upload_path'] = './uploads';
 		$config ['allowed_types'] = 'gif|jpg|png|pdf|rtf|docx|doc|xlsx|xls';
 		$config ['max_size'] = '1000';
-		$asset_id = $this->input->post ( 'asset_id' );
+		$entity_id = $this->input->post ( 'entity_id' );
 		$this->load->library ( 'upload', $config );
 		if (! $this->upload->do_upload ()) {
 			$this->session->set_flashdata ( "danger", $this->upload->display_errors () );
 		} else {
 			$file_data = $this->upload->data ();
 			$data ['filename'] = $file_data ['file_name'];
+			$data['entity_type'] = $entity_type;
 			$data ['description'] = $this->input->post ( 'description' );
-			$data ['asset_id'] = $asset_id;
+			$data ['entity_id'] = $entity_id;
 			$id = $this->file_model->insert ( $data );
 		}
-		redirect ( "asset/view/$asset_id" );
+		if($entity_type == "po"){
+			$this->load->model("po_model","po");
+			$entity_id = $this->po->get($entity_id)->po;
+		}
+		redirect ( "$entity_type/view/$entity_id" );
 	}
 }
 ?>

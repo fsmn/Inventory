@@ -93,8 +93,8 @@ if (! $is_inline) {
 		<legend>Files</legend>
 		<div id='files_<?=$asset->id?>' class='rows file-rows'>
 <?php
-
-$data ['asset_id'] = $asset->id;
+$data['entity_type'] = "asset";
+$data ['id'] = $asset->id;
 $data ['files'] = $asset->files;
 $this->load->view ( 'file/list', $data );
 ?>

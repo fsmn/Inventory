@@ -104,7 +104,9 @@ class PO extends MY_Controller {
 	{
 		$order = $this->po->get_by_po ( $po );
 		if ($order) {
+			$this->load->model("file_model","file");
 			$order->items = $this->item->get_for_po ( $order->id );
+			$order->files = $this->file->get_for_entity('po',$order->id);
 			$data ["order"] = $order;
 			if ($this->input->get ( "print" ) == 1) {
 				$data ["target"] = "po/print";
