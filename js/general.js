@@ -312,13 +312,15 @@ function delete_entity(me){
 			success: function(data){
 				console.log(data);
 				if($(me).hasClass("inline")){
-					$(me).parent().remove();
+					$("#file_row_" + my_id).remove();
+					
 				}else{
 					$("#popup").html(data);
 					$("#my_dialog").modal("show");
 				}
 			},
 			error: function(data){
+				$("#file_row_" + my_id).remove();
 				console.log(data);
 			}
 		}); 
