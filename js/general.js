@@ -46,13 +46,16 @@ $(document).on("click",".insert-time",function(){
 	me = $(this);
 	target = false;
 	time = new Date();
+	hours = format_time(time.getHours());
+	minutes = format_time(time.getMinutes());
+	console.log(minutes)
 	if(me.hasClass("start_time")){
 		target = "#start_time";
 	}else if(me.hasClass("end_time")){
 		target = "#end_time";
 	}
 	if(target){
-		$(target).val(time.getHours() + ":" + time.getMinutes());
+		$(target).val(hours + ":" + minutes);
 	}
 });
 
@@ -376,3 +379,12 @@ $(document).on("click | focus",".view-inline",function(e){
 		});
 	}
 });
+
+function format_time(t){
+if(t<10){
+	return "0" + t;
+}else{
+	return t;
+}
+	
+}
