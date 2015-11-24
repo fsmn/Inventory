@@ -42,6 +42,20 @@ $(document).on("click",".po-details",function(e){
 	}
 });
 
+$(document).on("click",".insert-time",function(){
+	me = $(this);
+	target = false;
+	time = new Date();
+	if(me.hasClass("start_time")){
+		target = "#start_time";
+	}else if(me.hasClass("end_time")){
+		target = "#end_time";
+	}
+	if(target){
+		$(target).val(time.getHours() + ":" + time.getMinutes());
+	}
+});
+
 /* Insert New Code for Assets */
 
 $(document).on("click",".create.inline",function(e){
