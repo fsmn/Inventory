@@ -10,13 +10,13 @@
 </div>
 </div>
 <div class="form-group">
-<label class="col-sm-4 control-label no-wrap">Start Time:</label>
+<label class="col-sm-4 control-label no-wrap">Start Time: <a href="#" class="insert-time start_time">(now)</a></label>
 <div class="col-sm-8">
 <input type="time" name="start_time" id="start_time" value="<?php echo get_value($entry,"start_time",date('H:i').":00");?>" required/>
 </div>
 </div>
 <div class="form-group">
-<label class="col-sm-4 control-label no-wrap">End Time:</label>
+<label class="col-sm-4 control-label no-wrap">End Time: <a href="#" class="insert-time end_time">(now)</a></label>
 <div class="col-sm-8">
 <input type="time" name="end_time" id="end_time" value="<?php echo get_value($entry,"end_time");?>"/>
 </div>
