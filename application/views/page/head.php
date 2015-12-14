@@ -3,6 +3,7 @@
 // head.php Chris Dart Mar 6, 2015 12:32:16 PM chrisdart@cerebratorium.com
 
 ?>
+<link rel="stylesheet" media="all" href="<?=base_url("/css/normalize.css");?>">
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" media="screen">
