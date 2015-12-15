@@ -24,7 +24,7 @@
 <div class="form-group">
 <label class="col-sm-4 control-label no-wrap">Category:</label>
 <div class="col-sm-8">
-<?php echo form_dropdown('category',$categories,get_value($entry,'category'),"required=required");?>
+<?php echo form_dropdown('category',$categories,get_value($entry,'category'),"required=required class='form-control'");?>
 </div>
 </div>
 <div class="form-group">
