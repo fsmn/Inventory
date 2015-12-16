@@ -12,7 +12,7 @@
 
             <?php echo form_input($first_name);?>
             </div>
-      </div>
+</div>
 
 <div class="form-group">
             <?php echo form_label("Last Name:", 'last_name',array("class"=>"col-sm-3 control-label"));?>  
@@ -20,7 +20,7 @@
 
             <?php echo form_input($last_name);?>
             </div>
-      </div>
+</div>
 
 <div class="form-group">
             <?php echo form_label("Password:", 'password',array("class"=>"col-sm-3 control-label"));?>  
@@ -28,7 +28,7 @@
 
             <?php echo form_input($password);?>
             </div>
-      </div>
+</div>
 
 <div class="form-group">
             <?php echo form_label("Confirm Password:", 'password_confirm',array("class"=>"col-sm-3 control-label"));?> 
@@ -36,14 +36,14 @@
 
             <?php echo form_input($password_confirm);?>
             </div>
-      </div>
+</div>
 
 <?php if ($this->ion_auth->is_admin()): ?>
 <div class="form-inline">
-<h4>Member of Groups</h4>
+	<h5>Member of Groups</h5>
 <?php foreach ($groups as $group):?>
 <div class="checkbox">
-<label class="checkbox">
+		<label class="checkbox">
               <?php
 		$gID = $group ['id'];
 		$checked = null;
@@ -56,17 +56,17 @@
 		}
 		?>
               <input type="checkbox" name="groups[]" class="
-	value="<?php echo $group['id'];?>" <?php echo $checked;?>>
+	value=" <?php echo $group['id'];?>" <?php echo $checked;?>>
               <?php echo $group['name'];?>
               </label>
-              </div>
+	</div>
 <?php endforeach?>
 
       <?php endif ?>
 </div>
-      <?php echo form_hidden('id', $user->id);?>
+<?php echo form_hidden('id', $user->id);?>
       <?php echo form_hidden($csrf); ?>
 <div class="form-group">
- <div class="col-sm-offset-3 col-sm-9"><?php echo form_submit('submit', "Save User","class='btn btn-default'");?></div>
+	<div class="col-sm-offset-3 col-sm-9"><?php echo form_submit('submit', "Save User","class='btn btn-default'");?></div>
 </div>
 <?php echo form_close();?>
