@@ -4,32 +4,43 @@
 <? endif;?>
 <div id="infoMessage"><?php echo $message;?></div>
 
-<?php echo form_open(uri_string());?>
+<?php echo form_open(uri_string(),array("class"=>"form-horizontal"));?>
 
 <div class="form-group">
-            <?php echo form_label("First Name:", 'first_name');?> <br />
-           <?php $first_name['class'] = "form-control";?>
-            <?php echo form_input($first_name,array("class"=>"form-control"));?>
+            <?php echo form_label("First Name:", 'first_name',array("class"=>"col-sm-3 control-label"));?>  
+            <div class="col-sm-9">
+
+            <?php echo form_input($first_name);?>
+            </div>
       </div>
 
 <div class="form-group">
-            <?php echo form_label("Last Name:", 'last_name');?> <br />
+            <?php echo form_label("Last Name:", 'last_name',array("class"=>"col-sm-3 control-label"));?>  
+            <div class="col-sm-9">
+
             <?php echo form_input($last_name);?>
+            </div>
       </div>
 
-<div class="form-group"
-            <?php echo form_label("Password:", 'password');?> <br />
+<div class="form-group">
+            <?php echo form_label("Password:", 'password',array("class"=>"col-sm-3 control-label"));?>  
+            <div class="col-sm-9">
+
             <?php echo form_input($password);?>
+            </div>
       </div>
 
-<div class="form-group"></div>
-            <?php echo form_label("Confirm Password:", 'password_confirm');?><br />
+<div class="form-group">
+            <?php echo form_label("Confirm Password:", 'password_confirm',array("class"=>"col-sm-3 control-label"));?> 
+            <div class="col-sm-9">
+
             <?php echo form_input($password_confirm);?>
+            </div>
       </div>
 
 <?php if ($this->ion_auth->is_admin()): ?>
-
-<h3>Member of Groups</h3>
+<div class="form-inline">
+<h4>Member of Groups</h4>
 <?php foreach ($groups as $group):?>
 <div class="checkbox">
 <label class="checkbox">
@@ -52,10 +63,10 @@
 <?php endforeach?>
 
       <?php endif ?>
-
+</div>
       <?php echo form_hidden('id', $user->id);?>
       <?php echo form_hidden($csrf); ?>
-
-<p><?php echo form_submit('submit', "Save User","class='btn default'");?></p>
-
+<div class="form-group">
+ <div class="col-sm-offset-3 col-sm-9"><?php echo form_submit('submit', "Save User","class='btn btn-default'");?></div>
+</div>
 <?php echo form_close();?>
