@@ -406,31 +406,36 @@ class Auth extends CI_Controller {
 					'name' => 'first_name',
 					'id' => 'first_name',
 					'type' => 'text',
-					'value' => $this->form_validation->set_value ( 'first_name' ) 
+					'value' => $this->form_validation->set_value ( 'first_name' ) ,
+					'class' => 'form-control',
 			);
 			$this->data ['last_name'] = array (
 					'name' => 'last_name',
 					'id' => 'last_name',
 					'type' => 'text',
-					'value' => $this->form_validation->set_value ( 'last_name' ) 
+					'value' => $this->form_validation->set_value ( 'last_name' ),
+					'class' => 'form-control',
 			);
 			$this->data ['email'] = array (
 					'name' => 'email',
 					'id' => 'email',
 					'type' => 'text',
-					'value' => $this->form_validation->set_value ( 'email' ) 
+					'value' => $this->form_validation->set_value ( 'email' ),
+					'class' => 'form-control',
 			);
 			$this->data ['password'] = array (
 					'name' => 'password',
 					'id' => 'password',
 					'type' => 'password',
-					'value' => $this->form_validation->set_value ( 'password' ) 
+					'value' => $this->form_validation->set_value ( 'password' ),
+					'class' => 'form-control',
 			);
 			$this->data ['password_confirm'] = array (
 					'name' => 'password_confirm',
 					'id' => 'password_confirm',
 					'type' => 'password',
-					'value' => $this->form_validation->set_value ( 'password_confirm' ) 
+					'value' => $this->form_validation->set_value ( 'password_confirm' ),
+					'class' => 'form-control',
 			);
 			$this->data ['target'] = 'auth/create_user';
 			$this->data['ajax'] = $this->input->get ( "ajax" );
