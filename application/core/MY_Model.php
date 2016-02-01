@@ -80,6 +80,7 @@ class MY_Model extends CI_Model
         } else {
             return FALSE;
         }
+        return $this->db->last_query();
     }
 
     function _log ($element = "warning")

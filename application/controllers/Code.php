@@ -57,8 +57,13 @@ class Code extends MY_Controller{
 	function insert(){
 		if($asset_id = $this->input->post("asset_id")){
 			$id = $this->code->insert();
-			$data['code'] = $this->code->get($id);
-			if($this->input->post("inline")){
+			$code = new stdClass();
+			$code->id=$id;
+			$code->var_value = humanize($this->input->post("type"),"_");
+			$code->value = $this->input->post("value");
+
+			$data["code"] = $code;
+			if($this->input->post("ajax")){
 				$this->load->view("code/row",$data);
 			}else{
 				redirect("asset/view/$asset_id");
@@ -73,7 +78,6 @@ class Code extends MY_Controller{
 					"type"=>$this->input->post("type"),
 					"value"=>$this->input->post("value"),
 			);
-			
 			$this->code->update($id,$values);
 			redirect("asset/view/" . $this->input->post("asset_id"));
 		}
@@ -81,9 +85,9 @@ class Code extends MY_Controller{
 	
 	function delete($id){
 		$asset_id = $this->code->get($id)->asset_id;
-		$this->code->delete($id);
+		$result = $this->code->delete($id);
 		if($this->input->post("ajax")){
-			echo TRUE;
+			echo $result;
 		}else{
 			redirect("asset/view/$asset_id");
 		}

@@ -14,7 +14,7 @@ if($action == "insert"):
 <span class="code code-element code-value">
 <input type="text" name="value" value="<?php echo get_value($code,"value");?>" id="new-value'" class="form-control"/>
 </span>
-<input type="submit" name="code-submit" class="form-control btn btn-default btn-xs" value="<?php echo ucfirst($action);?>"/>
+<input type="submit" name="code-submit" class="form-control btn btn-default btn-xs inline" id="submit_<?php echo $asset_id;?>" value="<?php echo ucfirst($action);?>"/>
 </div>
 </form>
 <?php if ($action == "insert"):?>

@@ -15,6 +15,25 @@ my_siblings.children("input").attr("required",false);
 	}
 });
 
+$(document).on("click","input[type='submit'].inline",function(e){
+	e.preventDefault();
+	my_form = $(this).parents('form');
+	my_action = my_form.attr("action");
+	my_parent = $(this).parents(".rows").attr("id");
+	form_data = $($(this).parents('form')).serialize();
+	$.ajax({
+		method: "post",
+		data: form_data + "&ajax=1",
+		url: my_action,
+		success: function(data){
+			$("#" + my_parent).append(data);
+			$(my_form).parents(".row").remove();
+			$(".rows .btn.create.inline").fadeIn();
+		}
+		
+	});
+});
+
 $(document).on('click','.delete',function(e){
 	e.preventDefault();
 	delete_entity(this);
@@ -64,8 +83,10 @@ $(document).on("click",".insert-time",function(){
 $(document).on("click",".create.inline",function(e){
 	e.preventDefault();
 	me = this;
+	
 	$(me).fadeOut();
-	my_parent = $(me).parents(".rows");
+	my_parent = $(me).parents(".rows").attr("id");
+	console.log(my_parent);
 	my_url = $(me).attr("href");
 	form_data = {
 		inline: true
@@ -75,7 +96,7 @@ $(document).on("click",".create.inline",function(e){
 		url: my_url,
 		data: form_data,
 		success: function(data){
-			$(my_parent).append(data);
+			$("#" + my_parent).append(data);
 			$(".new-row input[type='text']").focus();
 		}
 	});
@@ -135,6 +156,8 @@ $(document).on("keyup","#order-editor #po",function(){
 		}
 	});
 });
+
+
 
 $(document).ready(function() {
     // put the footer at the bottom of the window
@@ -221,6 +244,8 @@ $(document).on("click", ".field-envelope .save-multiselect",function(){
 	update_field(this, "multiselect");
 	
 });
+
+
 
 function update_field(me,my_type){
 	my_parent = $(me).parents(".field-envelope").attr("id");
@@ -313,11 +338,12 @@ function show_popup(me){
 function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
-	console.log(my_id);
+	my_parent = $(me).parents(".row").attr("id");
+console.log(my_id);
 
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
-		console.log(question);
+
 		form_data = {
 				ajax : 1,
 				id: my_id
@@ -328,16 +354,16 @@ function delete_entity(me){
 			url: target,
 			success: function(data){
 				console.log(data);
+
 				if($(me).hasClass("inline")){
-					$("#file_row_" + my_id).remove();
-					
+					$("#" + my_parent).remove();
+
 				}else{
 					$("#popup").html(data);
 					$("#my_dialog").modal("show");
 				}
 			},
 			error: function(data){
-				$("#file_row_" + my_id).remove();
 				console.log(data);
 			}
 		}); 

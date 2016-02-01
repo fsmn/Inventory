@@ -45,7 +45,7 @@ class Code_model extends MY_Model{
 
 	function delete($id)
 	{
-	    $this->_delete("code", $id);
+	   return $this->_delete("code", $id);
 	}
 
 	function delete_for_asset( $asset_id )
@@ -68,6 +68,7 @@ class Code_model extends MY_Model{
 
 	function get($id)
 	{
+
 	    return $this->_get("code",$id);
 	}
 
