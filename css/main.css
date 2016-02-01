@@ -212,16 +212,22 @@ input.error {
 
 .code-element {
 	display: inline-block;
-	width: 9em;
+	width: auto;
 }
 
 .code-element.code-type {
-	text-align: right;
 	padding-right: 1em;
 }
 
 .code-element.code-value {
-	width: 15em;
+}
+
+.code-row {
+	width: 100%;
+}
+
+.code-row .btn-group{
+	float: right;
 }
 
 input.price {

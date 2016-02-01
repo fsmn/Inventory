@@ -40,7 +40,7 @@
 
 <?php if ($this->ion_auth->is_admin()): ?>
 <div class="form-group">
-	<h5 class="col-sm-3 control-label">Groups</h5>
+	<label class="col-sm-3 control-label">Groups</label>
 <?php foreach ($groups as $group):?>
 <div class="checkbox  col-sm-offset-3">
 		<label class="checkbox">
