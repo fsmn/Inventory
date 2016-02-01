@@ -7,7 +7,7 @@ if (! isset ( $inline_edit )) {
 }
 ?>
 
-<div>
+<div class="entity">
 <?php
 $buttons [] = array (
 		"text" => "Edit",
@@ -33,8 +33,10 @@ if ($this->ion_auth->in_group(1)) {
 if (! $is_inline) {
 	echo create_button_bar ( $buttons );
 }
+
 ?>
-<h4 class='asset-header' id='asset-header_<?=$asset->id; ?>'>
+
+<h4 class='asset-header entity-header header' id='asset-header_<?=$asset->id; ?>'>
 		<a href="<?php echo site_url("asset/view/$asset->id");?>" id='<?=$asset->id?>'>
 <?=$asset->product;?>&nbsp;
 <?=$asset->version != ''?$asset->version:"";?>

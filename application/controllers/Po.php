@@ -222,7 +222,8 @@ class PO extends MY_Controller {
 				$this->input->post ( "field" ) => $value
 		);
 		$this->po->update ( $id, $values );
-		echo $value;
+		$title = "";
+		echo json_encode(array("value"=>$value,"title"=>$title));
 	}
 	
 	function request_approval($id = FALSE){

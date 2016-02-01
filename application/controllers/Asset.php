@@ -104,7 +104,10 @@ class Asset extends MY_Controller {
 				$this->input->post ( "field" ) => $value 
 		);
 		$this->asset->update ( $id, $values );
-		echo $value;
+		$asset = $this->asset->get($id);
+		$title = sprintf("%s %s %s", $asset->product,$asset->version != ''?$asset->version:"",$asset->name!=''?"($asset->name)":"");
+		echo json_encode(array("value"=>$value,"title"=>$title));
+
 	}
 
 	function delete()

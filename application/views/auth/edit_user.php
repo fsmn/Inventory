@@ -39,10 +39,10 @@
 </div>
 
 <?php if ($this->ion_auth->is_admin()): ?>
-<div class="form-inline">
-	<h5>Member of Groups</h5>
+<div class="form-group">
+	<h5 class="col-sm-3 control-label">Groups</h5>
 <?php foreach ($groups as $group):?>
-<div class="checkbox">
+<div class="checkbox  col-sm-offset-3">
 		<label class="checkbox">
               <?php
 		$gID = $group ['id'];
@@ -55,8 +55,7 @@
 			}
 		}
 		?>
-              <input type="checkbox" name="groups[]" class="
-	value=" <?php echo $group['id'];?>" <?php echo $checked;?>>
+              <input type="checkbox" name="groups[]" value=" <?php echo $group['id'];?>" <?php echo $checked;?>>
               <?php echo $group['name'];?>
               </label>
 	</div>

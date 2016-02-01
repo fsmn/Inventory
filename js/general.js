@@ -273,7 +273,8 @@ function update_field(me,my_type){
 	if(is_persistent && my_value == ""){
 		return false;
 	}
-	
+	my_header = $(me).parents("div.entity").children(".header").attr("id");
+
 	form_data = {
 			table: my_attr[0],
 			field: my_attr[1],
@@ -281,17 +282,23 @@ function update_field(me,my_type){
 			value: my_value,
 			category: my_category
 	};
-	console.log(form_data);
-
 	$.ajax({
 		type:"post",
+		dataType: "json",
 		url: base_url + my_attr[0] + "/update_value",
 		data: form_data,
 		success: function(data){
+			console.log(data);
 			if(!is_persistent){
-			$("#" + my_parent + " .live-field").html(data);
+				if(my_attr[0]== "asset"){
+					$("#" + my_header + " a").html(data['title']);
+				}
+			$("#" + my_parent + " .live-field").html(data['value']);
 			$("#" + my_parent + " .live-field").addClass("edit-field field").removeClass("live-field text");
 			}
+		},
+		error: function(data){
+			console.log(data);
 		}
 	});
 }
