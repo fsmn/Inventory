@@ -213,6 +213,7 @@ $(document).on("blur",".field-envelope .live-field.text input",function(){
 	
 	}else{
 		update_field(this, "text");
+		
 	}
 	return false;
 });
