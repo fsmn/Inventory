@@ -160,6 +160,11 @@ class Timesheet extends MY_Controller {
 		$id = $this->input->post ( "id" );
 		$entry = $this->timesheet->get ( $id );
 		$this->timesheet->delete ( $id );
-		redirect ( "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user_id=$entry->user_id" );
+		$target =  "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user_id=$entry->user_id";
+		if($this->input->post("ajax") == 1){
+			echo site_url( $target);
+		}else{
+		redirect ( $target );
+		}
 	}
 }

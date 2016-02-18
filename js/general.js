@@ -347,7 +347,6 @@ function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
 	my_parent = $(me).parents(".row").attr("id");
-console.log(my_id);
 
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
@@ -365,10 +364,11 @@ console.log(my_id);
 
 				if($(me).hasClass("inline")){
 					$("#" + my_parent).remove();
-
+				}else if($(me).hasClass("redirect")){
+					window.location.href = data;
 				}else{
 					$("#popup").html(data);
-					$("#my_dialog").modal("show");
+					$  ("#my_dialog").modal("show");
 				}
 			},
 			error: function(data){
