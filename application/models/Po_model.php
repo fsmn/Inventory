@@ -120,6 +120,8 @@ class PO_Model extends MY_Model {
 		$this->db->select ( "vendor.name as vendor" );
 		$this->db->order_by("po.approved","ASC");
 		$this->db->order_by ( "po.po_date", "desc" );
+		$this->db->order_by ( "po.po", "asc" );
+		
 		$result = $this->db->get ()->result ();
 		return $result;
 	}

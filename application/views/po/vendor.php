@@ -17,7 +17,7 @@
 <? endif; ?>
 <? if($url = get_value($order,"url",FALSE)): ?>
 <div class="attribute url">
-<a href='$order->url' target='_blank'><?=$url;?></a>
+<a href='<?php echo $url; ?>' target='_blank'><?=$url;?></a>
 </div>
 <? endif; ?>
 <? if($phone = get_value($order,"phone",FALSE)): ?>
