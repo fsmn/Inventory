@@ -1,7 +1,6 @@
 <?php
-
 ?><fieldset><legend><a href="<?=site_url("vendor/view/$vendor->id");?>">
-<?php echo get_value($vendor,"name",$vendor->vendor); ?></a>
+<?php echo get_value($vendor,"name",get_value($vendor,"vendor")); ?></a>
 </legend>
  <?// $this->load->view("vendor/navigation",array("id"=>$vendor->vendor_id)); ?>
 
