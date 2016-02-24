@@ -10,13 +10,6 @@
 <?php $types = ucfirst_array(get_value($vendor,"type",array()));?>
 <?php echo implode(", ",$types);?>
 <?php endif;?>
-<? if($customer_id = get_value($vendor,"customer_id",FALSE)): ?>
-<div class="attribute customer-id">
-<label for="customer_id">Customer ID: </label>
-<?=$customer_id; ?>
-</div>
-<? endif; ?>
-</div>
 <?php if($vendor->pos):?>
 <div class="order-block">
 <h3>Orders</h3>
