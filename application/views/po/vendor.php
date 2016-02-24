@@ -32,6 +32,12 @@
 <?=$fax; ?>
 </div>
 <? endif; ?>
+<? if($email = get_value($order,"email",FALSE)): ?>
+<div class="attribute email">
+<label for="email">Email: </label>
+<a href="mailto:<?php echo $email;?>"/><?php echo $email; ?>
+</div>
+<? endif; ?>
 <? if($customer_id = get_value($order,"customer_id",FALSE)): ?>
 <div class="attribute customer-id">
 <label for="customer_id">Customer ID: </label>
