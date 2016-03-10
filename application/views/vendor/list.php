@@ -2,6 +2,10 @@
 // list.php Chris Dart Mar 9, 2015 3:57:09 PM chrisdart@cerebratorium.com
 
 ?>
+<div class="filter">
+<input type="text" name="vendor-filter" id="vendor-filter"/>
+
+</div>
 <div class="vendor-list">
 <? foreach ($vendors as $vendor) :
     ?>
@@ -23,3 +27,12 @@
 <aside class="details-block float">
 </aside>
 </div>
+
+<script>
+$(document).on("keyup","#vendor-filter",function(){
+my_value = $(this).val();
+$(".vendor-block").hide();
+$("h4 a:contains('" + my_value + "')").parents(".vendor-block").show();
+});
+
+</script>
