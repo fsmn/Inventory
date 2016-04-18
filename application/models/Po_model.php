@@ -48,7 +48,7 @@ class PO_Model extends MY_Model {
 		$this->db->select("users.first_name,users.last_name,users.email as user_email");
 		$this->db->select("CONCAT(`approvers`.`first_name`,' ', `approvers`.`last_name`) as approver, approvers.email as approver_email",FALSE);
 		$this->db->select ( "po.*" );
-		$this->db->select ( "vendor.name as vendor,vendor.contact,vendor.address,vendor.locality,vendor.url,vendor.phone,vendor.fax,vendor.email,vendor.customer_id" );
+		//$this->db->select ( "vendor.name as vendor,vendor.contact,vendor.address,vendor.locality,vendor.url,vendor.phone,vendor.fax,vendor.email,vendor.customer_id" );
 		$result = $this->db->get ()->row ();
 		return $result;
 	}

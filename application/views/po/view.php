@@ -47,7 +47,7 @@ print create_button_bar($po_buttons);
 <div id="page-box">
 	<div class="address-row clearfix">
 		<div class="left-box">
-		<? $this->load->view('vendor/details',array("vendor"=>$order)); ?>
+		<? $this->load->view('vendor/details',array("vendor"=>$order->vendor)); ?>
 		</div>
 		<div class="right-box">
 			<fieldset>
@@ -80,7 +80,7 @@ $data ['files'] = $order->files;
 $this->load->view ( 'file/list', $data );
 ?>
 				</div>
-
+			</div>
 			</fieldset>
 		</div>
 	</div>
