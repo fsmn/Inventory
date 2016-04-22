@@ -251,6 +251,7 @@ class PO extends MY_Controller {
 				$approver_id = $this->input->post("approver_id");
 				$this->po->update($id,array("approver_id"=>$approver_id));
 				$po = $this->po->get($id);
+				$po->vendor = $this->vendor->get($po->vendor_id);
 				$this->_notify("approval_request",$po);
 				$this->session->set_flashdata("warning",sprintf("The approval request has been sent to %s at %s",$po->approver,  $po->approver_email));
 				redirect("po/view/$po->po");
