@@ -248,6 +248,7 @@ class PO extends MY_Controller {
 				$this->load->view("page/index",$data);
 			}
 		}elseif($id = $this->input->post("id")){
+				$this->load->model ( "vendor_model", "vendor" );
 				$approver_id = $this->input->post("approver_id");
 				$this->po->update($id,array("approver_id"=>$approver_id));
 				$po = $this->po->get($id);
