@@ -42,7 +42,7 @@ if (! $is_inline) {
 <?=$asset->version != ''?$asset->version:"";?>
 <?=$asset->name!=''?"&nbsp;($asset->name)":""; ?></a>
 	</h4>
-	<div class='asset-details' id='details_<?=$asset->id?>'>
+	<div class='asset-details details' id='details_<?=$asset->id?>'>
 		<p>
 			<b>Developer:</b>&nbsp;
 			<a href="<?=site_url("vendor/view/$asset->vendor_id"); ?>"><?=$asset->vendor?></a>
@@ -57,16 +57,13 @@ if (! $is_inline) {
 <? endif; ?>
 <?=inline_field("year_acquired",$asset,"asset");?>
 <?=inline_field("source",$asset,"asset");?>
-<?=edit_field("purchase_price",number_format($asset->purchase_price,2),"Purchase Price","asset",$asset->id,array("money"=>TRUE));?>
+<?=inline_field("purchase_price",$asset,"asset",array("money"=>TRUE));?>
 		<p>
-<?=edit_field("status",$asset->status,"Status","asset",$asset->id,array("envelope"=>"span"));?>
+<?=inline_field("status",$asset,"asset");?>
 		
 	<? if ($asset->status != "Active" && $asset->status != "Inactive"):?>
-   <?php echo inline_field("year_removed",$asset,"asset",array("envelope"=>"span","label"=>" in "));?>
-		<?php if ($asset->status == "Sold"):?>
-		<?php echo edit_field("sale_price",$asset->sale_price," for ","asset",$asset->id,array("money"=>TRUE,"envelope"=>"span"));?>
-		<?php endif;?>
-	<?php endif; ?>
+  <?php $this->load->view("asset/status", array("asset"=>$asset));?>
+  <?php endif;?>
 	</p>
 
 <? if(get_value($asset,"po")):?>

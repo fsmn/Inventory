@@ -106,7 +106,11 @@ class Asset extends MY_Controller {
 		$this->asset->update ( $id, $values );
 		$asset = $this->asset->get($id);
 		$title = sprintf("%s %s %s", $asset->product,$asset->version != ''?$asset->version:"",$asset->name!=''?"($asset->name)":"");
-		echo json_encode(array("value"=>$value,"title"=>$title));
+		$extra = FALSE;
+		if($this->input->post("field") == "status" && $value != "Active" && $value !="Inactive"){
+			$extra = $this->load->view("asset/status",array("asset"=>$asset),TRUE);
+		}
+		echo json_encode(array("asset"=>$asset, "title"=>$title, "extra"=>$extra));
 
 	}
 

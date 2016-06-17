@@ -246,7 +246,10 @@ $(document).on("click", ".field-envelope .save-multiselect",function(){
 	
 });
 
-
+$(document).on('click','.dropdown-menu li a',function(e){
+	e.preventDefault();
+	console.log($(this).html());
+});
 
 function update_field(me,my_type){
 	my_parent = $(me).parents(".field-envelope").attr("id");
@@ -274,7 +277,7 @@ function update_field(me,my_type){
 		return false;
 	}
 	my_header = $(me).parents("div.entity").children(".header").attr("id");
-
+my_wrapper = $(me).parents(".details");
 	form_data = {
 			table: my_attr[0],
 			field: my_attr[1],
@@ -288,14 +291,17 @@ function update_field(me,my_type){
 		url: base_url + my_attr[0] + "/update_value",
 		data: form_data,
 		success: function(data){
-			console.log(data);
 			if(!is_persistent){
 				if(my_attr[0]== "asset"){
 					$("#" + my_header + " a").html(data['title']);
+					if(data['extra']){
+					$(my_wrapper).append(data['extra']);
+					}
 				}
 			$("#" + my_parent + " .live-field").html(data['value']);
 			$("#" + my_parent + " .live-field").addClass("edit-field field").removeClass("live-field text");
 			}
+				
 		},
 		error: function(data){
 			console.log(data);
@@ -377,6 +383,8 @@ function delete_entity(me){
 		}); 
 	}
 }
+
+
 
 $(document).on('blur','.view-inline', function(){
 	$(this).removeClass("active");
