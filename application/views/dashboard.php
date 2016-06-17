@@ -12,5 +12,3 @@ $buttons[] = array("text"=>"New Asset","href"=>site_url("asset/create"), "style"
 ?>
 
 <? echo create_button_bar($buttons,"toolbar");?>
-<?php $data['menu_items'] = array("One","Two","Three"); ?>
-<?php $this->load->view("page/dropdown",$data);?>
