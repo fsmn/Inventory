@@ -117,7 +117,7 @@ class PO extends MY_Controller {
 			}
 			$this->load->model ( "asset_model", "asset" );
 			$data ["assets"] = $this->asset->get_by_po ( $po );
-			$data ["title"] = "FSMN PO# $po";
+			$data ["title"] = "FSMN PO# e-$po";
 			$this->load->view ( "page/index", $data );
 		} else {
 			show_error ( "No such page" );

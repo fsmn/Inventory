@@ -9,7 +9,7 @@ $total = get_as_price ( strval ( $item_count ) * strval ( $price ) );
 	<input type="hidden" name="po_id" id="po_id" value="<?=get_value($item, 'po_id',$po_id); ?>"/>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="po">PO:&nbsp;<?=$po?>&nbsp;</label>
-		<div class="col-sm-8"><input type="text" class="form-control" name="po" id="po" required style="width: 4em" value="<?=get_value($item, 'po', $po);?>"/>
+		<div class="col-sm-8">e-<input type="text" class="form-control" name="po" id="po" required style="width: 4em" value="<?=get_value($item, 'po', $po);?>"/>
 		</div>
 	</div>
 	<div class="form-group">
