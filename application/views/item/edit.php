@@ -31,7 +31,7 @@ $total = get_as_price ( strval ( $item_count ) * strval ( $price ) );
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="category">Category: </label>
 		<div class="col-sm-8">
-<?=form_dropdown('category', $categories, get_value($item, 'category'), 'id="category" class="form-control"');?>
+<?=form_dropdown('category', $categories, urlencode(get_value($item, 'category')), 'id="category" class="form-control"');?>
 </div>
 	</div>
 	<div class="form-group">
