@@ -7,7 +7,7 @@ class MY_Controller extends CI_Controller
     function __construct ()
     {
         parent::__construct();
-
+        date_default_timezone_set('America/Chicago');
         if (! $this->ion_auth->logged_in()) {
          
             $uri = $_SERVER["REQUEST_URI"];
