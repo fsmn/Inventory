@@ -125,10 +125,10 @@ class Asset_model extends MY_Model
     			}
     		}
     	}
+    	//@TODO add sorting to UI
     	$this->db->order_by('asset.type', 'asc');
     	$this->db->order_by('asset.status', 'asc');
     	$this->db->order_by('asset.product', 'asc');
-    	$this->db->order_by('asset.version', 'asc');
     	$this->db->order_by('asset.name', 'asc');
     	$this->db->join("vendor","asset.vendor_id=vendor.id");
     	$this->db->select("vendor.name as vendor, asset.*");
