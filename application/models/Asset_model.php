@@ -12,6 +12,7 @@ class Asset_model extends MY_Model
     var $type;
     var $serial_number;
     var $status;
+    var $location;
     var $source;
     var $year_acquired;
     var $purchase_price;
@@ -31,6 +32,7 @@ class Asset_model extends MY_Model
                 "type",
                 "serial_number",
                 "status",
+        		"location",
                 "source",
         		"purchase_price",
                 "year_acquired",

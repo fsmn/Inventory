@@ -66,6 +66,14 @@
 		<div class="col-sm-8"> <?=form_dropdown('status', $statuses, get_value($asset, 'status'), 'id="status" class="form-control"');?>
 		</div>
 	</div>
+	<div class="form-group">
+		<label class="col-sm-4 control-label no-wrap" for="location">Location&nbsp;</label>
+		<div class="col-sm-8"> 
+		<input type="text" class="form-control" name="location" value="<?=get_value($asset,'location');?>"
+				id="location-<?=get_value($asset,"id","0");?>" class="location"
+			/>
+		</div>
+	</div>
 	<div id="year_removed_block" class="form-group <? if(get_value($asset, 'status') == "Active" || get_value($asset, 'status') == "Inactive"){echo "style='display:none'";}?>">
 		
 		<label class="col-sm-4 control-label no-wrap" for="year_removed">Year Removed</label>

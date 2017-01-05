@@ -36,41 +36,44 @@ if (! $is_inline) {
 
 ?>
 
-<h4 class='asset-header entity-header header' id='asset-header_<?=$asset->id; ?>'>
-		<a href="<?php echo site_url("asset/view/$asset->id");?>" id='<?=$asset->id?>'>
-<?=$asset->product;?>&nbsp;
-<?=$asset->version != ''?$asset->version:"";?>
-<?=$asset->name!=''?"&nbsp;($asset->name)":""; ?></a>
+<h4 class='asset-header entity-header header' id='asset-header_<?php echo $asset->id; ?>'>
+		<a href="<?php echo site_url("asset/view/$asset->id");?>" id='<?php echo $asset->id?>'>
+<?php echo $asset->product;?>&nbsp;
+<?php echo $asset->version != ''?$asset->version:"";?>
+<?php echo $asset->name!=''?"&nbsp;($asset->name)":""; ?></a>
 	</h4>
-	<div class='asset-details details' id='details_<?=$asset->id?>'>
+	<div class='asset-details details' id='details_<?php echo $asset->id?>'>
 		<p>
 			<b>Developer:</b>&nbsp;
-			<a href="<?=site_url("vendor/view/$asset->vendor_id"); ?>"><?=$asset->vendor?></a>
+			<a href="<?php echo site_url("vendor/view/$asset->vendor_id"); ?>"><?php echo $asset->vendor?></a>
 		</p>
-	<?=inline_field("product",$asset,"asset");?>
-	<?=inline_field("name",$asset,"asset");?>
-	<?=inline_field("version",$asset,"asset");?>
-	<?=inline_field("type",$asset,"asset");?>
+	<?php echo inline_field("product",$asset,"asset");?>
+	<?php echo inline_field("name",$asset,"asset");?>
+	<?php echo inline_field("version",$asset,"asset");?>
+	<?php echo inline_field("type",$asset,"asset");?>
 		
 <? if(!empty($asset->serial_number)): ?>
-	<?=inline_field("serial_number",$asset,"asset");?>
+	<?php echo inline_field("serial_number",$asset,"asset");?>
 <? endif; ?>
-<?=inline_field("year_acquired",$asset,"asset");?>
-<?=inline_field("source",$asset,"asset");?>
-<?=inline_field("purchase_price",$asset,"asset",array("money"=>TRUE));?>
+<?php echo inline_field("year_acquired",$asset,"asset");?>
+<?php echo inline_field("source",$asset,"asset");?>
+<?php echo inline_field("purchase_price",$asset,"asset",array("money"=>TRUE));?>
+<p>
+<?php echo inline_field("location",$asset,"asset");?>
+</p>
 		<p>
-<?=inline_field("status",$asset,"asset");?>
+<?php echo inline_field("status",$asset,"asset");?>
 		
 	<? if ($asset->status != "Active" && $asset->status != "Inactive"):?>
   <?php $this->load->view("asset/status", array("asset"=>$asset));?>
   <?php endif;?>
 	</p>
 
-<? if(get_value($asset,"po")):?>
+<?php if(get_value($asset,"po")):?>
 
 <p>
 			<b>Purchase Order: </b>&nbsp;
-			<a href="<?=site_url("po/view/$asset->po");?>"><?=$asset->po;?></a>
+			<a href="<?php echo site_url("po/view/$asset->po");?>"><?php echo $asset->po;?></a>
 		</p>
 <? endif; ?>
 
@@ -79,7 +82,7 @@ if (! $is_inline) {
 
 	<fieldset class='code-list list'>
 		<legend>Codes</legend>
-		<div id='codes_<?=$asset->id?>' class="rows code-rows"><?php
+		<div id='codes_<?php echo $asset->id?>' class="rows code-rows"><?php
 		$data ['asset_id'] = $asset->id;
 		$data ['codes'] = $asset->codes;
 		$this->load->view ( 'code/list', $data );
@@ -90,7 +93,7 @@ if (! $is_inline) {
 
 	<fieldset class="code-list list">
 		<legend>Files</legend>
-		<div id='files_<?=$asset->id?>' class='rows file-rows'>
+		<div id='files_<?php echo $asset->id?>' class='rows file-rows'>
 <?php
 $data['entity_type'] = "asset";
 $data ['id'] = $asset->id;

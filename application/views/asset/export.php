@@ -15,6 +15,7 @@ $fields = array(
 		"purchase_price"=>"Purchase Price",
 		"year_removed"=>"Year Removed",
 		"sale_price"=>"Sale Price",
+		"location"=>"Location",
 		"vendor"=>"Developer",
 );
 foreach (array_values($fields) as $value) {
