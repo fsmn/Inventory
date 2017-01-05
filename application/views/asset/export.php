@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+$date = date("Y-m-d-H-i");
 
-
-$filename = "assets-export-$year.csv";
+$filename = "assets-export-$date.csv";
 //Define the fields desired for output in this array
 $fields = array(
 		"product"=>"product",
