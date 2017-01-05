@@ -74,15 +74,20 @@ class Asset_model extends MY_Model
         return $this->_get_distinct("asset", $field);
     }
     
+    //@TODO merge this with search($where)
     function get_by_po($po){
     	$this->db->where("po",$po);
-    	$this->db->order_by("product");
+    	$this->db->order_by('asset.type', 'asc');
+    	$this->db->order_by('asset.status', 'asc');
+    	$this->db->order_by('asset.product', 'asc');
+    	$this->db->order_by('asset.name', 'asc');
     	$this->db->from("asset");
     	$this->db->join("vendor","vendor.id=asset.vendor_id");
     	$this->db->select("asset.*");
     	$this->db->select(
                 "vendor.name vendor, vendor.type vendor_type,vendor.contact,vendor.address,vendor.locality,vendor.url,vendor.phone,vendor.fax,vendor.email,vendor.customer_id");
     	$result = $this->db->get()->result();
+    	
     	return $result;
     }
 
