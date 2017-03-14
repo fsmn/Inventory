@@ -272,6 +272,14 @@ ul.unformatted li {
 	list-style: none;
 	line-height: initial;
 }
+.file-row ul {
+	
+	padding: 0;
+}
+.file-row ul li {
+	padding-right: 1em;
+	display: inline-block;
+}
 
 @media ( max-width : 666px) {
 	.left-box, .right-box {
