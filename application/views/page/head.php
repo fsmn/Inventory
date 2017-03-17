@@ -3,7 +3,7 @@
 // head.php Chris Dart Mar 6, 2015 12:32:16 PM chrisdart@cerebratorium.com
 
 ?>
-<meta http-equiv="refresh" content = "14400; url=<?php echo site_url("auth/logout");?>">
+<meta http-equiv="refresh" content = "86400; url=<?php echo site_url("auth/logout");?>">
 <link rel="stylesheet" media="all" href="<?=base_url("/css/normalize.css");?>">
 
 <!-- Latest compiled and minified CSS -->
