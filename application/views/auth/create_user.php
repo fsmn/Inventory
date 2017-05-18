@@ -12,18 +12,18 @@
  <div class="col-sm-9">
             <?php echo form_input($first_name);?>
             </div>
-      </div>
+</div>
 
 <div class="form-group">
             <?php echo form_label("Last Name:", 'last_name',array("class"=>"col-sm-3 control-label"));?>  <div class="col-sm-9">
             <?php echo form_input($last_name);?>
             </div>
-      </div>
+</div>
 <div class="form-group">
             <?php echo form_label("Email:", 'email', array("class"=>"col-sm-3 control-label"));?>  <div class="col-sm-9">
             <?php echo form_input($email);?>
       </div>
-      </div>
+</div>
 <div class="form-group">
             <?php echo form_label("Password:", 'password', array("class"=>"col-sm-3 control-label"));?>  <div class="col-sm-9">
             <?php echo form_input($password);?>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="form-group">
- <div class="col-sm-offset-3 col-sm-9">
+	<div class="col-sm-offset-3 col-sm-9">
 <?php echo form_submit('submit', "Create User","class='button new btn btn-default'");?></div>
 </div>
 <?php echo form_close();?>

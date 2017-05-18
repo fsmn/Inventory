@@ -17,22 +17,23 @@ $vendor_types = array (
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="name">Vendor</label>
 		<div class="col-sm-8">
-			<input type="text" class="form-control" name="name" id="name" style="width: auto" value="<?php echo get_value($vendor, 'name'); ?>" required/>
+			<input type="text" class="form-control" name="name" id="name" style="width: auto" value="<?php echo get_value($vendor, 'name'); ?>" required />
 		</div>
 	</div>
-	
-<div class="form-group">
-<div class="col-sm-offset-4 col-sm-8 checkbox-required">
+
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-8 checkbox-required">
 	<?php foreach($vendor_types as $type):?>
 		<div class="checkbox">
-		<label> 
-	<input type="checkbox" name="type[]" value="<?php echo $type; ?>" <?php echo in_array($type,$types)?"checked":"";?> aria-label="..." required />&nbsp;<?php echo ucfirst($type);?>
+				<label> <input type="checkbox" name="type[]" value="<?php echo $type; ?>" <?php echo in_array($type,$types)?"checked":"";?> aria-label="..."
+						required
+					/>&nbsp;<?php echo ucfirst($type);?>
 </label>
-</div>
+			</div>
 	<?php endforeach;?>
 	</div>
-				</div>
-	
+	</div>
+
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="contact">Contact</label>
 		<div class="col-sm-8">
@@ -42,7 +43,7 @@ $vendor_types = array (
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="address">Address</label>
 		<div class="col-sm-8">
-		<textarea id="address" name="address" class="form-control" style="width: auto; height: 5ex"><?php echo get_value($vendor, 'address'); ?></textarea>
+			<textarea id="address" name="address" class="form-control" style="width: auto; height: 5ex"><?php echo get_value($vendor, 'address'); ?></textarea>
 		</div>
 	</div>
 	<div class="form-group">

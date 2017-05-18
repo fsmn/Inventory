@@ -1,11 +1,14 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 // alert alert-s.php Chris Dart Mar 6, 2015 12:37:04 PM chrisdart@cerebratorium.com
-if(!isset($message)){
-    $message = FALSE;
+if (! isset ( $message )) {
+	$message = FALSE;
 }
 // MESSAGE Area
-if($this->session->flashdata("warning") ||  $message):?>
+if ($this->session->flashdata ( "warning" ) || $message) :
+	?>
 <div class="alert alert-warning" id="warning">
 <? $message = $message?$message:$this->session->flashdata("warning");?>
 <?=$this->session->flashdata("warning");?>
@@ -25,4 +28,5 @@ if($this->session->flashdata("warning") ||  $message):?>
 <div class="alert alert-danger" id="danger">
 <?=$this->session->flashdata("danger");?>
 </div>
+
 <? endif;

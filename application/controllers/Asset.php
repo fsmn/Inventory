@@ -22,7 +22,7 @@ class Asset extends MY_Controller {
 		
 		$asset = $this->asset->get ( $asset_id );
 		$asset->codes = $this->code->get_for_asset ( $asset_id );
-		$asset->files = $this->file->get_for_entity ( "asset",$asset_id );
+		$asset->files = $this->file->get_for_entity ( "asset", $asset_id );
 		$data ["asset"] = $asset;
 		$data ["target"] = "asset/view";
 		$data ["title"] = "$asset->product $asset->version";
@@ -104,14 +104,19 @@ class Asset extends MY_Controller {
 				$this->input->post ( "field" ) => $value 
 		);
 		$this->asset->update ( $id, $values );
-		$asset = $this->asset->get($id);
-		$title = sprintf("%s %s %s", $asset->product,$asset->version != ''?$asset->version:"",$asset->name!=''?"($asset->name)":"");
+		$asset = $this->asset->get ( $id );
+		$title = sprintf ( "%s %s %s", $asset->product, $asset->version != '' ? $asset->version : "", $asset->name != '' ? "($asset->name)" : "" );
 		$extra = FALSE;
-		if($this->input->post("field") == "status" && $value != "Active" && $value !="Inactive"){
-			$extra = $this->load->view("asset/status",array("asset"=>$asset),TRUE);
+		if ($this->input->post ( "field" ) == "status" && $value != "Active" && $value != "Inactive") {
+			$extra = $this->load->view ( "asset/status", array (
+					"asset" => $asset 
+			), TRUE );
 		}
-		echo json_encode(array("asset"=>$asset, "title"=>$title, "extra"=>$extra));
-
+		echo json_encode ( array (
+				"asset" => $asset,
+				"title" => $title,
+				"extra" => $extra 
+		) );
 	}
 
 	function delete()

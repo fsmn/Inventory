@@ -31,9 +31,9 @@ class Vendor extends MY_Controller {
 		$this->load->model ( "item_model", "item" );
 		
 		$vendor->pos = $this->po->get_for_vendor ( $id );
-// 		foreach($vendor->pos as $po){
-// 			$po->items[] = $this->item->get_by_po($po->id);
-// 		}
+		// foreach($vendor->pos as $po){
+		// $po->items[] = $this->item->get_by_po($po->id);
+		// }
 		$vendor->assets = $this->asset->get_for_vendor ( $id );
 		$data ["vendor"] = $vendor;
 		$data ["target"] = "vendor/view";
@@ -41,22 +41,24 @@ class Vendor extends MY_Controller {
 		
 		$this->load->view ( "page/index", $data );
 	}
-	
-	function create(){
-		$data['action'] = "insert";
-		$data['title'] = "Add a Vendor";
-		$data['vendor'] = FALSE;
-		$data['target'] = "vendor/edit";
-		if($this->input->get("ajax")==1){
-			$this->load->view("page/modal",$data);
-		}else{
-			$this->load->view("page/index",$data);
+
+	function create()
+	{
+		$data ['action'] = "insert";
+		$data ['title'] = "Add a Vendor";
+		$data ['vendor'] = FALSE;
+		$data ['target'] = "vendor/edit";
+		if ($this->input->get ( "ajax" ) == 1) {
+			$this->load->view ( "page/modal", $data );
+		} else {
+			$this->load->view ( "page/index", $data );
 		}
 	}
-	
-	function insert(){
-		$id = $this->vendor->insert();
-		redirect("vendor/view/$id");
+
+	function insert()
+	{
+		$id = $this->vendor->insert ();
+		redirect ( "vendor/view/$id" );
 	}
 
 	function edit($id)

@@ -1,7 +1,7 @@
 <?php
-$order_buttons = array();
-$inline_field_class = $order->approved?"readonly":"editable";
-if (! $order->approved || $this->ion_auth->get_user_id() == $order->approver) {
+$order_buttons = array ();
+$inline_field_class = $order->approved ? "readonly" : "editable";
+if (! $order->approved || $this->ion_auth->get_user_id () == $order->approver) {
 	$order_buttons [] = array (
 			"text" => "Edit",
 			"style" => "edit",
@@ -9,7 +9,7 @@ if (! $order->approved || $this->ion_auth->get_user_id() == $order->approver) {
 			"href" => site_url ( "po/edit/$order->id" ) 
 	);
 }
-if(! $order->approved && $this->ion_auth->get_user_id() != $order->approver_id){	
+if (! $order->approved && $this->ion_auth->get_user_id () != $order->approver_id) {
 	$order_buttons [] = array (
 			"text" => "Request Approval",
 			"style" => "new",
@@ -19,30 +19,43 @@ if(! $order->approved && $this->ion_auth->get_user_id() != $order->approver_id){
 					"create",
 					"btn-sm" 
 			),
-			"href" => site_url("po/request_approval/$order->id"), 
+			"href" => site_url ( "po/request_approval/$order->id" ) 
 	);
 }
 
-if($this->ion_auth->get_user_id() == $order->approver_id && !$order->approved){
-	$order_buttons[] = array(
-			"text"=>"Approve",
-			"style"=>"notice",
-			"class"=>array("grant-approval","btn-sm"),
-			"href"=>site_url("po/grant_approval/$order->id"),
+if ($this->ion_auth->get_user_id () == $order->approver_id && ! $order->approved) {
+	$order_buttons [] = array (
+			"text" => "Approve",
+			"style" => "notice",
+			"class" => array (
+					"grant-approval",
+					"btn-sm" 
+			),
+			"href" => site_url ( "po/grant_approval/$order->id" ) 
 	);
 }
-if(!$order->approved){
-$order_buttons [] = array (
-		"text" => "Delete Order",
-		"style" => "delete",
-		"class" => "delete-order delete btn-sm",
-		"id" => "delete-po_$order->id",
-		"href" => site_url ( "po/delete" ) 
-);
+if (! $order->approved) {
+	$order_buttons [] = array (
+			"text" => "Delete Order",
+			"style" => "delete",
+			"class" => "delete-order delete btn-sm",
+			"id" => "delete-po_$order->id",
+			"href" => site_url ( "po/delete" ) 
+	);
 }
 ?>
-<? $po_buttons[] = array("text"=>"Print Order","style"=>"print","class"=>"print-order","id"=>"print-order_$order->id", "href"=>site_url("po/view/$order->po?print=1"),"target"=>"_blank");
-print create_button_bar($po_buttons);
+<?
+
+
+$po_buttons [] = array (
+		"text" => "Print Order",
+		"style" => "print",
+		"class" => "print-order",
+		"id" => "print-order_$order->id",
+		"href" => site_url ( "po/view/$order->po?print=1" ),
+		"target" => "_blank" 
+);
+print create_button_bar ( $po_buttons );
 ?>
 <div id="page-box">
 	<div class="address-row clearfix">
@@ -55,7 +68,7 @@ print create_button_bar($po_buttons);
 				<?=$order_buttons?create_button_bar($order_buttons):""; ?>
 				<div id="order-info">
 					<ul class="unformatted">
-					<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
+						<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
 					<?php if($order->approver_id): ?>
 					<li><label for="approver">Approver:&nbsp;</label>
 					<?php echo $order->approver_id?$order->approver:"";?></li>
@@ -74,28 +87,28 @@ print create_button_bar($po_buttons);
 					</ul>
 					<div id='files_<?=$order->id?>' class='rows file-rows'>
 					<?php
-$data['entity_type'] = "po";
-$data ['id'] = $order->id;
-$data ['files'] = $order->files;
-$this->load->view ( 'file/list', $data );
-?>
+					$data ['entity_type'] = "po";
+					$data ['id'] = $order->id;
+					$data ['files'] = $order->files;
+					$this->load->view ( 'file/list', $data );
+					?>
 				</div>
-			</div>
+				</div>
 			</fieldset>
 		</div>
 	</div>
 </div>
 <div class="items">
 <?
-if(!$order->approved){
-$item_buttons [] = array (
-		"text" => "Add Item",
-		"style" => "new",
-		"class" => "btn-xs add-item create dialog",
-		"id" => "add-item_$order->id",
-		"href" => site_url ( "item/create/$order->po/$order->id" ) 
-);
-echo create_button_bar ( $item_buttons, "toolbar" );
+if (! $order->approved) {
+	$item_buttons [] = array (
+			"text" => "Add Item",
+			"style" => "new",
+			"class" => "btn-xs add-item create dialog",
+			"id" => "add-item_$order->id",
+			"href" => site_url ( "item/create/$order->po/$order->id" ) 
+	);
+	echo create_button_bar ( $item_buttons, "toolbar" );
 }
 ?>
 <div id='item-table'>
@@ -105,6 +118,7 @@ echo create_button_bar ( $item_buttons, "toolbar" );
 
 <?php if($assets):?>
 <a href="<?php echo site_url("asset/po_list/$order->po");?>" title="View ordered assets in service">View the above assets in service</a>
+
 
 
 <?php endif;

@@ -82,4 +82,5 @@
 
 <?php if($pos):?>
 <?php $this->load->view("po/list",array("pos"=>$pos));?>
+
 <?php endif;

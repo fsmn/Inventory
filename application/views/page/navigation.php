@@ -1,5 +1,4 @@
 <?php
-
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 // navigation.php Chris Dart Mar 6, 2015 12:45:16 PM chrisdart@cerebratorium.com
@@ -10,10 +9,10 @@ $buttons [] = array (
 		"style" => "default" 
 );
 
-$buttons [] = array(
-		"text"=>"Timesheet <i class='fa fa-clock-o'></i>",
-		"href"=>site_url("timesheet"),
-		"style"=>"default",
+$buttons [] = array (
+		"text" => "Timesheet <i class='fa fa-clock-o'></i>",
+		"href" => site_url ( "timesheet" ),
+		"style" => "default" 
 );
 
 if ($this->ion_auth->in_group ( 1 )) {
@@ -34,14 +33,13 @@ $buttons [] = array (
 		"style" => "default" 
 );
 
-
-$buttons[] = array(
+$buttons [] = array (
 		"text" => "New Vendor",
-		"href" => site_url("vendor/create"),
-		"style" =>"new",
-		"class"=>"create-vendor create dialog",
-		
-);
+		"href" => site_url ( "vendor/create" ),
+		"style" => "new",
+		"class" => "create-vendor create dialog" 
+)
+;
 
 $buttons [] = array (
 		"text" => "New PO",

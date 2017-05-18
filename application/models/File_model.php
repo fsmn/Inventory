@@ -35,10 +35,10 @@ class File_model extends MY_Model {
 		return $this->_get ( "file", $id );
 	}
 
-	function get_for_entity($entity_type,$entity_id)
+	function get_for_entity($entity_type, $entity_id)
 	{
 		$this->db->where ( 'entity_id', $entity_id );
-		$this->db->where('entity_type',$entity_type);
+		$this->db->where ( 'entity_type', $entity_type );
 		$this->db->from ( 'file' );
 		$this->db->order_by ( 'filename' );
 		$result = $this->db->get ()->result ();
@@ -48,8 +48,8 @@ class File_model extends MY_Model {
 	function delete_file($id)
 	{
 		$file = $this->get ( $id );
-		$this->load->helper("directory");
-		$file_path = dirname ( "./uploads/$file->filename");
+		$this->load->helper ( "directory" );
+		$file_path = dirname ( "./uploads/$file->filename" );
 		unlink ( $file_path );
 		$this->_delete ( "file", $id );
 	}

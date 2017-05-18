@@ -1,5 +1,4 @@
 <?php
-
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 class Auth extends CI_Controller {
 
@@ -16,7 +15,6 @@ class Auth extends CI_Controller {
 		
 		$this->lang->load ( 'auth' );
 		$this->load->helper ( 'language' );
-
 	}
 	
 	// redirect if needed, otherwise display the user list
@@ -39,7 +37,9 @@ class Auth extends CI_Controller {
 			foreach ( $this->data ['users'] as $k => $user ) {
 				$this->data ['users'] [$k]->groups = $this->ion_auth->get_users_groups ( $user->id )->result ();
 			}
-			$this->data['body_classes'] = array("auth");
+			$this->data ['body_classes'] = array (
+					"auth" 
+			);
 			$this->data ['target'] = "auth/index";
 			$this->data ['title'] = "User List";
 			$this->_render_page ( 'page/index', $this->data );
@@ -50,7 +50,9 @@ class Auth extends CI_Controller {
 	function login()
 	{
 		$this->data ['title'] = "Login";
-		$this->data['body_classes'] = array("not-logged-in");
+		$this->data ['body_classes'] = array (
+				"not-logged-in" 
+		);
 		
 		// validate form input
 		$this->form_validation->set_rules ( 'identity', 'Identity', 'required' );
@@ -406,40 +408,40 @@ class Auth extends CI_Controller {
 					'name' => 'first_name',
 					'id' => 'first_name',
 					'type' => 'text',
-					'value' => $this->form_validation->set_value ( 'first_name' ) ,
-					'class' => 'form-control',
+					'value' => $this->form_validation->set_value ( 'first_name' ),
+					'class' => 'form-control' 
 			);
 			$this->data ['last_name'] = array (
 					'name' => 'last_name',
 					'id' => 'last_name',
 					'type' => 'text',
 					'value' => $this->form_validation->set_value ( 'last_name' ),
-					'class' => 'form-control',
+					'class' => 'form-control' 
 			);
 			$this->data ['email'] = array (
 					'name' => 'email',
 					'id' => 'email',
 					'type' => 'text',
 					'value' => $this->form_validation->set_value ( 'email' ),
-					'class' => 'form-control',
+					'class' => 'form-control' 
 			);
 			$this->data ['password'] = array (
 					'name' => 'password',
 					'id' => 'password',
 					'type' => 'password',
 					'value' => $this->form_validation->set_value ( 'password' ),
-					'class' => 'form-control',
+					'class' => 'form-control' 
 			);
 			$this->data ['password_confirm'] = array (
 					'name' => 'password_confirm',
 					'id' => 'password_confirm',
 					'type' => 'password',
 					'value' => $this->form_validation->set_value ( 'password_confirm' ),
-					'class' => 'form-control',
+					'class' => 'form-control' 
 			);
 			$this->data ['target'] = 'auth/create_user';
-			$this->data['ajax'] = $this->input->get ( "ajax" );
-			if ($this->data['ajax'] == 1) {
+			$this->data ['ajax'] = $this->input->get ( "ajax" );
+			if ($this->data ['ajax'] == 1) {
 				$this->_render_page ( 'page/modal', $this->data );
 			} else {
 				$this->_render_page ( 'page/index', $this->data );
@@ -528,32 +530,32 @@ class Auth extends CI_Controller {
 				'name' => 'first_name',
 				'id' => 'first_name',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value ( 'first_name', $user->first_name ) ,
-				'class' => 'form-control',
-				
-		);
+				'value' => $this->form_validation->set_value ( 'first_name', $user->first_name ),
+				'class' => 'form-control' 
+		)
+		;
 		$this->data ['last_name'] = array (
 				'name' => 'last_name',
 				'id' => 'last_name',
 				'type' => 'text',
-				'value' => $this->form_validation->set_value ( 'last_name', $user->last_name ) ,
-				'class' => 'form-control',
-				
-		);
+				'value' => $this->form_validation->set_value ( 'last_name', $user->last_name ),
+				'class' => 'form-control' 
+		)
+		;
 		$this->data ['password'] = array (
 				'name' => 'password',
 				'id' => 'password',
-				'type' => 'password' ,
-				'class' => 'form-control',
-				
-		);
+				'type' => 'password',
+				'class' => 'form-control' 
+		)
+		;
 		$this->data ['password_confirm'] = array (
 				'name' => 'password_confirm',
 				'id' => 'password_confirm',
-				'type' => 'password' ,
-				'class' => 'form-control',
-				
-		);
+				'type' => 'password',
+				'class' => 'form-control' 
+		)
+		;
 		$this->data ['target'] = 'auth/edit_user';
 		$this->data ['ajax'] = $this->input->get ( "ajax" );
 		if ($this->data ['ajax'] == 1) {

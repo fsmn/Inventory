@@ -1,19 +1,21 @@
 <?php
 ?>
 
-<form name="timesheet-search" id="timesheet-search" method="get" action="<?php echo site_url("timesheet/search"); ?>" class="form-dialog form-horizontal">
+<form name="timesheet-search" id="timesheet-search" method="get" action="<?php echo site_url("timesheet/search"); ?>"
+	class="form-dialog form-horizontal"
+>
 	<input class="form-control" type="hidden" name="is_search" value=1 />
 	<div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="start_day">Start Day</label>
 		<div class="col-sm-8">
 			<input class="form-control" type="date" name="start_day" id="start_day" style="width: auto;" value="<?php echo date('Y-m-d');?>" />
-			
+
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="end_day">End Day</label>
 		<div class="col-sm-8">
-			
+
 			<input class="form-control" type="date" name="end_day" id="end_day" style="width: auto;" value="<?php echo date('Y-m-d');?>" />
 		</div>
 	</div>
@@ -24,7 +26,7 @@
 	
 	</div>
 	</div>
-		<div class="form-group">
+	<div class="form-group">
 	
 <?php if(!empty($users)): ?>
 		<label class="col-sm-4 control-label no-wrap" for="User">User</label>
@@ -33,7 +35,7 @@
 	
 	</div>
 	<?php else: ?>
-	<input type="hidden" name="user_id" value="<?php echo $user_id; ?>"/>
+	<input type="hidden" name="user_id" value="<?php echo $user_id; ?>" />
 	<?php endif; ?>
 	</div>
 	<div class="form-group">

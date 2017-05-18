@@ -76,7 +76,7 @@ class Timesheet_model extends MY_Model {
 				$this->$key = $value;
 			}
 		}
-
+		
 		return $this->_insert ( 'timesheet' );
 	}
 

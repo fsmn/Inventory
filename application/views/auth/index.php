@@ -1,5 +1,4 @@
 <?php
-
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 $buttons [] = array (
@@ -23,8 +22,7 @@ $buttons [] = array (
 <h2>Users</h2>
 
 <?=create_button_bar($buttons); ?>
-<table
-	class="table table-striped table-hover table bordered table-condensed table-responsive">
+<table class="table table-striped table-hover table bordered table-condensed table-responsive">
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>

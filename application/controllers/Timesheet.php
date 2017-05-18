@@ -19,7 +19,7 @@ class Timesheet extends MY_Controller {
 	public function search()
 	{
 		if ($this->input->get ( "is_search" )) {
-			$user_id = $this->input->get ( "user_id" ) ;
+			$user_id = $this->input->get ( "user_id" );
 			$user_id || $user_id = $this->ion_auth->get_user_id ();
 			$fields = array (
 					"start_day",
@@ -115,10 +115,9 @@ class Timesheet extends MY_Controller {
 	public function insert()
 	{
 		$this->timesheet->insert ();
-		$date = $this->input->post("day");
-		$user_id = $this->input->post("user_id");
-		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user_id=%s", $date, $date,$user_id ) );
-		
+		$date = $this->input->post ( "day" );
+		$user_id = $this->input->post ( "user_id" );
+		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user_id=%s", $date, $date, $user_id ) );
 	}
 
 	public function edit($id)
@@ -150,9 +149,9 @@ class Timesheet extends MY_Controller {
 	{
 		$id = $this->input->post ( "id" );
 		$this->timesheet->update ( $id );
-		$date = $this->input->post("day");
-		$user_id = $this->input->post("user_id");
-		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user_id=%s", $date, $date,$user_id ) );
+		$date = $this->input->post ( "day" );
+		$user_id = $this->input->post ( "user_id" );
+		redirect ( sprintf ( "timesheet/search?is_search=1&start_day=%s&end_day=%s&user_id=%s", $date, $date, $user_id ) );
 	}
 
 	public function delete()
@@ -160,11 +159,11 @@ class Timesheet extends MY_Controller {
 		$id = $this->input->post ( "id" );
 		$entry = $this->timesheet->get ( $id );
 		$this->timesheet->delete ( $id );
-		$target =  "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user_id=$entry->user_id";
-		if($this->input->post("ajax") == 1){
-			echo site_url( $target);
-		}else{
-		redirect ( $target );
+		$target = "timesheet/search?is_search=1&start_day=$entry->day&end_day=$entry->day&user_id=$entry->user_id";
+		if ($this->input->post ( "ajax" ) == 1) {
+			echo site_url ( $target );
+		} else {
+			redirect ( $target );
 		}
 	}
 }

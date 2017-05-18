@@ -70,13 +70,13 @@ class Item extends MY_Controller {
 
 	function delete()
 	{
-		if($id = $this->input->post ( "id" )) {
-			$item = $this->item->get($id);
-			$this->item->delete($id);
-			$data["target"] = "item/delete";
-			$data["title"] = sprintf("Item %s Deleted",$item->description);
-			$data["item"] = $item;
-			$this->load->view("page/modal",$data);
+		if ($id = $this->input->post ( "id" )) {
+			$item = $this->item->get ( $id );
+			$this->item->delete ( $id );
+			$data ["target"] = "item/delete";
+			$data ["title"] = sprintf ( "Item %s Deleted", $item->description );
+			$data ["item"] = $item;
+			$this->load->view ( "page/modal", $data );
 		}
 	}
 }

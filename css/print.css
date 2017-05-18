@@ -10,11 +10,11 @@ h1.title {
 	display: none;
 }
 
-.btn,.btn-group {
+.btn, .btn-group {
 	display: none;
 }
 
-nav,.btn-group {
+nav, .btn-group {
 	display: none;
 }
 
@@ -61,7 +61,7 @@ div.line {
 	margin: 0 auto;
 }
 
-.left-box,.right-box {
+.left-box, .right-box {
 	display: inline-block;
 	width: 45%;
 }
@@ -106,10 +106,11 @@ div.line {
 	margin-left: 150px;
 	margin-right: 150px;
 }
+
 .table {
 	width: 100%;
-  max-width: 100%;
-  margin-bottom: 20px;
+	max-width: 100%;
+	margin-bottom: 20px;
 }
 
 table.item-list.table tr td {

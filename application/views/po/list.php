@@ -1,6 +1,6 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
-$approved = -1;
+$approved = - 1;
 // list.php Chris Dart Mar 24, 2015 4:19:10 PM chrisdart@cerebratorium.com
 $grand_total = 0;
 ?>
@@ -22,7 +22,9 @@ $grand_total = 0;
 		<? foreach($pos as $po): ?>
 		<?php if($po->approved != $approved):?>
 		<?php $approved = $po->approved;?>
-			<tr><td colspan=7>Status: <?php echo $po->approved?"Approved":"Not Approved"; ?></td></tr>
+			<tr>
+			<td colspan=7>Status: <?php echo $po->approved?"Approved":"Not Approved"; ?></td>
+		</tr>
 		<?php endif; ?>
 		<?php if($po->po != $previous_po):?>
 	
@@ -58,8 +60,7 @@ $grand_total = 0;
 			</td>
 		</tr>
 		<tr class="details-row" id="details-row_<?php echo $po->po;?>">
-			<td>
-			</td>
+			<td></td>
 			<td colspan=4>
 				<?php echo $details_row;?>
 			</td>

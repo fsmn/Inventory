@@ -1,9 +1,11 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+
+defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 // head.php Chris Dart Mar 6, 2015 12:32:16 PM chrisdart@cerebratorium.com
 
 ?>
-<meta http-equiv="refresh" content = "86400; url=<?php echo site_url("auth/logout");?>">
+<meta http-equiv="refresh" content="86400; url=<?php echo site_url("auth/logout");?>">
 <link rel="stylesheet" media="all" href="<?=base_url("/css/normalize.css");?>">
 
 <!-- Latest compiled and minified CSS -->
@@ -12,7 +14,7 @@
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" media="screen">
 <!-- FontAwesome -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="screen"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="screen" />
 
 <!-- Application CSS -->
 <link rel="stylesheet" media="all" href="<?=base_url("/css/main.css");?>">

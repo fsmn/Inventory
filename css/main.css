@@ -1,13 +1,14 @@
 @CHARSET "UTF-8";
-@media (max-width:480px){
-	h1{
-	 font-size: 21px;
+
+@media ( max-width :480px) {
+	h1 {
+		font-size: 21px;
 	}
-	
 	.btn {
-	font-size: 12px;
+		font-size: 12px;
 	}
 }
+
 .login {
 	max-width: 350px;
 	margin: 0 auto;
@@ -161,6 +162,7 @@ table.item-list th.price, table.item-list th.total {
 
 .left-box fieldset, .right-box fieldset {
 	/* height: 2.65in; */
+	
 }
 
 .ui-dialog {
@@ -220,13 +222,14 @@ input.error {
 }
 
 .code-element.code-value {
+	
 }
 
 .code-row {
 	width: 100%;
 }
 
-.code-row .btn-group{
+.code-row .btn-group {
 	float: right;
 }
 
@@ -272,10 +275,11 @@ ul.unformatted li {
 	list-style: none;
 	line-height: initial;
 }
+
 .file-row ul {
-	
 	padding: 0;
 }
+
 .file-row ul li {
 	padding-right: 1em;
 	display: inline-block;

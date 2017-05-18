@@ -18,7 +18,6 @@
 <?php echo form_close();?>
 
 <p>
-		<a style="font-weight: bold;" href="forgot_password">Forgot your
-			password?</a>
+		<a style="font-weight: bold;" href="forgot_password">Forgot your password?</a>
 	</p>
 </div>

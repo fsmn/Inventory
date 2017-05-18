@@ -18,7 +18,7 @@ $buttons [] = array (
 		),
 		"style" => "edit" 
 );
-if ($this->ion_auth->in_group(1)) {
+if ($this->ion_auth->in_group ( 1 )) {
 	$buttons [] = array (
 			"text" => "Delete",
 			"href" => site_url ( "asset/delete" ),
@@ -95,7 +95,7 @@ if (! $is_inline) {
 		<legend>Files</legend>
 		<div id='files_<?php echo $asset->id?>' class='rows file-rows'>
 <?php
-$data['entity_type'] = "asset";
+$data ['entity_type'] = "asset";
 $data ['id'] = $asset->id;
 $data ['files'] = $asset->files;
 $this->load->view ( 'file/list', $data );

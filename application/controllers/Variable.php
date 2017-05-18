@@ -10,7 +10,7 @@ class Variable extends MY_Controller {
 
 	function show_all($category = FALSE)
 	{
-		if ($this->ion_auth->in_group(1)) {
+		if ($this->ion_auth->in_group ( 1 )) {
 			$data ["items"] = $this->variable->get_all ( $category );
 			$data ["categories"] = $this->variable->get_categories ( FALSE );
 			
@@ -37,7 +37,7 @@ class Variable extends MY_Controller {
 
 	function create()
 	{
-		if ($this->ion_auth->in_group(1)) {
+		if ($this->ion_auth->in_group ( 1 )) {
 			$data ["title"] = "Editing a Menu Item";
 			$data ["target"] = "menu/edit";
 			$data ["ajax"] = FALSE;
@@ -74,7 +74,7 @@ class Variable extends MY_Controller {
 				$page = $data ["target"];
 			}
 			
-			if ($this->ion_auth->in_group(1)) {
+			if ($this->ion_auth->in_group ( 1 )) {
 				$data ["action"] = "update";
 				$data ["item"] = $this->variable->get ( $id );
 			} else {
@@ -88,7 +88,7 @@ class Variable extends MY_Controller {
 
 	function insert()
 	{
-		if ($this->ion_auth->in_group(1)) {
+		if ($this->ion_auth->in_group ( 1 )) {
 			$item = $this->variable->insert ();
 			$this->session->set_flashdata ( "notice", "The item was successfully added" );
 			redirect ( "menu/show_all/$item->category" );
@@ -97,7 +97,7 @@ class Variable extends MY_Controller {
 
 	function update()
 	{
-		if ($this->ion_auth->in_group(1)) {
+		if ($this->ion_auth->in_group ( 1 )) {
 			if ($id = $this->input->post ( "id" )) {
 				$item = $this->variable->update ( $id );
 				$this->session->set_flashdata ( "notice", "The item was successfully updated" );

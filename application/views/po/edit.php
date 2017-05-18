@@ -10,14 +10,17 @@
 <?php if($action == "update"):?>
 <div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="po">Purchasase Order: </label>
-		<div  class="col-sm-8" >
-		e-<input type="text" class="form-control" name="po" id="po" readonly style="width: 4em" value="<?=get_value($po, 'po'); ?>" />
-		<span id="valid-po">&nbsp;</span></div>
+		<div class="col-sm-8">
+			e-
+			<input type="text" class="form-control" name="po" id="po" readonly style="width: 4em" value="<?=get_value($po, 'po'); ?>" />
+			<span id="valid-po">&nbsp;</span>
+		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="new-po">New Purchase Order#: </label>
 		<div class="col-sm-8">
-			e-<input type="text" class="form-control" name="new-po" id="new-po" style="width: 4em" value="<?=get_value($po, 'po'); ?>" />
+			e-
+			<input type="text" class="form-control" name="new-po" id="new-po" style="width: 4em" value="<?=get_value($po, 'po'); ?>" />
 			<span id="valid-new-po" class="fa"></span>
 		</div>
 	</div>
@@ -25,7 +28,8 @@
 <div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="po">Purchase Order: </label>
 		<div class="col-sm-8">
-			e-<input type="text" class="form-control" name="po" id="po" style="width: 5em" value="<?=get_value($po, 'po'); ?>" />
+			e-
+			<input type="text" class="form-control" name="po" id="po" style="width: 5em" value="<?=get_value($po, 'po'); ?>" />
 			<span id="valid-po" class="fa"></span>
 		</div>
 	</div>
@@ -33,8 +37,10 @@
 <?php endif;?>
 <div class="form-group">
 		<label class="col-sm-4 control-label no-wrap" for="po_date">Order Date</label>
-		<div class="col-sm-8" >
-		<input type="date" class="form-control" name="po_date" id="po_date" style="width: auto;" value="<?=get_value($po, 'po_date',date("Y-m-d"));?>" />
+		<div class="col-sm-8">
+			<input type="date" class="form-control" name="po_date" id="po_date" style="width: auto;"
+				value="<?=get_value($po, 'po_date',date("Y-m-d"));?>"
+			/>
 		</div>
 	</div>
 	<div class="form-group">

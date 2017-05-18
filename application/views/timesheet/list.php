@@ -53,7 +53,7 @@ if ($this->input->get ( "is_search" )) {
 				<td>
 <?php
 	
-$time_passed = (strtotime ( $entry->day . $entry->end_time ) - strtotime ( $entry->day . $entry->start_time )) / 3600;
+	$time_passed = (strtotime ( $entry->day . $entry->end_time ) - strtotime ( $entry->day . $entry->start_time )) / 3600;
 	$total_time += $time_passed;
 	echo round ( $time_passed, 2 );
 	;

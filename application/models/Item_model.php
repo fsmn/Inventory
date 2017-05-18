@@ -36,14 +36,14 @@ class Item_Model extends MY_Model {
 	{
 		$this->db->from ( "item" );
 		$this->db->where ( "po_id", $po_id );
-		$this->db->select ("item.*");
-		$this->db->select("(`item`.`price` * `item`.`item_count`) as `total`",FALSE);
+		$this->db->select ( "item.*" );
+		$this->db->select ( "(`item`.`price` * `item`.`item_count`) as `total`", FALSE );
 		$result = $this->db->get ()->result ();
 		return $result;
 	}
 
 	/**
-	 * DEPRECATED FOR get_for_po() 
+	 * DEPRECATED FOR get_for_po()
 	 */
 	function get_by_po($po_id)
 	{

@@ -1,5 +1,4 @@
 <?php
-
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 $header = "Assets";
 if (isset ( $po )) {
@@ -45,5 +44,6 @@ foreach ( $assets as $asset ) {
     <?php endforeach;?>
 </div>
 <aside class="details-block float"></aside>
+
 
 <?php endif;
