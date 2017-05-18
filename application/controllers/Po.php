@@ -104,11 +104,11 @@ class PO extends MY_Controller {
 	{
 		$order = $this->po->get_by_po ( $po );
 		if ($order) {
-			$this->load->model("vendor_model","vendor");
-			$this->load->model("file_model","file");
+			$this->load->model ( "vendor_model", "vendor" );
+			$this->load->model ( "file_model", "file" );
 			$order->items = $this->item->get_for_po ( $order->id );
-			$order->vendor = $this->vendor->get($order->vendor_id);
-			$order->files = $this->file->get_for_entity('po',$order->id);
+			$order->vendor = $this->vendor->get ( $order->vendor_id );
+			$order->files = $this->file->get_for_entity ( 'po', $order->id );
 			$data ["order"] = $order;
 			if ($this->input->get ( "print" ) == 1) {
 				$data ["target"] = "po/print";
@@ -127,7 +127,7 @@ class PO extends MY_Controller {
 	function create($vendor_id = FALSE)
 	{
 		$this->load->model ( "vendor_model", "vendor" );
-		$vendors = $this->vendor->get_all ("vendor");
+		$vendors = $this->vendor->get_all ( "vendor" );
 		$data ["vendors"] = get_keyed_pairs ( $vendors, array (
 				"id",
 				"name" 
@@ -207,12 +207,12 @@ class PO extends MY_Controller {
 
 	function update()
 	{
-		$id = $this->input->post("id");
-		$this->po->update ($id);
+		$id = $this->input->post ( "id" );
+		$this->po->update ( $id );
 		$po = $this->po->get ( $this->input->post ( "id" ) )->po;
 		redirect ( "po/view/$po" );
 	}
-	
+
 	function update_value()
 	{
 		$id = $this->input->post ( "id" );
@@ -221,58 +221,68 @@ class PO extends MY_Controller {
 			$value = implode ( ",", $value );
 		}
 		$values = array (
-				$this->input->post ( "field" ) => $value
+				$this->input->post ( "field" ) => $value 
 		);
 		$this->po->update ( $id, $values );
 		$title = "";
-		echo json_encode(array("value"=>$value,"title"=>$title));
+		echo json_encode ( array (
+				"value" => $value,
+				"title" => $title 
+		) );
 	}
-	
-	function request_approval($id = FALSE){
-		$this->load->model("user_model","user");
-		$approvers = $this->user->get_group_members(4);
-		//approvers cannot approve their own POs.
-		foreach($approvers as $key=>$approver){
-			if($approver->id == $this->ion_auth->get_user_id()){
-				unset($approvers[$key]);
+
+	function request_approval($id = FALSE)
+	{
+		$this->load->model ( "user_model", "user" );
+		$approvers = $this->user->get_group_members ( 4 );
+		// approvers cannot approve their own POs.
+		foreach ( $approvers as $key => $approver ) {
+			if ($approver->id == $this->ion_auth->get_user_id ()) {
+				unset ( $approvers [$key] );
 			}
 		}
-		if($id){
-			$data["target"] = "po/approval";
-			$data["title"] = "Request Approval";
-			$data["id"] = $id;
-			$data['approvers'] = get_keyed_pairs($approvers, array("id","user"));
-			if($this->input->get("ajax")){
-				$this->load->view("page/modal",$data);
-			}else{
-				$this->load->view("page/index",$data);
+		if ($id) {
+			$data ["target"] = "po/approval";
+			$data ["title"] = "Request Approval";
+			$data ["id"] = $id;
+			$data ['approvers'] = get_keyed_pairs ( $approvers, array (
+					"id",
+					"user" 
+			) );
+			if ($this->input->get ( "ajax" )) {
+				$this->load->view ( "page/modal", $data );
+			} else {
+				$this->load->view ( "page/index", $data );
 			}
-		}elseif($id = $this->input->post("id")){
-				$this->load->model ( "vendor_model", "vendor" );
-				$approver_id = $this->input->post("approver_id");
-				$this->po->update($id,array("approver_id"=>$approver_id));
-				$po = $this->po->get($id);
-				$po->vendor = $this->vendor->get($po->vendor_id);
-				$this->_notify("approval_request",$po);
-				$this->session->set_flashdata("warning",sprintf("The approval request has been sent to %s at %s",$po->approver,  $po->approver_email));
-				redirect("po/view/$po->po");
+		} elseif ($id = $this->input->post ( "id" )) {
+			$this->load->model ( "vendor_model", "vendor" );
+			$approver_id = $this->input->post ( "approver_id" );
+			$this->po->update ( $id, array (
+					"approver_id" => $approver_id 
+			) );
+			$po = $this->po->get ( $id );
+			$po->vendor = $this->vendor->get ( $po->vendor_id );
+			$this->_notify ( "approval_request", $po );
+			$this->session->set_flashdata ( "warning", sprintf ( "The approval request has been sent to %s at %s", $po->approver, $po->approver_email ) );
+			redirect ( "po/view/$po->po" );
 		}
-		
 	}
-	
-	function grant_approval($id){
-		$po = $this->po->get($id);
-		//user must be an approver and they must be the requested approver on this PO. 
-		if($this->ion_auth->get_user_id() == $po->approver_id && $this->ion_auth->in_group(4) ){
-			$this->po->update($id,array("approved"=>1));
-			$this->_notify("approval_granted",$po);
-			$this->_notify("business_office",$po);
-			$this->session->set_flashdata("warning","This PO has been approved and the requester and business office have both been notified");
-		}else{
-			$this->session->set_flashdata("warning","You are not authorized to approve this purchase order.");
+
+	function grant_approval($id)
+	{
+		$po = $this->po->get ( $id );
+		// user must be an approver and they must be the requested approver on this PO.
+		if ($this->ion_auth->get_user_id () == $po->approver_id && $this->ion_auth->in_group ( 4 )) {
+			$this->po->update ( $id, array (
+					"approved" => 1 
+			) );
+			$this->_notify ( "approval_granted", $po );
+			$this->_notify ( "business_office", $po );
+			$this->session->set_flashdata ( "warning", "This PO has been approved and the requester and business office have both been notified" );
+		} else {
+			$this->session->set_flashdata ( "warning", "You are not authorized to approve this purchase order." );
 		}
-		redirect("po/view/$po->po");
-		
+		redirect ( "po/view/$po->po" );
 	}
 
 	function po_exists($po)
@@ -284,33 +294,40 @@ class PO extends MY_Controller {
 		}
 		echo $output;
 	}
-	
-	function _notify($target,$po){
-		switch($target){
-			case "business_office":
-				$this->email->to("bookkeeper@fsmn.org");
-				$this->email->from($po->user_email);
-				$subject = sprintf("Purchase Order %s Has Been Approved",$po->po);
+
+	function _notify($target, $po)
+	{
+		switch ($target) {
+			case "business_office" :
+				$this->email->to ( "bookkeeper@fsmn.org" );
+				$this->email->from ( $po->user_email );
+				$subject = sprintf ( "Purchase Order %s Has Been Approved", $po->po );
 				break;
-			case "approval_request":
-				$subject = sprintf("Purchase Order %s Needs Your Approval",$po->po);
-				$this->email->from($po->user_email);
-				$this->email->to($po->approver_email);
-				$this->email->cc($po->user_email);
+			case "approval_request" :
+				$subject = sprintf ( "Purchase Order %s Needs Your Approval", $po->po );
+				$this->email->from ( $po->user_email );
+				if (base_url () == "https://inventory/") {
+					$this->email->to ( "chrisd@fsmn.org" );
+				} else {
+					$this->email->to ( $po->approver_email );
+				}
+				$this->email->cc ( $po->user_email );
 				
 				break;
-			case "approval_granted":
-				$subject = sprintf("Purchase Order %s Approval Has Been Granted.",$po->po);
-				$this->email->from($po->approver_email);
-				$this->email->to($po->user_email);
-				$this->email->cc($po->approver_email);
+			case "approval_granted" :
+				$subject = sprintf ( "Purchase Order %s Approval Has Been Granted.", $po->po );
+				$this->email->from ( $po->approver_email );
+				$this->email->to ( $po->user_email );
+				$this->email->cc ( $po->approver_email );
 				break;
 		}
-		$message = $this->load->view("po/email/$target",array("po"=>$po), TRUE);
-		$this->email->subject($subject);
-		$this->email->message($message);
-		$this->email->send();
-		
+		$message = $this->load->view ( "po/email/$target", array (
+				"po" => $po 
+		), TRUE );
+		$this->email->set_header ( "Disposition-Notification-To:", $po->user_email );
+		$this->email->subject ( $subject );
+		$this->email->message ( $message );
+		$this->email->send ();
 	}
 
 	function delete()
@@ -324,7 +341,5 @@ class PO extends MY_Controller {
 			$data ["po"] = $po;
 			$this->load->view ( "page/modal", $data );
 		}
-		
-		
 	}
 }
