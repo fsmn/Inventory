@@ -304,7 +304,7 @@ class PO extends MY_Controller {
 				$subject = sprintf ( "Purchase Order %s Has Been Approved", $po->po );
 				break;
 			case "approval_request" :
-				$subject = sprintf ( "Purchase Order %s Needs Your Approval", $po->po );
+				$subject = sprintf ( "IMPORTANT: Purchase Order %s Needs Your Approval", $po->po );
 				$this->email->from ( $po->user_email );
 				if (base_url () == "https://inventory/") {
 					$this->email->to ( "chrisd@fsmn.org" );
