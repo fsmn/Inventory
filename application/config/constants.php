@@ -86,4 +86,4 @@ defined ( 'EXIT__AUTO_MAX' ) or define ( 'EXIT__AUTO_MAX', 125 ); // highest aut
 
 define ( 'APP_NAME', 'Inventory System' );
 define ( 'APP_VERSION', "3.0-beta" );
-define ( 'BILLING_CONTACT', "Garth Morrisette" );
+define ( 'BILLING_CONTACT', "Linda Coffin" );
