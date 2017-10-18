@@ -299,7 +299,7 @@ class PO extends MY_Controller {
 	{
 		switch ($target) {
 			case "business_office" :
-				$this->email->to ( "bookkeeper@fsmn.org" );
+				$this->email->to ( "bookkeeper@fsmn.org,lindac@fsmn.org" );
 				$this->email->from ( $po->user_email );
 				$subject = sprintf ( "Purchase Order %s Has Been Approved", $po->po );
 				break;
