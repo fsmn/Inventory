@@ -44,7 +44,7 @@ if (! $order->approved) {
 	);
 }
 ?>
-<?
+<?php
 
 
 $po_buttons [] = array (
@@ -99,7 +99,7 @@ print create_button_bar ( $po_buttons );
 	</div>
 </div>
 <div class="items">
-<?
+<?php
 if (! $order->approved) {
 	$item_buttons [] = array (
 			"text" => "Add Item",
