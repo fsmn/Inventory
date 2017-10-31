@@ -19,7 +19,7 @@ $grand_total = 0;
 	</thead>
 	<tbody>
 		<?php $previous_po = 0;?>
-		<? foreach($pos as $po): ?>
+		<?php foreach($pos as $po): ?>
 		<?php if($po->approved != $approved):?>
 		<?php $approved = $po->approved;?>
 			<tr>
@@ -66,10 +66,10 @@ $grand_total = 0;
 			</td>
 		</tr>
 		<?php if(isset($po->total)):?>
-			<? $grand_total += $po->total;?>
+			<?php $grand_total += $po->total;?>
 		<?php  endif; ?>
 		<?php endif; ?>
-		<? endforeach;?>
+		<?php endforeach;?>
 	</tbody>
 	<tfoot>
 		<tr>

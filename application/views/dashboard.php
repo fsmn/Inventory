@@ -21,4 +21,4 @@ if ($this->ion_auth->in_group ( 1 )) {
 }
 ?>
 
-<? echo create_button_bar($buttons,"toolbar");?>
+<?php echo create_button_bar($buttons,"toolbar");?>

@@ -4,7 +4,7 @@
 	<input type="hidden" name="is_search" id="is_search" value="1" />
 	<div>
 		<label for="vendor_id">Developer&nbsp;</label>
-		<span id='vendor_list'> <?=form_dropdown('vendor_id', $developers, $this->input->get("vendor_id"), 'id="vendor_id" class="form-control"')?>
+		<span id='vendor_list'> <?php echo form_dropdown('vendor_id', $developers, $this->input->get("vendor_id"), 'id="vendor_id" class="form-control"')?>
 		</span>
 	</div>
 	<div class="product-info">
@@ -29,14 +29,14 @@
 	<div class="type-status">
 		<div class="column">
 			<label for="status">Status&nbsp;</label>
-			<span id='status'> <?=form_dropdown('status', $statuses, $this->input->get("status"), 'id="status" class="form-control"');?>
+			<span id='status'> <?php echo form_dropdown('status', $statuses, $this->input->get("status"), 'id="status" class="form-control"');?>
 		</span>
 		</div>
 
 
 		<div class="column">
 			<label for="type">Type&nbsp;</label>
-			<span id='type_field'> <?=form_dropdown('type', $types, $this->input->get("type"), 'id="type" class="form-control"');?>
+			<span id='type_field'> <?php echo form_dropdown('type', $types, $this->input->get("type"), 'id="type" class="form-control"');?>
 		</span>
 		</div>
 		<div class="column no-wrap">

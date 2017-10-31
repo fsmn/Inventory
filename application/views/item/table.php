@@ -45,28 +45,28 @@ $grand_total = 0;
 			$total = strval ( $item->item_count ) * strval ( $item->price );
 			?>
 	
-		<tr class="list" id="item-row_<?=$item->id?>">
-			<td><?=$item->item_count;?></td>
-			<td><?=$item->sku;?></td>
-			<td><?=$item->description;?></td>
-			<td><?=$item->category;?></td>
-			<td style="text-align: right"><?=get_as_price($item->price);?></td>
-			<td style="text-align: right"><?=get_as_price(strval($item->item_count)*strval($item->price));?></td>
+		<tr class="list" id="item-row_<?php echo $item->id?>">
+			<td><?php echo $item->item_count;?></td>
+			<td><?php echo $item->sku;?></td>
+			<td><?php echo $item->description;?></td>
+			<td><?php echo $item->category;?></td>
+			<td style="text-align: right"><?php echo get_as_price($item->price);?></td>
+			<td style="text-align: right"><?php echo get_as_price(strval($item->item_count)*strval($item->price));?></td>
 
-			<? $grand_total += $total;?>
+			<?php $grand_total += $total;?>
 
 		<td class="clear">
-			<? echo !$print || (!$hide_details && !$approved)?create_button_bar($buttons):""; ?>
+			<?php echo !$print || (!$hide_details && !$approved)?create_button_bar($buttons):""; ?>
 		</td>
 		</tr>
-				<? endforeach; 	?>
+				<?php endforeach; 	?>
 		</tbody>
 		<?php if(isset($item) && !$hide_details):?>
 		<tfoot>
 		<tr>
 			<td style="text-align: right" colspan="6">
 				Total:
-				<span id="total_<?=$item->po?>"><?=get_as_price($grand_total);?></span>
+				<span id="total_<?php echo $item->po?>"><?php echo get_as_price($grand_total);?></span>
 			</td>
 			<td></td>
 		</tr>

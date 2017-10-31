@@ -1,9 +1,9 @@
 <div class="login center-block">
-	<h2><?=APP_NAME;?></h2>
+	<h2><?php echo APP_NAME;?></h2>
 	<p><?php echo lang('login_subheading');?></p>
-<? if($message): ?>
-<div class="alert alert-warning"><?=$message;?></div>
-<? endif; ?>
+<?php if($message): ?>
+<div class="alert alert-warning"><?php echo $message;?></div>
+<?php endif; ?>
 <?php echo form_open("auth/login");?>
   <p>
     <?php echo form_input($identity,'',"class='form-control input-lg' placeholder='email address'");?>

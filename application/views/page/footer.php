@@ -8,9 +8,9 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 <footer>
 <?php if(isset($is_front)): ?>
 <span id="ci-version">
-<?="CI Version: v" . CI_VERSION;?>,
+<?php echo "CI Version: v" . CI_VERSION;?>,
 </span>
-	<span class='app-name'><?=APP_NAME;?>: <?=APP_VERSION;?></span>
+	<span class='app-name'><?php echo APP_NAME;?>: <?php echo APP_VERSION;?></span>
 
 <?php endif; ?>
 </footer>

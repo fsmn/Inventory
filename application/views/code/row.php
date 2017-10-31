@@ -14,7 +14,7 @@ $buttons [] = array (
 );
 
 ?>
-<div class="row code-row" id='code-row_<?=$code->id;?>'>
+<div class="row code-row" id='code-row_<?php echo $code->id;?>'>
 	<span class="code code-element code-type"><?php echo $code->var_value;?>:&nbsp;</span>
 	<span class="code code-element code-value"><?php echo $code->value;?></span>
 <?php echo create_button_bar($buttons);?>

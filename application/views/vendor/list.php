@@ -15,21 +15,21 @@ foreach ( $vendors as $vendor ) :
 	?>
 <div class="block vendor-block column">
 		<h4>
-			<a href="<?=site_url("vendor/view/$vendor->id");?>"><?= $vendor->name; ?></a>
+			<a href="<?php echo site_url("vendor/view/$vendor->id");?>"><?php echo  $vendor->name; ?></a>
 		</h4>
 	<?php $this->load->view("vendor/navigation",array("id"=>$vendor->id,"vendor"=>$vendor));?>
 	<!--<ul class="list-group">
-   <? foreach ($vendor->assets as $asset): ?>
+   <?php foreach ($vendor->assets as $asset): ?>
        <li
 			class="list-group-item asset-item"
-			id="asset-item_<?=$asset->id;?>">
-       <?=$asset->product;?><?=$asset->name?sprintf(" (%s)",$asset->name):"";?>
+			id="asset-item_<?php echo $asset->id;?>">
+       <?php echo $asset->product;?><?php echo $asset->name?sprintf(" (%s)",$asset->name):"";?>
        </li>
-    <? endforeach; ?>
+    <?php endforeach; ?>
         </ul>-->
 
 	</div>
-<? endforeach; ?>
+<?php endforeach; ?>
 <aside class="details-block float"></aside>
 </div>
 

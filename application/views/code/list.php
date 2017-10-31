@@ -8,7 +8,7 @@ $buttons [] = array (
 );
 print create_button_bar ( $buttons, "toolbar" );
 ?>
-<? foreach($codes as $code):?>
+<?php foreach($codes as $code):?>
 <?php $this->load->view("code/row",array("code"=>$code));?>
 <?
 

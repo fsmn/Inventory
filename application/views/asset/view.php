@@ -52,9 +52,9 @@ if (! $is_inline) {
 	<?php echo inline_field("version",$asset,"asset");?>
 	<?php echo inline_field("type",$asset,"asset");?>
 		
-<? if(!empty($asset->serial_number)): ?>
+<?php if(!empty($asset->serial_number)): ?>
 	<?php echo inline_field("serial_number",$asset,"asset");?>
-<? endif; ?>
+<?php endif; ?>
 <?php echo inline_field("year_acquired",$asset,"asset");?>
 <?php echo inline_field("source",$asset,"asset");?>
 <?php echo inline_field("purchase_price",$asset,"asset",array("money"=>TRUE));?>
@@ -64,7 +64,7 @@ if (! $is_inline) {
 		<p>
 <?php echo inline_field("status",$asset,"asset");?>
 		
-	<? if ($asset->status != "Active" && $asset->status != "Inactive"):?>
+	<?php if ($asset->status != "Active" && $asset->status != "Inactive"):?>
   <?php $this->load->view("asset/status", array("asset"=>$asset));?>
   <?php endif;?>
 	</p>
@@ -75,7 +75,7 @@ if (! $is_inline) {
 			<b>Purchase Order: </b>&nbsp;
 			<a href="<?php echo site_url("po/view/$asset->po");?>"><?php echo $asset->po;?></a>
 		</p>
-<? endif; ?>
+<?php endif; ?>
 
 </div>
 

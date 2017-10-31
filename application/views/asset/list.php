@@ -16,7 +16,7 @@ foreach ( $assets as $asset ) {
 }
 ?>
 
-<? if($this->ion_auth->in_group(1)): ?>
+<?php if($this->ion_auth->in_group(1)): ?>
 
 <h3><?php echo $header;?></h3>
 <a href="<?php echo $_SERVER['REQUEST_URI']. "&export=true"; ?>" class="btn btn-default">
@@ -29,16 +29,16 @@ foreach ( $assets as $asset ) {
 		<h4><?php echo $status;?></h4>
 		<ul class="list-group">
 
- <? foreach ($assets as $asset): ?>
+ <?php foreach ($assets as $asset): ?>
  
  <?php if($status == $asset->status):?>
 
-       <li class="" id="asset-item_<?=$asset->id;?>"><a href="<?php echo site_url("asset/view/$asset->id");?>"
+       <li class="" id="asset-item_<?php echo $asset->id;?>"><a href="<?php echo site_url("asset/view/$asset->id");?>"
 					class="view-inline list-group-item asset-item"
 				>
-       <?=$asset->product;?><?=$asset->name?sprintf(" (%s)",$asset->name):"";?></a></li>
+       <?php echo $asset->product;?><?php echo $asset->name?sprintf(" (%s)",$asset->name):"";?></a></li>
        <?php endif; ?>
-    <? endforeach; ?>
+    <?php endforeach; ?>
     </ul>
 	</div>
     <?php endforeach;?>

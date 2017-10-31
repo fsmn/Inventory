@@ -35,28 +35,28 @@ if (! isset ( $target )) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?=$window_title;?></title>
-<? $this->load->view("page/head");?>
+<title><?php echo $window_title;?></title>
+<?php $this->load->view("page/head");?>
 
 
 
 
-<body class="<?=implode(" ", $body_classes);?>">
+<body class="<?php echo implode(" ", $body_classes);?>">
 	<div class="page-wrapper">
 		<div class="page">
 			<header class="header"> </header>
-<? if($this->ion_auth->logged_in()):?>
+<?php if($this->ion_auth->logged_in()):?>
 <nav>
-<? $this->load->view("page/utility");?>
-<? $this->load->view("page/navigation");?>
+<?php $this->load->view("page/utility");?>
+<?php $this->load->view("page/navigation");?>
 </nav>
-<? endif;?>
-<? $this->load->view("page/messages"); ?>
+<?php endif;?>
+<?php $this->load->view("page/messages"); ?>
 <div class="content">
 				<h1 class="title"><?php echo $title; ?></h1>
-<? $this->load->view($target);?>
+<?php $this->load->view($target);?>
 </div>
-<? $this->load->view("page/footer");?>
+<?php $this->load->view("page/footer");?>
 </div>
 	</div>
 	<div id="popup"></div>

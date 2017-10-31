@@ -1,8 +1,8 @@
 <?php
 ?>
 
-<h3><?=$vendor->name; ?></h3>
-<? $this->load->view("vendor/navigation",array("id"=>$vendor->id)); ?>
+<h3><?php echo $vendor->name; ?></h3>
+<?php $this->load->view("vendor/navigation",array("id"=>$vendor->id)); ?>
 <?php $this->load->view("vendor/details",array("vendor"=>$vendor));?>
 <?php if($vendor->type):?>
 <label for="attribute type">Type:</label>
@@ -12,7 +12,7 @@
 <?php if($vendor->pos):?>
 <div class="order-block">
 	<h3>Orders</h3>
-<? $this->load->view("po/list",array("pos"=>$vendor->pos));?>
+<?php $this->load->view("po/list",array("pos"=>$vendor->pos));?>
 </div>
 <?php endif;?>
 <?php if($vendor->assets):?>

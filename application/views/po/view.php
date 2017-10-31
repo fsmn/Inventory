@@ -60,12 +60,12 @@ print create_button_bar ( $po_buttons );
 <div id="page-box">
 	<div class="address-row clearfix">
 		<div class="left-box">
-		<? $this->load->view('vendor/details',array("vendor"=>$order->vendor)); ?>
+		<?php $this->load->view('vendor/details',array("vendor"=>$order->vendor)); ?>
 		</div>
 		<div class="right-box">
 			<fieldset>
 				<legend>Order Details</legend>
-				<?=$order_buttons?create_button_bar($order_buttons):""; ?>
+				<?php echo $order_buttons?create_button_bar($order_buttons):""; ?>
 				<div id="order-info">
 					<ul class="unformatted">
 						<li><label for="approved">Is Approved:&nbsp;</label><?php echo $order->approved?"Yes":"No";?></li>
@@ -76,7 +76,7 @@ print create_button_bar ( $po_buttons );
 					<?php echo inline_field("po_date",$order,"po",array("label"=>"Order Date","type"=>"date", "envelope"=>"li", "class"=>$inline_field_class));?>
 					<?php echo inline_field("method",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
 					<?php echo inline_field("payment_type",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
-					<li><label for="orderer_id">Ordered By:&nbsp;</label><?=$order->first_name . " " . $order->last_name; ?> 
+					<li><label for="orderer_id">Ordered By:&nbsp;</label><?php echo $order->first_name . " " . $order->last_name; ?> 
 					</li>
 						<li><label for="billing_contact">Billing Contact:&nbsp;</label><?php echo $order->billing_contact;?>
 					</li>
@@ -85,7 +85,7 @@ print create_button_bar ( $po_buttons );
 					<?php echo inline_field("quote",$order,"po",array("envelope"=>"li","class"=>$inline_field_class));?>
 					<?php endif; ?>
 					</ul>
-					<div id='files_<?=$order->id?>' class='rows file-rows'>
+					<div id='files_<?php echo $order->id?>' class='rows file-rows'>
 					<?php
 					$data ['entity_type'] = "po";
 					$data ['id'] = $order->id;

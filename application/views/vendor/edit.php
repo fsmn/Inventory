@@ -10,7 +10,7 @@ $vendor_types = array (
 );
 ?>
 
-<form name="vendor_editor" id="vendor_editor" class="editor form-dialog form-horizontal" action="<? echo site_url("vendor/$action"); ?>"
+<form name="vendor_editor" id="vendor_editor" class="editor form-dialog form-horizontal" action="<?php echo site_url("vendor/$action"); ?>"
 	method="post"
 >
 	<input type="hidden" name="id" id="id" value="<?php echo get_value($vendor, 'id'); ?>" />
@@ -86,7 +86,7 @@ $vendor_types = array (
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
-			<input type="submit" class="btn save_vendor <?=$action;?> <?=implode(" ",get_button_style($action));?>" value="<?=ucfirst($action);?>" />
+			<input type="submit" class="btn save_vendor <?php echo $action;?> <?php echo implode(" ",get_button_style($action));?>" value="<?php echo ucfirst($action);?>" />
 		</div>
 	</div>
 </form>
