@@ -4,8 +4,6 @@
 		<a href="<?php echo site_url("vendor/view/$vendor->id");?>">
 <?php echo get_value($vendor,"name",get_value($vendor,"vendor")); ?></a>
 	</legend>
- <?// $this->load->view("vendor/navigation",array("id"=>$vendor->vendor_id)); ?>
-
 <div id="vendor-view">
 <?php if($contact = get_value($vendor,"contact",FALSE)):?>
 <div class="attribute contact"><?php echo $contact; ?></div>

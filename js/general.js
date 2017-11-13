@@ -33,12 +33,12 @@ $(document).on("click","input[type='submit'].inline",function(e){
 		
 	});
 });
-
-$(document).on('click','.delete',function(e){
+$(document).ready(function(){
+$('.delete').on('click',function(e){
 	e.preventDefault();
 	delete_entity(this);
 });
-
+});
 $(document).on("blur",".year",function(){
 	my_id = this.id;
 	my_val = Number($(this).val());
@@ -353,7 +353,6 @@ function delete_entity(me){
 	target = $(me).attr("href");
 	my_id = me.id.split("_")[1];
 	my_parent = $(me).parents(".row").attr("id");
-
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if(question){
 

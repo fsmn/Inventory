@@ -16,7 +16,7 @@ echo create_button_bar ( $buttons );
 			<li><a href="<?php echo base_url("uploads/$file->filename");?>" target="_blank"><?php echo "$file->description"?> <i class="fa fa-file-pdf-o"></i>
 				</a></li>
 			<li><a href="<?php echo site_url("file/delete/$file->id");?>" id="delete-file_<?php echo $file->id;?>"
-					class="delete-file btn btn-danger btn-xs inline"
+					class="delete-file btn btn-danger btn-xs inline delete"
 				>
 					Delete <i class="fa fa-exclamation-triangle"></i>
 				</a></li>
