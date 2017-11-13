@@ -100,6 +100,10 @@ class PO_Model extends MY_Model {
 			if (is_array ( $where )) {
 				foreach ( $where as $key => $value ) {
 					switch ($key) {
+						case "has_attachment":
+							$this->db->join("file","po.id = file.entity_id AND file.entity_type = 'po'");
+							$this->db->where("file.id !=",NULL);	
+							break;
 						case "description" :
 						case "sku" :
 							$this->db->like ( "item." . $key, "$value" );

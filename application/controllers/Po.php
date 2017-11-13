@@ -58,7 +58,8 @@ class PO extends MY_Controller {
 				"billing_contact",
 				"description",
 				"sku",
-				"quote" 
+				"quote" ,
+				"has_attachment",
 		);
 		
 		$where = NULL;

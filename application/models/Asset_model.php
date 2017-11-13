@@ -145,7 +145,6 @@ class Asset_model extends MY_Model {
 		$this->db->join ( "vendor", "asset.vendor_id=vendor.id" );
 		$this->db->select ( "vendor.name as vendor, asset.*" );
 		$result = $this->db->get ()->result ();
-		$this->_log();
 		return $result;
 	}
 }

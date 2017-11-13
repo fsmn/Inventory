@@ -5,7 +5,7 @@
 	<div>
 		<div class="column">
 			<label for="po">PO#:</label>
-			<input class="form-control" type="text" name="po" id="po" style="width: 5em" value="<?php echo $this->input->get($po, 'po'); ?>" />
+			<input class="form-control" type="text" name="po" id="po" style="width: 5em" value="<?php echo $this->input->get( 'po'); ?>" />
 		</div>
 
 
@@ -57,17 +57,13 @@
 			<label for="vendor_id">Vendor: </label>
 		<?php echo form_dropdown('vendor_id',$vendors,$this->input->get('vendor_id'),'class="form-control"');?>
 	</div>
-	</div>
-	<!-- <div>
 		<div class="column">
-			<label for="category">Order Category: </label>
-			<span id="category-view"> <?php echo form_dropdown ( 'category', $categories, $this->input->get('category' ) , 'id="category" class="form-control"' );?> </span>
-		</div class="column">
-		<div class="column">
-			<label for="quote">Vendor Quote Number: </label>
-			<input class="form-control" type="text" name="quote" id="quote" style="width: auto;" value="<?php echo $this->input->get( 'quote');?>" />
+			<label for="has_attachment">Has Attachment</label>
+			<input type="checkbox" name="has_attachment" class="form-check-input" value="1"
+				<?php echo $this->input->get("has_attachment")==1?"checked='checked'":"";?>
+			>
 		</div>
-	</div>  -->
+	</div>
 
 	<div>
 
