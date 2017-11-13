@@ -70,7 +70,10 @@
 					<input type="text" class="form-control" id="po" name="po" size="5" value="" />
 				</span>
 			</div>
-
+<div class="column">
+<label for="has_attachment">Has Attachment</label>
+<input type="checkbox" name="has_attachment" class="form-check-input" value="1" <?php echo $this->input->get("has_attachment")==1?"checked='checked'":"";?>>
+</div>
 		</div>
 
 		<div class="actions">

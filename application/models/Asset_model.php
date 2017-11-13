@@ -121,6 +121,10 @@ class Asset_model extends MY_Model {
 			if (is_array ( $where )) {
 				foreach ( $where as $key => $value ) {
 					switch ($key) {
+						case "has_attachment":
+							$this->db->join("file","asset.id = file.entity_id AND file.entity_type = 'asset'");
+							$this->db->where("file.id !=",NULL);
+							break;
 						case "name" :
 						case "serial_number" :
 						case "product" :
@@ -134,13 +138,14 @@ class Asset_model extends MY_Model {
 			}
 		}
 		// @TODO add sorting to UI
-		$this->db->order_by ( 'asset.type', 'asc' );
 		$this->db->order_by ( 'asset.status', 'asc' );
+		$this->db->order_by ( 'asset.type', 'asc' );
 		$this->db->order_by ( 'asset.product', 'asc' );
 		$this->db->order_by ( 'asset.name', 'asc' );
 		$this->db->join ( "vendor", "asset.vendor_id=vendor.id" );
 		$this->db->select ( "vendor.name as vendor, asset.*" );
 		$result = $this->db->get ()->result ();
+		$this->_log();
 		return $result;
 	}
 }
