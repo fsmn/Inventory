@@ -8,7 +8,7 @@
 	<div class="form-group">
 		<label for="description" class="sr-only">Description: </label>
 		<input type="text" name="description" id="description" class="form-control" value="<?php echo get_value($file,'description');?>"
-			placeholder="Description"
+			placeholder="Description" required
 		/>
 		<label for="userfile" class="sr-only">Attach a File</label>
 		<input type="file" name="userfile" class="form-control" size="20" />

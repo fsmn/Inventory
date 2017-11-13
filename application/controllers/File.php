@@ -66,10 +66,18 @@ class File extends MY_Controller {
 	 */
 	function attach($entity_type)
 	{
+
+		
+		$entity_id = $this->input->post ( 'entity_id' );
+		$original_name = $_FILES['userfile']['name'];
+		$extension = pathinfo($original_name, PATHINFO_EXTENSION);
+		$description = $this->input->post ( 'description' );
+		$data ['description'] = $description;
+		$config['file_ext_tolower'] = TRUE;
+		$config['file_name'] = sprintf("%s-%s-%s.%s", $entity_type, $entity_id,strtolower(preg_replace("/[^a-zA-Z0-9]+/", "", $description)), $extension);
 		$config ['upload_path'] = './uploads';
 		$config ['allowed_types'] = 'gif|jpg|png|pdf|rtf|docx|doc|xlsx|xls';
 		$config ['max_size'] = '1000';
-		$entity_id = $this->input->post ( 'entity_id' );
 		$this->load->library ( 'upload', $config );
 		if (! $this->upload->do_upload ()) {
 			$this->session->set_flashdata ( "danger", $this->upload->display_errors () );
