@@ -47,14 +47,36 @@ class Vendor_Model extends MY_Model {
 		return $this->_get ( "vendor", $id );
 	}
 
+	/**
+	 * get a list of vendors by frequency of use if commonly used (10 or more items), then alphabetical
+	 *
+	 * @param unknown $type        	
+	 */
 	function get_all($type = NULL)
 	{
-		$this->db->from ( "vendor" );
 		if ($type) {
-			$this->db->like ( "type", $type );
+			$this->db->like ( "vendor.type", $type );
+			if ($type == "vendor") {
+				$this->db->from ( "po" );
+				$this->db->join ( "vendor", "po.vendor_id = vendor.id" );
+				//if the number of pos by the vendor are greater than 10, then use that count as the count, otherwise just use 1
+				$this->db->select("if(count(po.vendor_id) > 10, count(po.vendor_id),1) as c");
+			} elseif ($type == "developer") {
+				$this->db->from ( "asset" );
+				$this->db->join ( "vendor", "asset.vendor_id = vendor.id" );
+				//if the number of assets by the developer are greater than 10, then use that count as the count, otherwise just use 1
+				$this->db->select("if(count(asset.vendor_id) > 10, count(asset.vendor_id),1) as c");
+				
+			}
+			$this->db->order_by ( "c", "DESC" );
+		} else {
+			$this->db->from ( "vendor" );
 		}
-		$this->db->order_by ( "name" );
+		$this->db->select ( "vendor.*" );
+		$this->db->group_by ( "vendor.name" );
+		$this->db->order_by ( "name", "ASC" );
 		$result = $this->db->get ()->result ();
+		$this->_log ();
 		return $result;
 	}
 
