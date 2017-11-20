@@ -66,6 +66,16 @@ class PO_Model extends MY_Model {
 		}
 		return $output;
 	}
+	
+	function get_next(){
+		$this->db->from("po");
+		$this->db->select("`po` + 1 as `po`", FALSE);//get the next available PO
+		$this->db->where("po <",3084); //the po system changed numbering. This is the oldest po before the new numbering scheme
+		$this->db->order_by("po","DESC");
+		$this->db->limit(1);
+		$result = $this->db->get()->row();
+		return $result;
+	}
 
 	function get_for_vendor($vendor_id)
 	{

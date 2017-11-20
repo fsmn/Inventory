@@ -151,7 +151,7 @@ class PO extends MY_Controller {
 		$data ["target"] = "po/edit";
 		$data ["action"] = "insert";
 		$data ["title"] = "Create a Purchase Order";
-		$data ["po"] = FALSE;
+		$data ["po"] = $this->po->get_next();
 		$data ["vendor_id"] = $vendor_id;
 		
 		if ($this->input->get ( "ajax" ) == 1) {
