@@ -325,7 +325,7 @@ class PO extends MY_Controller {
 		$message = $this->load->view ( "po/email/$target", array (
 				"po" => $po 
 		), TRUE );
-		$this->email->set_header ( "Disposition-Notification-To", $po->user_email );
+		//$this->email->set_header ( "Disposition-Notification-To", $po->user_email );
 		$this->email->subject ( $subject );
 		$this->email->message ( $message );
 		$this->email->send ();
