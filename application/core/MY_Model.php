@@ -93,11 +93,8 @@ class MY_Model extends CI_Model {
 
 	function _log($element = "warning")
 	{
-		$last_query = $this->db->last_query ();
-		// $this->load->model("user_preferences_model","user_prefs");
-		
-		// if ($this->user_prefs->get($this->ion_auth->user()->row()->id,"dev") == 1) {
-		$this->session->set_flashdata ( $element, $last_query );
-		// }
+		if ($_SERVER ['HTTP_HOST'] != $default_domain = 'inventory.fsmn.org') {
+			$last_query = $this->db->last_query ();
+		}
 	}
 }
