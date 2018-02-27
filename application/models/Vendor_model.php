@@ -58,12 +58,12 @@ class Vendor_Model extends MY_Model {
 			$this->db->like ( "vendor.type", $type );
 			if ($type == "vendor") {
 				$this->db->from ( "po" );
-				$this->db->join ( "vendor", "po.vendor_id = vendor.id" );
+				$this->db->join ( "vendor", "po.vendor_id = vendor.id","RIGHT" );
 				//if the number of pos by the vendor are greater than 10, then use that count as the count, otherwise just use 1
 				$this->db->select("if(count(po.vendor_id) > 10, count(po.vendor_id),1) as c");
 			} elseif ($type == "developer") {
 				$this->db->from ( "asset" );
-				$this->db->join ( "vendor", "asset.vendor_id = vendor.id" );
+				$this->db->join ( "vendor", "asset.vendor_id = vendor.id" , "RIGHT");
 				//if the number of assets by the developer are greater than 10, then use that count as the count, otherwise just use 1
 				$this->db->select("if(count(asset.vendor_id) > 10, count(asset.vendor_id),1) as c");
 				
