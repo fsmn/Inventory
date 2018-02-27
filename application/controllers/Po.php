@@ -262,8 +262,9 @@ class PO extends MY_Controller {
 					"approver_id" => $approver_id 
 			) );
 			$po = $this->po->get ( $id );
+			$note = $this->input->post("note");
 			$po->vendor = $this->vendor->get ( $po->vendor_id );
-			$this->_notify ( "approval_request", $po );
+			$this->_notify ( "approval_request", $po, $note );
 			$this->session->set_flashdata ( "warning", sprintf ( "The approval request has been sent to %s at %s", $po->approver, $po->approver_email ) );
 			redirect ( "po/view/$po->po" );
 		}
@@ -296,11 +297,12 @@ class PO extends MY_Controller {
 		echo $output;
 	}
 
-	function _notify($target, $po)
+	function _notify($target, $po, $note = NULL)
 	{
 		switch ($target) {
 			case "business_office" :
-				$this->email->to ( "bookkeeper@fsmn.org,lindac@fsmn.org" );
+				//$this->email->to ( "bookkeeper@fsmn.org,lindac@fsmn.org" );
+				$this->email->to("chrisd@fsmn.org");
 				$this->email->from ( $po->user_email );
 				$subject = sprintf ( "Purchase Order %s Has Been Approved", $po->po );
 				break;
@@ -310,20 +312,20 @@ class PO extends MY_Controller {
 				if (base_url () == "https://inventory/") {
 					$this->email->to ( "chrisd@fsmn.org" );
 				} else {
-					$this->email->to ( $po->approver_email );
+					$this->email->to ( "chrisd@fsmn.org" );
 				}
-				$this->email->cc ( $po->user_email );
+				//$this->email->cc ( $po->user_email );
 				
 				break;
 			case "approval_granted" :
 				$subject = sprintf ( "Purchase Order %s Approval Has Been Granted.", $po->po );
 				$this->email->from ( $po->approver_email );
 				$this->email->to ( $po->user_email );
-				$this->email->cc ( $po->approver_email );
+				//$this->email->cc ( $po->approver_email );
 				break;
 		}
 		$message = $this->load->view ( "po/email/$target", array (
-				"po" => $po 
+				"po" => $po , "note"=>$note,
 		), TRUE );
 		//$this->email->set_header ( "Disposition-Notification-To", $po->user_email );
 		$this->email->subject ( $subject );

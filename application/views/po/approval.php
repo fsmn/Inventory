@@ -7,6 +7,11 @@
 		<label for="approver_id">Request Approval from:&nbsp;</label>
 <?php echo form_dropdown("approver_id",$approvers);?>
 </div>
+<div class="form-group">
+<label for="message">Message</label>
+<input type="text" id="note" name="note" placeholder="Enter a note describing the PO here" style="width:20em"/>
+</div>
+<div>
 	<button type="submit" class="btn btn-default">Submit Request</button>
-
+</div>
 </form>
