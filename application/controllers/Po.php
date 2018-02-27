@@ -301,8 +301,7 @@ class PO extends MY_Controller {
 	{
 		switch ($target) {
 			case "business_office" :
-				//$this->email->to ( "bookkeeper@fsmn.org,lindac@fsmn.org" );
-				$this->email->to("chrisd@fsmn.org");
+				$this->email->to ( "bookkeeper@fsmn.org,lindac@fsmn.org" );
 				$this->email->from ( $po->user_email );
 				$subject = sprintf ( "Purchase Order %s Has Been Approved", $po->po );
 				break;
@@ -312,16 +311,16 @@ class PO extends MY_Controller {
 				if (base_url () == "https://inventory/") {
 					$this->email->to ( "chrisd@fsmn.org" );
 				} else {
-					$this->email->to ( "chrisd@fsmn.org" );
+					$this->email->to ( $po->approver_email );
 				}
-				//$this->email->cc ( $po->user_email );
+				$this->email->cc ( $po->user_email );
 				
 				break;
 			case "approval_granted" :
 				$subject = sprintf ( "Purchase Order %s Approval Has Been Granted.", $po->po );
 				$this->email->from ( $po->approver_email );
 				$this->email->to ( $po->user_email );
-				//$this->email->cc ( $po->approver_email );
+				$this->email->cc ( $po->approver_email );
 				break;
 		}
 		$message = $this->load->view ( "po/email/$target", array (
