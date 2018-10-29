@@ -130,6 +130,10 @@ class Asset_model extends MY_Model {
 						case "product" :
 							$this->db->like ( "asset." . $key, "$value" );
 							break;
+                        case "code":
+                            $this->db->join("code","asset.id=code.asset_id");
+                            $this->db->like("code.value","$value");
+                            break;
 						default :
 							$this->db->where ( "asset." . $key, $value );
 							break;
@@ -145,6 +149,7 @@ class Asset_model extends MY_Model {
 		$this->db->join ( "vendor", "asset.vendor_id=vendor.id" );
 		$this->db->select ( "vendor.name as vendor, asset.*" );
 		$result = $this->db->get ()->result ();
+		$this->_log();
 		return $result;
 	}
 }

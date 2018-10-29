@@ -74,6 +74,12 @@
 <label for="has_attachment">Has Attachment</label>
 <input type="checkbox" name="has_attachment" class="form-check-input" value="1" <?php echo $this->input->get("has_attachment")==1?"checked='checked'":"";?>>
 </div>
+            <div class="column">
+                <label for="code">
+                    Code Value
+                </label>
+                <input type="text" class="form-control" name="code" value="<?php echo $this->input->get("code")!=''?$this->input->get("code"):"";?>"/>
+            </div>
 		</div>
 
 		<div class="actions">

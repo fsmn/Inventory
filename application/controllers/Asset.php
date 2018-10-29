@@ -156,6 +156,7 @@ class Asset extends MY_Controller {
 				"year_removed",
 				"serial_number",
 				"has_attachment",
+            "code",
 		);
 		$where = NULL;
 		foreach ( $variables as $variable ) {
