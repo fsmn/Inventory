@@ -167,7 +167,6 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".editor .field-envelope .edit-field.editable", function () {
-    //if($("body").hasClass("editor")){
     let me = $(this);
     let my_parent = me.parent().attr("id");
     let my_attr = my_parent.split("__");
@@ -185,7 +184,8 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
     } else if (me.hasClass("autocomplete")) {
         my_type = "autocomplete";
     }
-    let form_data = {
+    let form_data;
+    form_data = {
         table: my_attr[0],
         field: my_name,
         id: my_attr[2],
@@ -203,7 +203,6 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
 
         }
     });
-    //}
 });
 $(document).on("blur", ".field-envelope .live-field.text input", function () {
     if ($(this).hasClass("ui-autocomplete-input")) {
