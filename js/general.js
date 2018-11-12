@@ -198,7 +198,7 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
         url: base_url + "variable/edit_value",
         data: form_data,
         success: function (data) {
-            $("#" + my_parent + " .edit-field").html(data).("#" + my_parent + " .edit-field").removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text");
+            $("#" + my_parent + " .edit-field").html(data).removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text");
             $("#" + my_parent + " .live-field input").focus();
 
         }
