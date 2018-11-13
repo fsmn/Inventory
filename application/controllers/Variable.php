@@ -120,11 +120,14 @@ class Variable extends MY_Controller {
 		if (is_array ( $value )) {
 			$data ["value"] = implode ( ",", $value );
 		}
-		$data ["id"] = $this->input->get ( "id" );
+		$data ["data-id"] = $this->input->get ( "id" );
 		$data ["size"] = strlen ( $data ["value"] ) + 5;
 		$data ["type"] = $this->input->get ( "type" );
 		$data ["category"] = $this->input->get ( "category" );
-		
+		$data['data-field'] = $this->input->get('field');
+		$data['data-table'] = $this->input->get('table');
+		$data['class'] = "inline-field form-control";
+
 		switch ($data ["type"]) {
 			case "dropdown" :
 				$output = $this->_get_dropdown ( $data ["category"], $data ["value"], $data ["name"] );
@@ -132,18 +135,9 @@ class Variable extends MY_Controller {
 			case "multiselect" :
 				$output = $this->_get_multiselect ( $data ["category"], $data ["value"], $data ["name"] );
 				break;
-			case "textarea" :
-				$output = form_textarea ( $data, $data ["value"] );
-				break;
 			case "autocomplete" :
-				$data ["type"] = "text";
-				$output = form_input ( $data, $data ["value"], "class='autocomplete'" );
-				break;
-			case "time" :
-				$output = sprintf ( "<input type'%s' name='%s' id='%s' value='%s' size='%s'", $data ['type'], $data ['name'], $data ['id'], $data ['value'], $data ['size'] );
-				break;
-			case "email" :
-				$output = sprintf ( "<input type'%s' name='%s' id='%s' value='%s' size='%s'", $data ['type'], $data ['name'], $data ['id'], $data ['value'], $data ['size'] );
+			    $data['class'] .= " autocomplete";
+			    $output = form_input ( $data );
 				break;
 			default :
 				$output = form_input ( $data );

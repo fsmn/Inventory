@@ -198,6 +198,7 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
         url: base_url + "variable/edit_value",
         data: form_data,
         success: function (data) {
+            console.log(data);
             $("#" + my_parent + " .edit-field").html(data).removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text");
             $("#" + my_parent + " .live-field input").focus();
 
@@ -250,17 +251,19 @@ $(document).on('click', '.dropdown-menu li a', function (e) {
 
 function update_field(me, my_type) {
     let my_parent = $(me).parents(".field-envelope").attr("id");
-    let my_attr = my_parent.split("__");
+    let my_table = $(me).data('table');
+    let my_field = $(me).attr('name');
+    let my_id = $(me).data('id');
     let my_value = "";
     let my_category = false;
-    if (my_type == "autocomplete") {
+    if (my_type === "autocomplete") {
         my_value = $("#" + my_parent).children(".live-field").children("input").val();
 
-    } else if (my_type == "multiselect") {
+    } else if (my_type === "multiselect") {
         my_value = $("#" + my_parent).children(".multiselect").children("select").val();
-    } else if (my_type == "checkbox") {
+    } else if (my_type === "checkbox") {
         my_category = "checkbox";
-        if ($(me).attr("checked") == true) {
+        if ($(me).attr("checked") === true) {
             my_value = 1;
         } else {
             my_value = 0;
@@ -272,26 +275,26 @@ function update_field(me, my_type) {
     let is_persistent = $(me).hasClass("persistent");
 
     //don't do anything if the value is empty and it is a persistent field
-    if (is_persistent && my_value == "") {
+    if (is_persistent && my_value === "") {
         return false;
     }
     let my_header = $(me).parents("div.entity").children(".header").attr("id");
     let my_wrapper = $(me).parents(".details");
     let form_data = {
-        table: my_attr[0],
-        field: my_attr[1],
-        id: my_attr[2],
+        table: my_table,
+        field: my_field,
+        id: my_id,
         value: my_value,
         category: my_category
     };
     $.ajax({
         type: "post",
         dataType: "json",
-        url: base_url + my_attr[0] + "/update_value",
+        url: base_url + my_table + "/update_value",
         data: form_data,
         success: function (data) {
             if (!is_persistent) {
-                if (my_attr[0] === "asset") {
+                if (my_table === "asset") {
                     $("#" + my_header + " a").html(data['title']);
                     if (data['extra']) {
                         $(my_wrapper).append(data['extra']);
