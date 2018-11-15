@@ -87,6 +87,18 @@ $vendor_types = array (
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
 			<input type="submit" class="btn save_vendor <?php echo $action;?> <?php echo implode(" ",get_button_style($action));?>" value="<?php echo ucfirst($action);?>" />
+            <?php if($action == "update"):?>
+            <a href="#" class="btn btn-danger delete-vendor">Delete</a>
+            <?php endif; ?>
 		</div>
 	</div>
 </form>
+<script type="text/javascript">
+    $(".delete-vendor").on('click',function(e){
+        e.preventDefault();
+        let question = confirm("Are you sure you want to delete <?php echo $vendor->name?>? This cannot be undone");
+        if(question) {
+            $('#vendor_editor').prop('action', '<?php echo base_url('vendor/delete');?>').submit();
+        }
+    });
+</script>

@@ -96,4 +96,8 @@ class Vendor_Model extends MY_Model {
 	{
 		$this->_update ( "vendor", $id, $values );
 	}
+
+	function delete($id){
+	    $this->_delete('vendor',$id);
+    }
 }
