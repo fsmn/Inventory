@@ -21,6 +21,11 @@ if ($this->ion_auth->in_group ( 1 )) {
 }
 
 $body_classes [] = $this->uri->segment ( 1 );
+
+if ( $_SERVER ['HTTP_HOST'] != DEFAULT_DOMAIN){
+$body_classes[] = "development";
+}
+
 if (! isset ( $title )) {
 	$window_title = APP_NAME;
 } else {

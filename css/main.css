@@ -284,6 +284,9 @@ ul.unformatted li {
 	padding-right: 1em;
 	display: inline-block;
 }
+body.development {
+	border-top: 15px solid red;
+}
 
 @media ( max-width : 666px) {
 	.left-box, .right-box {

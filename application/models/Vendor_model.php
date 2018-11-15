@@ -50,7 +50,8 @@ class Vendor_Model extends MY_Model {
 	/**
 	 * get a list of vendors by frequency of use if commonly used (10 or more items), then alphabetical
 	 *
-	 * @param unknown $type        	
+	 * @param unknown $type
+     * @return object
 	 */
 	function get_all($type = NULL)
 	{
@@ -91,8 +92,8 @@ class Vendor_Model extends MY_Model {
 		return $this->_insert ( "vendor" );
 	}
 
-	function update($id)
+	function update($id, $values = array())
 	{
-		$this->_update ( "vendor", $id );
+		$this->_update ( "vendor", $id, $values );
 	}
 }

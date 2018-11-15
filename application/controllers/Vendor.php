@@ -81,4 +81,23 @@ class Vendor extends MY_Controller {
 		$this->vendor->update ( $id );
 		redirect ( "vendor/view/$id" );
 	}
+	function update_value(){
+        $id = $this->input->post ( "id" );
+        $value = $this->input->post ( "value" );
+        if (is_array ( $value )) {
+            $value = implode ( ",", $value );
+        }
+        $values = array (
+            $this->input->post ( "field" ) => $value
+        );
+        $this->vendor->update ( $id, $values );
+        $vendor = $this->vendor->get ( $id );
+        $title = $vendor->name;
+        $extra = FALSE;
+        echo json_encode ( array (
+            "asset" => $asset,
+            "title" => $title,
+            "extra" => $extra
+        ) );
+    }
 }
