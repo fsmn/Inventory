@@ -105,7 +105,6 @@ $(document).on("click", ".create.inline", function (e) {
 $(document).on("click", ".edit.inline", function (e) {
     e.preventDefault();
     let me = $(this);
-    let my_id = me.parent().attr("id");
     let my_url = me.attr("href");
     let form_data = {
         inline: 1
@@ -125,7 +124,7 @@ $(document).on("click", ".edit.inline", function (e) {
 $(document).on("change", "select", function () {
     let me = $(this);
     if (me.val() === "other") {
-        my_name = me.attr('name');
+        let my_name = me.attr('name');
         me.parent().html("<input type='text' name='" + my_name + "' class='form-control' value=''/>");
     }
 });
@@ -167,12 +166,13 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".editor .field-envelope .edit-field.editable", function () {
-    let me = $(this);
-    let my_parent = me.parent().attr("id");
-    let my_attr = my_parent.split("__");
+ edit_field(this);
+});
+
+function edit_field(my_element){
+    let me = $(my_element);
     let my_type = "text";
     let my_category = me.attr('menu');
-    let my_name = me.attr("name");
     if (me.hasClass("dropdown")) {
         my_type = "dropdown";
     } else if (me.hasClass("checkbox")) {
@@ -186,9 +186,9 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
     }
     let form_data;
     form_data = {
-        table: my_attr[0],
-        field: my_name,
-        id: my_attr[2],
+        table: me.data('table'),
+        field: me.data('field'),
+        id: me.data('id'),
         type: my_type,
         category: my_category,
         value: me.html()
@@ -198,13 +198,13 @@ $(document).on("click", ".editor .field-envelope .edit-field.editable", function
         url: base_url + "variable/edit_value",
         data: form_data,
         success: function (data) {
-            console.log(data);
-            $("#" + my_parent + " .edit-field").html(data).removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text");
-            $("#" + my_parent + " .live-field input").focus();
+            me.html(data);
+             me.removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text").children('input').focus();
+            // $("#" + my_parent + " .live-field input").focus();
 
         }
     });
-});
+}
 $(document).on("blur", ".field-envelope .live-field.text input", function () {
     if ($(this).hasClass("ui-autocomplete-input")) {
         update_field(this, "autocomplete");
@@ -250,17 +250,16 @@ $(document).on('click', '.dropdown-menu li a', function (e) {
 });
 
 function update_field(me, my_type) {
-    let my_parent = $(me).parents(".field-envelope").attr("id");
     let my_table = $(me).data('table');
     let my_field = $(me).attr('name');
     let my_id = $(me).data('id');
     let my_value = "";
     let my_category = false;
     if (my_type === "autocomplete") {
-        my_value = $("#" + my_parent).children(".live-field").children("input").val();
+        my_value = $(me).val();
 
     } else if (my_type === "multiselect") {
-        my_value = $("#" + my_parent).children(".multiselect").children("select").val();
+        my_value = $(me).val();
     } else if (my_type === "checkbox") {
         my_category = "checkbox";
         if ($(me).attr("checked") === true) {
@@ -269,7 +268,8 @@ function update_field(me, my_type) {
             my_value = 0;
         }
     } else {
-        my_value = $("#" + my_parent).children(".live-field").children("input" | "textarea").val();
+        console.log($(me).val());
+        my_value = $(me).val();
     }
 
     let is_persistent = $(me).hasClass("persistent");
@@ -287,6 +287,7 @@ function update_field(me, my_type) {
         value: my_value,
         category: my_category
     };
+
     $.ajax({
         type: "post",
         dataType: "json",
@@ -300,9 +301,8 @@ function update_field(me, my_type) {
                         $(my_wrapper).append(data['extra']);
                     }
                 }
-                $("#" + my_parent + " .live-field").html(data['value']).addClass("edit-field field").removeClass("live-field text");
+                $(me).parents('span').data('value',my_id).html(my_value).removeClass('live-field').addClass('edit-field').addClass('field').removeClass('text');
             }
-
         },
         error: function (data) {
             console.log(data);
@@ -392,7 +392,6 @@ $(document).on("click | focus", ".view-inline", function (e) {
     e.preventDefault();
     $(".view-inline.active").removeClass("active");
     let me = $(this);
-    console.log(me.parent().attr("id").split("_")[1]);
     let my_url = me.attr("href");
     if (!me.hasClass("active")) {
         me.addClass("active");
