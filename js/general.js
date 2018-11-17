@@ -268,7 +268,6 @@ function update_field(me, my_type) {
             my_value = 0;
         }
     } else {
-        console.log($(me).val());
         my_value = $(me).val();
     }
 
