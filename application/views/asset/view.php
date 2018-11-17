@@ -59,6 +59,14 @@ if (!isset ($inline_edit)) {
         <?php echo inline_field("source", $asset, "asset"); ?>
         <?php echo inline_field("purchase_price", $asset, "asset", array("money" => TRUE)); ?>
         <p>
+            <?php $po_array = array('label' => 'Purchase Order'); ?>
+            <?php if (!empty($asset->po)): ?>
+                <?php $po_array['link'] = base_url("po/view/$asset->po"); ?>
+            <?php endif; ?>
+            <?php echo inline_field('po', $asset, 'asset', $po_array); ?>
+        </p>
+
+        <p>
             <?php echo inline_field("location", $asset, "asset"); ?>
         </p>
         <p>
@@ -69,11 +77,6 @@ if (!isset ($inline_edit)) {
             <?php endif; ?>
         </p>
 
-<?php echo inline_field('po',$asset,'asset',array('link'=>'po/view'));?>
-            <p>
-                <b>Purchase Order: </b>&nbsp;
-                <a href="<?php echo site_url("po/view/$asset->po"); ?>"><?php echo $asset->po; ?></a>
-            </p>
 
     </div>
 

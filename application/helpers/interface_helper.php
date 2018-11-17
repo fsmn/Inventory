@@ -210,15 +210,19 @@ function create_edit_field($field_name, $value, $label, $options = array())
 		$classes [] = "usd";
 	}
 	
-	/*
-	 * The id is split with the "-" delimiter in javascript when the field is
-	 * clicked
-	 */
-	$output [] = sprintf ( "<%s class='field-envelope' >", $envelope );
+
+
+	$output [] = sprintf("<%s class='field-envelope' >", $envelope);
+
+
 	if ($label != "") {
-		$output [] = sprintf ( "<label>%s:&nbsp;</label>", $label );
+		$output ['label'] = sprintf ( "<label>%s:&nbsp;</label>", $label );
 	}
-	if ($value == "") {
+
+    if(array_key_exists('link',$options)) {
+        $output['label'] = sprintf("<a href='%s'>%s</a>", base_url($options['link']), $output['label']);
+    }
+	if ($value === "" || empty($value) || $value === 0) {
 		$value = "&nbsp;";
 	}
 	
@@ -242,8 +246,9 @@ function create_edit_field($field_name, $value, $label, $options = array())
 		$attributes = $options ["attributes"];
 	}
 	$output [] = sprintf ( "<%s class='%s' data-table='$table' data-field='$field_name' data-value='$value' data-id='$id' %s %s name='%s'>%s</%s></%s>", $field_wrapper, $field_class, $attributes, $format, $field_name, $value, $field_wrapper, $envelope );
-	
-	return implode ( "\r", $output );
+
+
+        return implode ( "\r", $output );
 }
 
 function edit_field($field_name, $value, $label, $table, $id, $options = array())

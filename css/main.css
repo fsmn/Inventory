@@ -50,6 +50,10 @@ nav .btn-group.utility {
 	
 }
 
+body.asset .content .editable.live-field input {
+    max-width: 15vw;
+}
+
 .list-group-item:hover {
 	cursor: pointer;
 }
