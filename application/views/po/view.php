@@ -47,7 +47,7 @@ if ($order->approved && !$order->complete) {
     );
     $order_buttons[] = array(
         'text' => 'Complete',
-        'description' => 'Click here if the order is completed',
+        'title' => 'Click here if the order is completed',
         'style' => 'edit',
         'class' => array('complete-po', 'btn-sm', 'dialog'),
         'href' => site_url('po/view/' . $order->po),

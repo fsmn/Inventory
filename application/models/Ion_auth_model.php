@@ -1340,8 +1340,9 @@ class Ion_auth_model extends CI_Model {
 				$this->db->where_in ( $this->tables ['users_groups'] . '.' . $this->join ['groups'], $groups );
 			}
 		}
-		
-		$this->trigger_events ( 'extra_where' );
+        $this->db->order_by('active','DESC');
+
+        $this->trigger_events ( 'extra_where' );
 		
 		// run each where that was passed
 		if (isset ( $this->_ion_where ) && ! empty ( $this->_ion_where )) {
