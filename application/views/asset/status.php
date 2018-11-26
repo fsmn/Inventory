@@ -7,3 +7,4 @@ if ($asset->status == "Sold"):
 			"money" => TRUE,
 	) );
 endif;
+

@@ -57,6 +57,7 @@ function create_button($data)
 		$title = "";
 		$target = "";
 		$style = "";
+		$js_data = "";
 		$text = $data ["text"];
 		if (array_key_exists ( "tag", $data )) {
 			if (isset ( $data ["tag"] )) {
@@ -77,6 +78,12 @@ function create_button($data)
 		if (array_key_exists ( "title", $data )) {
 			$title = "title ='" . $data ["title"] . "'";
 		}
+
+		if(array_key_exists('data', $data) && is_array($data['data'])){
+            foreach($data['data'] as $name => $value){
+                $js_data .= sprintf("data-%s='%s'", $name, $value);
+            }
+        }
 		if ($tag != "pass-through") {
 			
 			if (array_key_exists ( "class", $data )) {
@@ -102,7 +109,7 @@ function create_button($data)
 				$id = "id='" . $data ["id"] . "'";
 			}
 			
-			$button = "<$tag $href $id $class $target $title>$text</$tag>";
+			$button = "<$tag $href $id $class $target $js_data $title>$text</$tag>";
 			
 			if (array_key_exists ( "enclosure", $data )) {
 				if (array_key_exists ( "tag", $data ["enclosure"] )) {
@@ -128,26 +135,20 @@ function create_button($data)
 }
 
 /**
- *
- * @param
- *        	compound array $buttons
- * @param array $options        	
+ * @param $buttons
+ * @param string $type
+ * @param null $options
  * @return string
  */
 function create_button_bar($buttons, $type = "list", $options = NULL)
 {
 	$id = "";
-	$selection = "";
 	$class = "";
 	if ($options) {
 		if (array_key_exists ( "id", $options )) {
 			$id = sprintf ( "id='%s'", $options ["id"] );
 		}
-		
-		if (array_key_exists ( "selection", $options )) {
-			$selection = $options ["selection"];
-		}
-		
+
 		if (array_key_exists ( "class", $options )) {
 			$class = $options ["class"];
 		}

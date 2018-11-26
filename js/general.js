@@ -156,6 +156,27 @@ $(document).on("keyup", "#order-editor #po", function () {
     });
 });
 
+$(document).on('click','.modify-po',function(e){
+    e.preventDefault();
+let me = $(this);
+let my_id = me.data('id');
+let my_question = confirm('You will be required to ask for approval again for this purchase order. Continue?');
+let form_data = {
+    id: my_id
+};
+if(my_question){
+    $.ajax({
+        type: 'post',
+        url: base_url + 'po/modify',
+        data: form_data,
+        success: function(data){
+            console.log(data);
+            window.location.href =  data;
+        }
+    });
+}
+
+});
 
 $(document).ready(function () {
     // put the footer at the bottom of the window

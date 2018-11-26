@@ -31,8 +31,20 @@ if ($this->ion_auth->get_user_id () == $order->approver_id && ! $order->approved
 					"grant-approval",
 					"btn-sm" 
 			),
-			"href" => site_url ( "po/grant_approval/$order->id" ) 
+			"href" => site_url ( "po/grant_approval/$order->id" ) ,
 	);
+
+}
+
+if($order->approved){
+    $order_buttons [] = array(
+        'text' => 'Modify',
+        'style'=>'edit',
+        'class' => array('modify-po', 'btn-sm', 'dialog'),
+        'href' => site_url('po/modify'),
+        'data'=>array('id'=> $order->id),
+
+    );
 }
 if (! $order->approved) {
 	$order_buttons [] = array (
