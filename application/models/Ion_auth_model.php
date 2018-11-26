@@ -1304,7 +1304,7 @@ class Ion_auth_model extends CI_Model {
 	 * @author Ben Edmunds
 	 *        
 	 */
-	public function users($groups = NULL)
+	public function users($groups = NULL, $show_inactive = FALSE)
 	{
 		$this->trigger_events ( 'users' );
 		
@@ -1352,6 +1352,10 @@ class Ion_auth_model extends CI_Model {
 			
 			$this->_ion_where = array ();
 		}
+
+		if(!$show_inactive){
+		    $this->db->where('active',1);
+        }
 		
 		if (isset ( $this->_ion_like ) && ! empty ( $this->_ion_like )) {
 			foreach ( $this->_ion_like as $like ) {

@@ -158,6 +158,10 @@ table.item-list th.price, table.item-list th.total {
 	text-align: right;
 }
 
+table tr.inactive td {
+	color: darkgray;
+}
+
 .left-box, .right-box {
 	width: 45%;
 	display: inline-block;

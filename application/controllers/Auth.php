@@ -28,12 +28,18 @@ class Auth extends CI_Controller {
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error ( 'You must be an administrator to view this page.' );
 		} else {
-			
+
 			// set the flash data error message if there is one
 			$this->data ['message'] = (validation_errors ()) ? validation_errors () : $this->session->flashdata ( 'message' );
-			
+
+			$show_inactive = FALSE;
+			if($this->input->get('show_inactive')){
+			    $show_inactive = TRUE;
+            }
+			$this->data['show_inactive'] = $show_inactive;
 			// list the users
-			$this->data ['users'] = $this->ion_auth->users ()->result ();
+
+			$this->data ['users'] = $this->ion_auth->users (NULL,$show_inactive)->result ();
 			foreach ( $this->data ['users'] as $k => $user ) {
 				$this->data ['users'] [$k]->groups = $this->ion_auth->get_users_groups ( $user->id )->result ();
 			}
@@ -315,7 +321,7 @@ class Auth extends CI_Controller {
 		
 		if ($activation) {
 			// redirect them to the auth page
-			$this->session->set_flashdata ( 'message', $this->ion_auth->messages () );
+			//$this->session->set_flashdata ( 'message', $this->ion_auth->messages () );
 			redirect ( "auth", 'refresh' );
 		} else {
 			// redirect them to the forgot password page
