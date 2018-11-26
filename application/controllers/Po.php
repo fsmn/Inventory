@@ -288,10 +288,6 @@ class PO extends MY_Controller
         redirect("po/view/$po->po");
     }
 
-    /**
-     * @param $id integer
-     *
-     */
     function modify()
     {
         if ($id = $this->input->post('id')) {
@@ -304,6 +300,18 @@ class PO extends MY_Controller
             echo base_url('po/view/' . $po->po);
         }
 
+    }
+
+    function complete(){
+        if($id = $this->input->post('id')){
+            $po = $this->po->get($id);
+            $values = array('complete'=>1);
+            $this->po->update($id, $values);
+            echo base_url('po/view/' . $po->po);
+        }else{
+            $this->session->set_flashdata('warning','No ID was provided to update a purchase order record');
+            redirect('po');
+        }
     }
 
     function po_exists($po)

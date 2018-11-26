@@ -156,29 +156,50 @@ $(document).on("keyup", "#order-editor #po", function () {
     });
 });
 
-$(document).on('click','.modify-po',function(e){
+$(document).on('click', '.modify-po', function (e) {
     e.preventDefault();
-let me = $(this);
-let my_id = me.data('id');
-let my_question = confirm('You will be required to ask for approval again for this purchase order. Continue?');
-let form_data = {
-    id: my_id
-};
-if(my_question){
-    $.ajax({
-        type: 'post',
-        url: base_url + 'po/modify',
-        data: form_data,
-        success: function(data){
-            console.log(data);
-            window.location.href =  data;
-        }
-    });
-}
+    let me = $(this);
+    let my_id = me.data('id');
+    let my_question = confirm('You will be required to ask for approval again for this purchase order. Continue?');
+    let form_data = {
+        id: my_id
+    };
+    if (my_question) {
+        $.ajax({
+            type: 'post',
+            url: base_url + 'po/modify',
+            data: form_data,
+            success: function (data) {
+                console.log(data);
+                window.location.href = data;
+            }
+        });
+    }
 
 });
 
+
 $(document).ready(function () {
+    $('.complete-po').on('click', function (e) {
+        e.preventDefault();
+        let me = $(this);
+        let my_id = me.data('id');
+        let my_question = confirm('Are you sure you want to mark this order as complete? You will be unable to modify it once this has been set');
+        if (my_question) {
+            let form_data = {
+                id: my_id,
+            }
+            $.ajax({
+                type: 'post',
+                url: base_url + 'po/complete',
+                data: form_data,
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = data;
+                }
+            })
+        }
+    });
     // put the footer at the bottom of the window
     move_footer();
 
@@ -187,10 +208,10 @@ $(document).ready(function () {
 });
 
 $(document).on("click", ".editor .field-envelope .edit-field.editable", function () {
- edit_field(this);
+    edit_field(this);
 });
 
-function edit_field(my_element){
+function edit_field(my_element) {
     let me = $(my_element);
     let my_type = "text";
     let my_category = me.attr('menu');
@@ -220,12 +241,13 @@ function edit_field(my_element){
         data: form_data,
         success: function (data) {
             me.html(data);
-             me.removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text").children('input').focus();
+            me.removeClass("edit-field").removeClass("field").addClass("live-field").addClass("text").children('input').focus();
             // $("#" + my_parent + " .live-field input").focus();
 
         }
     });
 }
+
 $(document).on("blur", ".field-envelope .live-field.text input", function () {
     if ($(this).hasClass("ui-autocomplete-input")) {
         update_field(this, "autocomplete");
@@ -321,7 +343,7 @@ function update_field(me, my_type) {
                         $(my_wrapper).append(data['extra']);
                     }
                 }
-                $(me).parents('span').data('value',my_id).html(my_value).removeClass('live-field').addClass('edit-field').addClass('field').removeClass('text');
+                $(me).parents('span').data('value', my_id).html(my_value).removeClass('live-field').addClass('edit-field').addClass('field').removeClass('text');
             }
         },
         error: function (data) {
