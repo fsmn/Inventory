@@ -93,8 +93,9 @@ class MY_Model extends CI_Model {
 
 	function _log($element = "warning")
 	{
-		if ($_SERVER ['HTTP_HOST'] != $default_domain = 'inventory.fsmn.org') {
+		if ($_SERVER ['HTTP_HOST'] != 'inventory.fsmn.org') {
 			$last_query = $this->db->last_query ();
+			$this->session->set_flashdata($element,$last_query);
 		}
 	}
 }

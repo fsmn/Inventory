@@ -141,6 +141,7 @@ class Asset extends MY_Controller
     function search()
     {
         $this->load->model("vendor_model", "vendor");
+        $this->load->model("code_model","code");
         $data ["developers"] = $this->_developer_list(TRUE);
         $data ["statuses"] = $this->_status_list();
         $data ["types"] = $this->_type_list();
@@ -170,11 +171,17 @@ class Asset extends MY_Controller
                 burn_cookie($variable, $my_variable);
             }
         }
+        $assets = NULL;
+
         if ($this->input->get("is_search")) { // active search has been submitted
             $assets = $this->asset->search($where);
             $data ["refine"] = TRUE;
         }
-        $data ['assets'] = NULL;
+
+        foreach($assets as $asset){
+           $asset->codes = $this->code->get_for_asset($asset->id);
+        }
+
         if (count($assets) > 0) {
             $data ['assets'] = $assets;
         }

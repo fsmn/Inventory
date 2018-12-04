@@ -18,7 +18,6 @@ $fields = array(
     "sale_price" => "Sale Price",
     "location" => "Location",
     "vendor" => "Developer",
-    "sold_to" => "Sold To",
 );
 $header_values = array();
 
@@ -33,6 +32,10 @@ $line = array();
 foreach ($assets as $asset) {
     foreach (array_keys($fields) as $key) {
         $line [] = $asset->$key;
+
+    }
+    foreach($asset->codes as $code){
+        $line[] = $code->type . ":" . $code->value;
     }
     $output [] = "\"" . implode("\",\"", $line) . "\"";
     $line = NULL;

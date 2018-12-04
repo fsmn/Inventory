@@ -150,10 +150,6 @@ class Asset_model extends MY_Model
         $this->db->order_by('asset.name', 'asc');
         $this->db->join("vendor", "asset.vendor_id=vendor.id");
         $this->db->select("vendor.name as vendor, asset.*");
-        //get the sold_to value for asset exports since this is a critical value.
-        $this->db->join("code", "asset.id=code.asset_id", "RIGHT");
-        $this->db->where("code.type", "sold_to");
-        $this->db->select("code.value as sold_to");
         $result = $this->db->get()->result();
         $this->_log();
         return $result;
