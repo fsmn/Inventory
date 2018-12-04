@@ -102,7 +102,7 @@ $(document).on("click", ".create.inline", function (e) {
     });
 });
 
-$(document).on("click", ".edit.inline", function (e) {
+$(document).on("click tap", ".edit.inline", function (e) {
     e.preventDefault();
     let me = $(this);
     let my_url = me.attr("href");
