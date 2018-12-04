@@ -171,8 +171,7 @@ class Asset extends MY_Controller
                 burn_cookie($variable, $my_variable);
             }
         }
-        $assets = NULL;
-
+        $data['assets'] = NULL;
         if ($this->input->get("is_search")) { // active search has been submitted
             $assets = $this->asset->search($where);
             $data ["refine"] = TRUE;
