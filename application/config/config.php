@@ -27,9 +27,11 @@ if (in_array ( $_SERVER ['HTTP_HOST'], $allowed_domains, TRUE )) {
 } else {
 	$domain = $default_domain;
 }
-
-$config ['base_url'] = 'https://' . $domain;
-
+if($domain == "docker.test"){
+    $config['base_url'] = 'http://' . $domain;
+}else{
+    $config ['base_url'] = 'https://' . $domain;
+}
 /*
  * |--------------------------------------------------------------------------
  * | Index File
