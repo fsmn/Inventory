@@ -1,6 +1,6 @@
 <?php defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' ); ?>
 <div class="filter">
-	<input type="text" name="vendor-filter" id="vendor-filter" placeholder="Case Sensitive!" />
+	<input type="text" name="vendor-filter" id="vendor-filter" placeholder="Quick Search" />
 
 </div>
 <div class="vendor-list">
