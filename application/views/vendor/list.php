@@ -6,7 +6,9 @@
 <div class="vendor-list">
 <?php foreach ( $vendors as $vendor ) :?>
 <div class="block vendor-block column">
-		<h4>
+    <span class="hidden vendor-search"><?php echo strtolower($vendor->name);?></span>
+
+    <h4>
 			<a href="<?php echo site_url("vendor/view/$vendor->id");?>"><?php echo  $vendor->name; ?></a>
 		</h4>
 	<?php $this->load->view("vendor/navigation",array("id"=>$vendor->id,"vendor"=>$vendor));?>
@@ -18,9 +20,13 @@
 
 <script>
 $(document).on("keyup","#vendor-filter",function(){
-my_value = $(this).val();
+my_value = $(this).val().toLowerCase();
+if(my_value === ''){
+    $(".vendor-block").show();
+}else{
 $(".vendor-block").hide();
-$("h4 a:contains('" + my_value + "')").parents(".vendor-block").show();
+$("span.vendor-search:contains('" + my_value + "')").parents(".vendor-block").show();
+}
 });
 
 </script>
