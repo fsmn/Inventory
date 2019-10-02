@@ -1,4 +1,5 @@
 <?php
+
 if ($vendor) {
 	$types = explode ( ",", get_value ( $vendor, "type", array () ) );
 } else {
@@ -8,6 +9,7 @@ $vendor_types = array (
 		"developer",
 		"vendor" 
 );
+
 ?>
 
 <form name="vendor_editor" id="vendor_editor" class="editor form-dialog form-horizontal" action="<?php echo site_url("vendor/$action"); ?>"
@@ -93,6 +95,7 @@ $vendor_types = array (
 		</div>
 	</div>
 </form>
+<?php if($action == 'update'):?>
 <script type="text/javascript">
     $(".delete-vendor").on('click',function(e){
         e.preventDefault();
@@ -102,3 +105,4 @@ $vendor_types = array (
         }
     });
 </script>
+<?php endif;

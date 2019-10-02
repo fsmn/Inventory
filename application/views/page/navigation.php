@@ -38,8 +38,7 @@ $buttons [] = array (
 		"href" => site_url ( "vendor/create" ),
 		"style" => "new",
 		"class" => "create-vendor create dialog" 
-)
-;
+);
 
 $buttons [] = array (
 		"text" => "New PO",
